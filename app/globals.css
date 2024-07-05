@@ -25,58 +25,63 @@ body {
   font-family: Inter;
 }
 
-
+.max-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1440px;
+}
 /* Remove the @layer utilities directive */
-  .btn_white { 
-    border-color: white;
-    background-color: white;
-    padding: 8px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    color: #34D399;
-  }
-  .btn_white_text  { 
-    border-color: white;
-    background-color: white;
-    padding: 8px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    color: #34D399;
-  }
-  .btn_green  { 
-    border: 1px solid #34D399;
-    background-color: #34D399;
-    padding: 8px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    color: white;
-  }
-  .btn_dark_green { 
-    background-color: #34D399;
-    padding: 8px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    color: white;
-    transition: all;
-  }
-  
-  .btn_dark_green:hover {
-    background-color: black;
-  }
-  .btn_dark_green_outline  { 
-    border-color: gray-20;
-    background-color: green-90;
-    padding: 8px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    color: white;
-  }
-  
-  .max-container {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1440px;
-  }
+.btn_white {
+  border-color: white;
+  background-color: white;
+  padding: 8px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  color: #34d399;
+}
+.btn_white_text {
+  border-color: white;
+  background-color: white;
+  padding: 8px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  color: #34d399;
+}
+.btn_green {
+  border: 1px solid #34d399;
+  background-color: #34d399;
+  padding: 8px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  color: white;
+}
+.btn_dark_green {
+  background-color: #34d399;
+  padding: 18px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  color: white;
+  transition: all;
+}
+
+.btn_dark_green:hover {
+  /* background-color: black; */
+  border: 1px dashed black; /* Change to dashed */
+}
+.btn_dark_green_outline {
+  border-color: gray-20;
+  background-color: green-90;
+  padding: 8px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  color: white;
+}
+
+.max-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1440px;
+}
 .text-balance {
   text-wrap: balance;
 }
@@ -119,8 +124,6 @@ body {
   justify-content: flex-end;
 }
 
-
-
 /* FONTS */
 .regular-64 {
   font-size: 64px;
@@ -137,6 +140,7 @@ body {
 .regular-32 {
   font-size: 32px;
   font-weight: 400;
+  
 }
 
 .regular-24 {
@@ -152,6 +156,7 @@ body {
 .regular-18 {
   font-size: 18px;
   font-weight: 400;
+
 }
 
 .regular-16 {
@@ -207,13 +212,14 @@ body {
 .bold-18 {
   font-size: 18px;
   font-weight: 700;
+    letter-spacing: 1.5px; /* Adjust as needed */
+
 }
 
 .bold-16 {
   font-size: 16px;
   font-weight: 700;
 }
-
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 .hide-scrollbar::-webkit-scrollbar {
