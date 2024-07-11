@@ -72,106 +72,119 @@ export const SOCIAL_CONTACT = {
     },
   ],
 };
- 
- export const BOOK_CATEGORIES = [
-    {
-      heading: "New",
-      categories: [
-        { label: "New Arrivals", value: "new-arrivals" },
-        { label: "Recently Published", value: "recently-published" },
-      ],
-    },
-    {
-      heading: "Bestsellers",
-      categories: [
-        { label: "Top 200", value: "top-200" },
-        { label: "New York Times Best Sellers", value: "new-york-times-best-sellers" },
-        { label: "What's the Buzz?", value: "whats-the-buzz" },
-        { label: "Popular Fiction", value: "popular-fiction" },
-        { label: "Popular Nonfiction", value: "popular-nonfiction" },
-      ],
-    },
-    {
-      heading: "Frugal Finds",
-      categories: [
-        { label: "Under $7", value: "under-7" },
-        { label: "Under $10", value: "under-10" },
-        { label: "Under $10 Hardcovers", value: "under-10-hardcovers" },
-      ],
-    },
-    {
-      heading: "Top Categories",
-      categories: [
-        { label: "Biography and Memoir", value: "biography-and-memoir" },
-        { label: "Business and Economics", value: "business-and-economics" },
-        { label: "Classics", value: "classics" },
-        { label: "Comics and Graphic Novels", value: "comics-and-graphic-novels" },
-        { label: "Cooking, Food and Drink", value: "cooking-food-and-drink" },
-        { label: "Crafts and Hobbies", value: "crafts-and-hobbies" },
-        { label: "Fantasy", value: "fantasy" },
-        { label: "Health and Wellness", value: "health-and-wellness" },
-        { label: "Historical Fiction", value: "historical-fiction" },
-        { label: "History and Geography", value: "history-and-geography" },
-        { label: "Manga", value: "manga" },
-        { label: "Poetry", value: "poetry" },
-        { label: "Religion and Spirituality", value: "religion-and-spirituality" },
-        { label: "Romance", value: "romance" },
-        { label: "Romantasy", value: "romantasy" },
-        { label: "Science Fiction", value: "science-fiction" },
-        { label: "Self-Help and Relationships", value: "self-help-and-relationships" },
-        { label: "Thrillers and Suspense", value: "thrillers-and-suspense" },
-        { label: "True Crime", value: "true-crime" },
-        { label: "View All Categories", value: "view-all-categories" },
-      ],
-    },
-    {
-      heading: "View All books",
-      categories: [
-        { label: "View More", value: "fiction" },
-        { label: "Fantasy", value: "fantasy" },
-      ],}
-    // },
-    // {
-    //   heading: "Kids' Books",
-    //   categories: [
-    //     { label: "Ages 0-2", value: "ages-0-2" },
-    //     { label: "Ages 3-5", value: "ages-3-5" },
-    //     { label: "Ages 6-8", value: "ages-6-8" },
-    //     { label: "Ages 9-12", value: "ages-9-12" },
-    //   ],
-    // },
-    // {
-    //   heading: "Other Products",
-    //   categories: [
-    //     { label: "Activity Sets", value: "activity-sets" },
-    //     { label: "Jigsaw Puzzles", value: "jigsaw-puzzles" },
-    //     { label: "Games Books", value: "games-books" },
-    //     { label: "Adult Colouring Books", value: "adult-colouring-books" },
-    //     { label: "IncrediBuilds", value: "incredi-builds" },
-    //   ],
-    // },
-    // {
-    //   heading: "Discover",
-    //   categories: [
-    //     { label: "Bestsellers of 2024 (so far)", value: "bestsellers-of-2024" },
-    //     { label: "Summer Lovin'", value: "summer-lovin" },
-    //     { label: "Trending Authors", value: "trending-authors" },
-    //     { label: "Trending on #BookTok", value: "trending-on-booktok" },
-    //     { label: "July Staff Picks", value: "july-staff-picks" },
-    //     { label: "Award Winners", value: "award-winners" },
-    //     { label: "Black Literature", value: "black-literature" },
-    //     { label: "Paper Mill Press Classics", value: "paper-mill-press-classics" },
-    //     { label: "Celebrity Book Club Picks", value: "celebrity-book-club-picks" },
-    //     { label: "Pretty Covers", value: "pretty-covers" },
-    //     { label: "Coffee Table Books", value: "coffee-table-books" },
-    //     { label: "Book-to-Screen Adaptations", value: "book-to-screen-adaptations" },
-    //     { label: "Debut Novels", value: "debut-novels" },
-    //     { label: "Boxed Sets", value: "boxed-sets" },
-    //     { label: "Gift Guide", value: "gift-guide" },
-    //     { label: "Large Print", value: "large-print" },
-    //   ],
-    // },
-  ];
+
+export const BOOK_CATEGORIES = [
+  {
+    heading: "New",
+    categories: [
+      { label: "New Arrivals", value: "new-arrivals" },
+      { label: "Recently Published", value: "recently-published" },
+    ],
+  },
+  {
+    heading: "Bestsellers",
+    categories: [
+      { label: "Top 200", value: "top-200" },
+      {
+        label: "New York Times Best Sellers",
+        value: "new-york-times-best-sellers",
+      },
+      { label: "What's the Buzz?", value: "whats-the-buzz" },
+      { label: "Popular Fiction", value: "popular-fiction" },
+      { label: "Popular Nonfiction", value: "popular-nonfiction" },
+    ],
+  },
+  {
+    heading: "Frugal Finds",
+    categories: [
+      { label: "Under $7", value: "under-7" },
+      { label: "Under $10", value: "under-10" },
+      { label: "Under $10 Hardcovers", value: "under-10-hardcovers" },
+    ],
+  },
+  {
+    heading: "Top Categories",
+    categories: [
+      { label: "Biography and Memoir", value: "biography-and-memoir" },
+      { label: "Business and Economics", value: "business-and-economics" },
+      { label: "Classics", value: "classics" },
+      {
+        label: "Comics and Graphic Novels",
+        value: "comics-and-graphic-novels",
+      },
+      { label: "Cooking, Food and Drink", value: "cooking-food-and-drink" },
+      { label: "Crafts and Hobbies", value: "crafts-and-hobbies" },
+      { label: "Fantasy", value: "fantasy" },
+      { label: "Health and Wellness", value: "health-and-wellness" },
+      { label: "Historical Fiction", value: "historical-fiction" },
+      { label: "History and Geography", value: "history-and-geography" },
+      { label: "Manga", value: "manga" },
+      { label: "Poetry", value: "poetry" },
+      {
+        label: "Religion and Spirituality",
+        value: "religion-and-spirituality",
+      },
+      { label: "Romance", value: "romance" },
+      { label: "Romantasy", value: "romantasy" },
+      { label: "Science Fiction", value: "science-fiction" },
+      {
+        label: "Self-Help and Relationships",
+        value: "self-help-and-relationships",
+      },
+      { label: "Thrillers and Suspense", value: "thrillers-and-suspense" },
+      { label: "True Crime", value: "true-crime" },
+      { label: "View All Categories", value: "view-all-categories" },
+    ],
+  },
+  {
+    heading: "View All books",
+    categories: [
+      { label: "View More", value: "fiction" },
+      { label: "Fantasy", value: "fantasy" },
+    ],
+  },
+  // },
+  // {
+  //   heading: "Kids' Books",
+  //   categories: [
+  //     { label: "Ages 0-2", value: "ages-0-2" },
+  //     { label: "Ages 3-5", value: "ages-3-5" },
+  //     { label: "Ages 6-8", value: "ages-6-8" },
+  //     { label: "Ages 9-12", value: "ages-9-12" },
+  //   ],
+  // },
+  // {
+  //   heading: "Other Products",
+  //   categories: [
+  //     { label: "Activity Sets", value: "activity-sets" },
+  //     { label: "Jigsaw Puzzles", value: "jigsaw-puzzles" },
+  //     { label: "Games Books", value: "games-books" },
+  //     { label: "Adult Colouring Books", value: "adult-colouring-books" },
+  //     { label: "IncrediBuilds", value: "incredi-builds" },
+  //   ],
+  // },
+  // {
+  //   heading: "Discover",
+  //   categories: [
+  //     { label: "Bestsellers of 2024 (so far)", value: "bestsellers-of-2024" },
+  //     { label: "Summer Lovin'", value: "summer-lovin" },
+  //     { label: "Trending Authors", value: "trending-authors" },
+  //     { label: "Trending on #BookTok", value: "trending-on-booktok" },
+  //     { label: "July Staff Picks", value: "july-staff-picks" },
+  //     { label: "Award Winners", value: "award-winners" },
+  //     { label: "Black Literature", value: "black-literature" },
+  //     { label: "Paper Mill Press Classics", value: "paper-mill-press-classics" },
+  //     { label: "Celebrity Book Club Picks", value: "celebrity-book-club-picks" },
+  //     { label: "Pretty Covers", value: "pretty-covers" },
+  //     { label: "Coffee Table Books", value: "coffee-table-books" },
+  //     { label: "Book-to-Screen Adaptations", value: "book-to-screen-adaptations" },
+  //     { label: "Debut Novels", value: "debut-novels" },
+  //     { label: "Boxed Sets", value: "boxed-sets" },
+  //     { label: "Gift Guide", value: "gift-guide" },
+  //     { label: "Large Print", value: "large-print" },
+  //   ],
+  // },
+];
 export const FICTION_CATEGORIES = [
   { label: "New Fiction", value: "new-fiction" },
   { label: "New Arrivals", value: "new-arrivals" },
@@ -396,4 +409,51 @@ export const KIDS_MARKDOWNS = [
   { label: "Ages 3-5", value: "ages-3-5" },
   { label: "Ages 6-8", value: "ages-6-8" },
   { label: "Ages 9-12", value: "ages-9-12" },
+];
+
+// carouselData.js
+export const carouselSlides = [
+  {
+    image: "https://example.com/image1.jpg",
+    title: "Slide 1",
+    description: "This is the first slide",
+    price: "$55.99",
+  },
+  {
+    image: "https://example.com/image2.jpg",
+    title: "Slide 2",
+    description: "This is the second slide",
+    price: "$55.99",
+  },
+  {
+    image: "https://example.com/image3.jpg",
+    title: "Slide 3",
+    description: "This is the third slide",
+    price: "$55.99",
+  },
+  {
+    image: "https://example.com/image4.jpg",
+    title: "Slide 4",
+    description: "This is the fourth slide",
+    price: "$55.99",
+  },
+  {
+    image: "https://example.com/image5.jpg",
+    title: "Slide 5",
+    description: "This is the fifth slide",
+    price: "$55.99",
+  },
+  {
+    image: "https://example.com/image5.jpg",
+    title: "Slide 5",
+    description: "This is the fifth slide",
+    price: "$55.99",
+  },
+  {
+    image: "https://example.com/image5.jpg",
+    title: "Slide 5",
+    description: "This is the fifth slide",
+    price: "$55.99",
+
+  },
 ];

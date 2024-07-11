@@ -1,3 +1,4 @@
+import { ProductCarousel } from "./ProductCarousel";
 import { SwitchTab } from "./SwitchTab";
 import { Button } from "./ui/button";
 
@@ -20,6 +21,8 @@ export const FirstSection = () => {
         <Button> Shop now </Button>
       </section>
       <SwitchTab />
+      <ProductCarousel />
+      {/* <CarouselSpacing/> */}
     </section>
   );
 };

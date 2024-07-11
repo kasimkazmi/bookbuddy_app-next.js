@@ -6,7 +6,7 @@ import {
   POPULAR_KIDS_CHARACTERS,
   TEENS_YOUNG_ADULT_CATEGORIES,
 } from "@/constants";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import {
@@ -193,7 +193,7 @@ const Navbar = () => {
         <NavigationMenuViewport className="NavigationMenuViewport" />
       </NavigationMenu>
 
-      <NavigationMenuDemo></NavigationMenuDemo>
+      {/* <NavigationMenuDemo></NavigationMenuDemo> */}
     </nav>
   );
 };

@@ -1,5 +1,5 @@
 import { FOOTER_CONTACT_INFO, FOOTER_LINKS, SOCIAL_CONTACT } from "@/constants";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 
 const Footer = () => {
