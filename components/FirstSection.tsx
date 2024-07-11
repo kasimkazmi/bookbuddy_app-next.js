@@ -1,14 +1,25 @@
+import { SwitchTab } from "./SwitchTab";
+import { Button } from "./ui/button";
+
 export const FirstSection = () => {
   return (
     <section
-      className="
-      
+      className="      
       border border-red-500 
- ml-auto mr-auto padding-container flex flex-col gap-20
-  py-10 pb-32 md:gap-28 lg:py-20 xl:flex-row
+ ml-auto mr-auto padding-container  items-center flex flex-col gap-8
+  py-20 pl-16 text-center
     "
     >
-      FirstSection
+      <h1 className="text-4xl font-bold">Welcom to your Happy Place</h1>
+      <p className="text-2xl ">
+        Shop brand new books at least 50% off* list prices every day
+      </p>
+
+      <section className="flex gap-6 py-6 justify-center">
+        <Button variant={"secondary"}> Learn more </Button>
+        <Button> Shop now </Button>
+      </section>
+      <SwitchTab />
     </section>
   );
 };

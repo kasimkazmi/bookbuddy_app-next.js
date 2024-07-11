@@ -3,232 +3,199 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --primary: 47.9 95.8% 53.1%;
+  --primary-foreground: 26 83.3% 14.1%;
+  --secondary: 60 4.8% 95.9%;
+  --secondary-foreground: 24 9.8% 10%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --accent: 60 4.8% 95.9%;
+  --accent-foreground: 24 9.8% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --ring: 20 14.3% 4.1%;
+  --radius: 0.5rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.dark {
+  --background: 20 14.3% 4.1%;
+  --foreground: 60 9.1% 97.8%;
+  --card: 20 14.3% 4.1%;
+  --card-foreground: 60 9.1% 97.8%;
+  --popover: 20 14.3% 4.1%;
+  --popover-foreground: 60 9.1% 97.8%;
+  --primary: 47.9 95.8% 53.1%;
+  --primary-foreground: 26 83.3% 14.1%;
+  --secondary: 12 6.5% 15.1%;
+  --secondary-foreground: 60 9.1% 97.8%;
+  --muted: 12 6.5% 15.1%;
+  --muted-foreground: 24 5.4% 63.9%;
+  --accent: 12 6.5% 15.1%;
+  --accent-foreground: 60 9.1% 97.8%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --border: 12 6.5% 15.1%;
+  --input: 12 6.5% 15.1%;
+  --ring: 35.5 91.7% 32.9%;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.switchingTabs {
+  position: relative;
+  display: inline-block;
+  border: 12px;
+
+  border-radius: 10px;
 }
+
+.tabItems {
+  display: flex;
+  position: relative;
+}
+
+.tabItem {
+  padding: 10px 20px;
+  -webkit-user-select: none; /* Add -webkit-user-select for Safari support */
+  user-select: none;
+  border-radius: 10px;
+}
+
+.tabItem.active {
+  background-color: #fff;
+
+  /* color: #fff; Active tab color */
+}
+
+.movingBg {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  transition: all 0.3s ease;
+}
+
+.movingBg.black {
+  width: calc(50% - 40px); /* Adjust width based on your design */
+  left: 20px; /* Adjust based on padding */
+}
+
+.movingBg.white {
+  width: calc(50% - 40px); /* Adjust width based on your design */
+  left: calc(50% + 20px); /* Adjust based on padding */
+}
+
 body {
-  font-family: Inter;
+  -webkit-user-select: none; /* Add -webkit-user-select for Safari support */
+
+  user-select: none; /* Prevent text selection */
+  cursor: default; /* Set cursor appearance */
+}
+/* styles.css */
+.NavigationMenuContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation-duration: 250ms;
+  animation-timing-function: ease;
+}
+.NavigationMenuContent[data-motion="from-start"] {
+  animation-name: enterFromLeft;
+}
+.NavigationMenuContent[data-motion="from-end"] {
+  animation-name: enterFromRight;
+}
+.NavigationMenuContent[data-motion="to-start"] {
+  animation-name: exitToLeft;
+}
+.NavigationMenuContent[data-motion="to-end"] {
+  animation-name: exitToRight;
 }
 
-.max-container {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1440px;
-}
-/* Remove the @layer utilities directive */
-.btn_white {
-  border-color: white;
-  background-color: white;
-  padding: 8px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  color: #34d399;
-}
-.btn_white_text {
-  border-color: white;
-  background-color: white;
-  padding: 8px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  color: #34d399;
-}
-.btn_green {
-  border: 1px solid #34d399;
-  background-color: #34d399;
-  padding: 8px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  color: white;
-}
-.btn_dark_green {
-  background-color: #34d399;
-  padding: 18px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  color: white;
-  transition: all;
+.NavigationMenuViewport {
+  position: relative;
+  width: var(--radix-navigation-menu-viewport-width);
+  height: var(--radix-navigation-menu-viewport-height);
+  transition: width, height, 250ms ease;
 }
 
-.btn_dark_green:hover {
-  /* background-color: black; */
-  border: 1px dashed black; /* Change to dashed */
-}
-.btn_dark_green_outline {
-  border-color: gray-20;
-  background-color: green-90;
-  padding: 8px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  color: white;
-}
-
-.max-container {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1440px;
-}
-.text-balance {
-  text-wrap: balance;
-}
-
-.max-container {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1440px;
-}
-
-.padding-container {
-  padding-left: 6px;
-  padding-right: 20px;
-  @media (min-width: 1280px) {
-    padding-right: 0;
+@keyframes enterFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(200px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
-.flexCenter {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@keyframes enterFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-.flexBetween {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+@keyframes exitToRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(200px);
+  }
 }
 
-.flexStart {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+@keyframes exitToLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
 }
-
-.flexEnd {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-/* FONTS */
-.regular-64 {
-  font-size: 64px;
-  font-weight: 400;
-  line-height: 120%;
-}
-
-.regular-40 {
-  font-size: 40px;
-  font-weight: 400;
-  line-height: 120%;
-}
-
-.regular-32 {
-  font-size: 32px;
-  font-weight: 400;
-  
-}
-
-.regular-24 {
-  font-size: 24px;
-  font-weight: 400;
-}
-
-.regular-20 {
-  font-size: 20px;
-  font-weight: 400;
-}
-
-.regular-18 {
-  font-size: 18px;
-  font-weight: 400;
-
-}
-
-.regular-16 {
+bold-16 {
+  font-weight: 700;
   font-size: 16px;
-  font-weight: 400;
+  line-height: 24px;
+} /* CSS for subcategories-list */
+/* Base style for li */
+li {
+  position: relative; /* Needed for absolute positioning of pseudo-element */
+  padding-bottom: 2px; /* Ensure some space for the underline */
+  cursor: pointer; /* Optional: Changes the cursor on hover */
 }
 
+/* Pseudo-element for underline */
+li::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0; /* Start with no width */
+  height: 2px; /* Thickness of the underline */
+  background-color: currentColor; /* Use the text color for the underline */
+  transition: width 0.3s ease; /* Smooth transition for the width */
+}
+
+/* Hover state */
+li:hover::after {
+  width: 100%; /* Expand the underline to full width on hover */
+}
 .regular-14 {
   font-size: 14px;
   font-weight: 400;
-}
-
-.medium-14 {
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.bold-88 {
-  font-size: 88px;
-  font-weight: 700;
-  line-height: 120%;
-}
-
-.bold-64 {
-  font-size: 64px;
-  font-weight: 700;
-  line-height: 120%;
-}
-
-.bold-52 {
-  font-size: 52px;
-  font-weight: 700;
-  line-height: 120%;
-}
-
-.bold-40 {
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 120%;
-}
-
-.bold-32 {
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 120%;
-}
-
-.bold-20 {
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.bold-18 {
-  font-size: 18px;
-  font-weight: 700;
-    letter-spacing: 1.5px; /* Adjust as needed */
-
-}
-
-.bold-16 {
-  font-size: 16px;
-  font-weight: 700;
-}
-
-/* Hide scrollbar for Chrome, Safari and Opera */
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.hide-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: auto; /* Firefox */
-  overflow: auto; /* Fallback for other browsers */
 }
