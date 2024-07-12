@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "next-themes";
+import Header from "@/components/Header";
 
 export const metadata: Metadata = {
   title: " Book Buddy  ",
@@ -18,8 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="">
-        <Navbar />
-
+        <Header />
         <main className="relative overflow-hidden"></main>
         <ThemeProvider attribute="class" defaultTheme="system">
           {children}

@@ -17,7 +17,7 @@ export const ProductCarousel = () => {
         <h2 className="p-4  text-background text-3xl">Top Picks </h2>
         <Button>View All</Button>
       </div>
-      <Carousel className=" carousel flex gap-4 overflow-x-auto sm:gap-5 md:gap-6 lg:gap-4 xl:gap-8 justify-between items-center">
+      <Carousel className="carousel flex gap-4 overflow-x-auto sm:gap-5 md:gap-6 lg:gap-4 xl:gap-8 justify-between items-center">
         <CarouselContent className="-m-1 will-change-auto ">
           {carouselSlides.map((slide, index) => (
             <CarouselItem

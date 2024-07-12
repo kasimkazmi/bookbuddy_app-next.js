@@ -22,7 +22,6 @@ export const FirstSection = () => {
       </section>
       <SwitchTab />
       <ProductCarousel />
-      {/* <CarouselSpacing/> */}
     </section>
   );
 };

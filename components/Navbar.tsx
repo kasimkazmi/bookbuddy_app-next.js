@@ -6,6 +6,19 @@ import {
   POPULAR_KIDS_CHARACTERS,
   TEENS_YOUNG_ADULT_CATEGORIES,
 } from "@/constants";
+
+import {
+  Command,
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut,
+} from "@/components/ui/command";
+
 import Image from "next/legacy/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
@@ -20,7 +33,7 @@ import {
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import React from "react";
-import { NavigationMenuDemo } from "./ui/NavigationMenuDemo";
+import {SearchBox} from "./SearchBox";
 
 const Navbar = () => {
   return (
@@ -38,20 +51,17 @@ const Navbar = () => {
             height={180}
             width={180}
             layout="intrinsic"
-          />{" "}
+          />
         </Link>
 
-        <Button
-          type="button"
-          // icon="/user.svg"
-        />
-        <Image
+        <SearchBox />
+        {/* <Image
           src="/menu.svg"
           alt="menu"
           height={40}
           width={40}
           className="inline-block cursor-pointer lg:hidden"
-        />
+        /> */}
       </div>
 
       <NavigationMenu className="py-5 ">
