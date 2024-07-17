@@ -33,16 +33,18 @@ import {
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import React from "react";
-import {SearchBox} from "./SearchBox";
+import { SearchBox } from "./SearchBox";
 
 const Navbar = () => {
   return (
     <nav
       className="flex items-center flex-col justify-between max-container padding-container
-     relative z-30 py-5"
+     relative z-30 py-5 bg-navBG"
     >
-      <div className="flex container items-center justify-between padding-container  border">
-        <Link href="./">Sign In</Link>
+      <div className="flex container items-center justify-between padding-container">
+        <Button variant={"secondary"}>
+          <Link href="./">Sign In</Link>
+        </Button>
         <Link href="/">
           <Image
             className=" "

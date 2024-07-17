@@ -69,7 +69,7 @@ export const SearchBox = () => {
 
   const handleFocus = () => {
     setOpen(true);
-    // setInputFocus("true");
+    // setInputFocus(true);
   };
 
   const handleBlur = () => {
@@ -87,7 +87,6 @@ export const SearchBox = () => {
           <CommandGroup>
             {suggestions.map((suggest) => (
               <CommandItem key={suggest.value}>
-                <div>
                   <span
                     className={cn(
                       "mr-2 h-4 w-4",
@@ -97,7 +96,6 @@ export const SearchBox = () => {
                     )}
                   />
                   <span>{suggest.title}</span>
-                </div>
               </CommandItem>
             ))}
           </CommandGroup>
@@ -118,9 +116,9 @@ export const SearchBox = () => {
               onBlur={handleBlur}
               className={`w-[${
                 inputFocus ? "250px" : "150px"
-              }] transition-all duration-300 ease-in-out`}
+              }] transition-all duration-300 ease-in-out `}
             >
-              Trending Searches...
+            Searches...
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-[200px] p-0" align="start">
@@ -134,14 +132,13 @@ export const SearchBox = () => {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
-        <input
+        <input title="Search" 
           type="text"
           onFocus={handleFocus}
           onBlur={handleBlur}
           className={`w-[${
             inputFocus ? "250px" : "150px"
           }] transition-all duration-300 ease-in-out`}
-          placeholder="Search..."
         />
       </DrawerTrigger>
       <DrawerContent>
