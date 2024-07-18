@@ -9,7 +9,7 @@ export const FirstSection = () => {
   py-20 pl-16 text-center bg-S1BG
     "
     >
-      <h1 className="text-4xl font-bold">Welcom to your Happy Place</h1>
+      <h1 className="text-4xl font-bold">Welcome to your Happy Place</h1>
       <p className="text-2xl ">
         Shop brand new books at least 50% off* list prices every day
       </p>

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -24,9 +24,21 @@ import { Input } from "@/components/ui/input";
 import { useForm, Resolver } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z, ZodType } from "zod";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import Link from "next/link";
 
 const Signup = () => {
+  const [isForgotPassVisible, setIsForgotPassVisible] = useState(false);
+
   const zodType: ZodType<any, any, any> = z.object({
     // Define your schema here
     email: z.string().email("Invalid email Address"),
@@ -118,12 +130,38 @@ const Signup = () => {
                   )}
                 />
               </Form>
-              <div className="mt-4">
-              <Link className=" text-danger" href="/">
-                Forgot Password ?
-              </Link>
-              </div>
-              
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant={"link"}> Forgot Password ?</Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-md">
+                  <DialogHeader className="">
+                    <DialogTitle className="text-center py-2">
+                      Forgot your password?
+                    </DialogTitle>
+                    <DialogDescription className="p-2">
+                      Please fill in your email below and we'll send you a link
+                      to reset your password.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="flex items-center space-x-2">
+                    <div className="grid flex-1 gap-2">
+                      <Label htmlFor="link" className="sr-only">
+                        Link
+                      </Label>
+
+                      <Input id="link" placeholder="email" />
+                    </div>
+                  </div>
+                  <DialogFooter className="">
+                    <DialogClose asChild>
+                      <Button type="submit" size="sm" className="px-3">
+                        Reset
+                      </Button>
+                    </DialogClose>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
             </CardContent>
             <CardFooter>
               <Button type="submit" onClick={form.handleSubmit(onSubmit)}>
