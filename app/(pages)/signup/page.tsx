@@ -171,26 +171,24 @@ const Signup = () => {
                   </DialogHeader>
                   <div className="flex items-center space-x-2">
                     <div className="grid flex-1 gap-2">
-                      <Label htmlFor="link" className="sr-only">
-                        Link
-                      </Label>
+                    
 
-                      <Input id="link" placeholder="email" />
+                      <Input id="link" placeholder="Email Address *" />
                     </div>
                   </div>
                   <DialogFooter className="">
                     <DialogClose asChild>
-                      <Button type="submit" size="sm" className="px-3">
-                        Reset
+                      <Button type="submit" size="sm" className="px-2">
+                        Reset Password
                       </Button>
                     </DialogClose>
                   </DialogFooter>
                 </DialogContent>
               </Dialog>
             </CardContent>
-            <CardFooter>
+            <CardFooter className=" justify-center">
               <Button type="submit" onClick={form.handleSubmit(onSubmit)}>
-                Save
+                Sign in
               </Button>
             </CardFooter>
           </Card>
@@ -273,7 +271,7 @@ const Signup = () => {
             </CardContent>
             <CardFooter>
               <Button type="submit" onClick={form.handleSubmit(onSubmit)}>
-                Save
+                Create Account
               </Button>
             </CardFooter>
           </Card>
