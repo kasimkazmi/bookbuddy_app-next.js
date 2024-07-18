@@ -6,8 +6,7 @@ export const FirstSection = () => {
     <section
       className="      
       border border-red-500 ml-auto mr-auto padding-container  items-center flex flex-col gap-8
-  py-20 pl-16 text-center bg-S1BG
-    "
+  py-20 pl-16 text-center bg-S1BG"
     >
       <h1 className="text-4xl font-bold">Welcome to your Happy Place</h1>
       <p className="text-2xl ">

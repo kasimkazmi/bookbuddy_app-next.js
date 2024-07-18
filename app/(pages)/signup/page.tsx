@@ -1,8 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Facebook, Voicemail } from "lucide-react"
-
+import { Voicemail } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -40,7 +39,6 @@ import Link from "next/link";
 
 const Signup = () => {
   const [isForgotPassVisible, setIsForgotPassVisible] = useState(false);
-
   const zodType: ZodType<any, any, any> = z.object({
     // Define your schema here
     email: z.string().email("Invalid email Address"),
@@ -98,7 +96,6 @@ const Signup = () => {
             <CardContent className="space-y-2 grid gap-4">
               <div className="grid grid-cols-2 gap-6">
                 <Button variant="facebook">
-                  
                   {/* <Voicemail className="mr-2 h-4 w-4" /> */}
                   Facebook
                 </Button>
@@ -155,6 +152,8 @@ const Signup = () => {
                   )}
                 />
               </Form>
+
+              {/*  */}
               <Dialog>
                 <DialogTrigger asChild>
                   <Button variant={"link"}> Forgot Password ?</Button>
@@ -171,8 +170,6 @@ const Signup = () => {
                   </DialogHeader>
                   <div className="flex items-center space-x-2">
                     <div className="grid flex-1 gap-2">
-                    
-
                       <Input id="link" placeholder="Email Address *" />
                     </div>
                   </div>
