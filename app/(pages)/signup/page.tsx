@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Facebook, Voicemail } from "lucide-react"
+
 import {
   Form,
   FormControl,
@@ -89,10 +91,33 @@ const Signup = () => {
         <TabsContent value="left">
           <Card>
             <CardHeader className="contenr-center">
-              <CardTitle className="p-4">Login</CardTitle>
-              <CardDescription>Subtitle</CardDescription>
+              {/* <CardTitle className="p-4">Sign In</CardTitle> */}
+              {/* <CardDescription>Subtitle</CardDescription> */}
             </CardHeader>
-            <CardContent className="space-y-2">
+
+            <CardContent className="space-y-2 grid gap-4">
+              <div className="grid grid-cols-2 gap-6">
+                <Button variant="facebook">
+                  
+                  {/* <Voicemail className="mr-2 h-4 w-4" /> */}
+                  Facebook
+                </Button>
+                <Button variant="google">
+                  {/* <Icons.google className="mr-2 h-4 w-4" /> */}
+                  Google
+                </Button>
+              </div>
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <span className="w-full border-t" />
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-background px-2 text-muted-foreground">
+                    Or continue with
+                  </span>
+                </div>
+              </div>
+
               <Form {...form}>
                 <FormField
                   name="usernameOrEmail"
@@ -175,9 +200,10 @@ const Signup = () => {
         <TabsContent value="right">
           <Card>
             <CardHeader className="contenr-center">
-              <CardTitle className="py-2">Register</CardTitle>
-              <CardDescription>Subtitle.</CardDescription>
+              <CardTitle className="py-2">Create An Account</CardTitle>
+              {/* <CardDescription>Subtitle.</CardDescription> */}
             </CardHeader>
+
             <CardContent className="space-y-2">
               <Form {...form}>
                 <FormField
