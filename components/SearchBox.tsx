@@ -87,15 +87,15 @@ export const SearchBox = () => {
           <CommandGroup>
             {suggestions.map((suggest) => (
               <CommandItem key={suggest.value}>
-                  <span
-                    className={cn(
-                      "mr-2 h-4 w-4",
-                      suggest.value === inputFocus?.value
-                        ? "opacity-100"
-                        : "opacity-40"
-                    )}
-                  />
-                  <span>{suggest.title}</span>
+                <span
+                  className={cn(
+                    "mr-2 h-4 w-4",
+                    suggest.value === inputFocus?.value
+                      ? "opacity-100"
+                      : "opacity-40"
+                  )}
+                />
+                <span>{suggest.title}</span>
               </CommandItem>
             ))}
           </CommandGroup>
@@ -118,7 +118,7 @@ export const SearchBox = () => {
                 inputFocus ? "250px" : "150px"
               }] transition-all duration-300 ease-in-out `}
             >
-            Searches...
+              Searches...
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-[200px] p-0" align="start">
@@ -132,7 +132,8 @@ export const SearchBox = () => {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
-        <input title="Search" 
+        <input
+          title="Search"
           type="text"
           onFocus={handleFocus}
           onBlur={handleBlur}

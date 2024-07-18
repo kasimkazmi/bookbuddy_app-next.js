@@ -19,9 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="">
-        <Header />
-        <main className="relative overflow-hidden"></main>
         <ThemeProvider attribute="class" defaultTheme="system">
+          <Header />
+          <main className="relative overflow-hidden"></main>
           {children}
         </ThemeProvider>
 

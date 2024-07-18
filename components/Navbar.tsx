@@ -1,3 +1,4 @@
+"use client";
 import {
   BOOK_CATEGORIES,
   FICTION_CATEGORIES,
@@ -6,18 +7,6 @@ import {
   POPULAR_KIDS_CHARACTERS,
   TEENS_YOUNG_ADULT_CATEGORIES,
 } from "@/constants";
-
-import {
-  Command,
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-  CommandShortcut,
-} from "@/components/ui/command";
 
 import Image from "next/legacy/image";
 import Link from "next/link";
@@ -34,15 +23,22 @@ import {
 } from "@/components/ui/navigation-menu";
 import React from "react";
 import { SearchBox } from "./SearchBox";
+import ThemeSwitch from "./ThemeSwitch";
+import { useRouter } from "next/navigation"; // Import useRouter from Next.js
 
 const Navbar = () => {
+  const router = useRouter(); // Initialize useRouter
+  const handleSignUpClick = () => {
+    router.push("/signup"); // Navigate to the sign-up page
+  };
+
   return (
-    <nav
-      className="flex items-center flex-col justify-between max-container padding-container
-     relative z-30 py-5 bg-navBG"
+    <section
+      className="flex  items-center flex-col justify-between max-container padding-container
+     relative z-30 py-5 sticky-navbarsmaller bg-navBG"
     >
       <div className="flex container items-center justify-between padding-container">
-        <Button variant={"secondary"}>
+        <Button onClick={handleSignUpClick}>
           <Link href="./">Sign In</Link>
         </Button>
         <Link href="/">
@@ -55,8 +51,11 @@ const Navbar = () => {
             layout="intrinsic"
           />
         </Link>
+        <div className="flex justify-between px-3 items-center">
+          <SearchBox />
+          <ThemeSwitch className="ml-4" />
+        </div>
 
-        <SearchBox />
         {/* <Image
           src="/menu.svg"
           alt="menu"
@@ -206,7 +205,7 @@ const Navbar = () => {
       </NavigationMenu>
 
       {/* <NavigationMenuDemo></NavigationMenuDemo> */}
-    </nav>
+    </section>
   );
 };
 

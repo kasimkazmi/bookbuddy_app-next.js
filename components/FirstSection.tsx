@@ -1,14 +1,12 @@
 import { ProductCarousel } from "./ProductCarousel";
-import { SwitchTab } from "./SwitchTab";
 import { Button } from "./ui/button";
 
 export const FirstSection = () => {
   return (
     <section
       className="      
-      border border-red-500 
- ml-auto mr-auto padding-container  items-center flex flex-col gap-8
-  py-20 pl-16 text-center
+      border border-red-500 ml-auto mr-auto padding-container  items-center flex flex-col gap-8
+  py-20 pl-16 text-center bg-S1BG
     "
     >
       <h1 className="text-4xl font-bold">Welcom to your Happy Place</h1>
@@ -20,7 +18,6 @@ export const FirstSection = () => {
         <Button variant={"secondary"}> Learn more </Button>
         <Button> Shop now </Button>
       </section>
-      <SwitchTab />
       <ProductCarousel />
     </section>
   );

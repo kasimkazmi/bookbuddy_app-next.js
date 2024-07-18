@@ -69,8 +69,6 @@
 
 .tabItem.active {
   background-color: #fff;
-
-  /* color: #fff; Active tab color */
 }
 
 .movingBg {
@@ -80,16 +78,6 @@
   transition: all 0.3s ease;
 }
 
-.movingBg.black {
-  width: calc(50% - 40px); /* Adjust width based on your design */
-  left: 20px; /* Adjust based on padding */
-}
-
-.movingBg.white {
-  width: calc(50% - 40px); /* Adjust width based on your design */
-  left: calc(50% + 20px); /* Adjust based on padding */
-}
-
 body {
   -webkit-user-select: none; /* Add -webkit-user-select for Safari support */
 
@@ -97,6 +85,25 @@ body {
   cursor: default; /* Set cursor appearance */
 }
 /* styles.css */
+
+.contenr-center {
+  flex: auto;
+  justify-self: center;
+  align-items: center;
+
+}
+
+.sticky-navbar {
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensure navbar is above other content */
+}
+
+/* Smaller navbar when scrolled */
+.sticky-navbar.smaller {
+  height: 50px; /* Example smaller height */
+}
 .NavigationMenuContent {
   position: absolute;
   top: 0;
