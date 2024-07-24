@@ -3,215 +3,264 @@
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 20 14.3% 4.1%;
-  --card: 0 0% 100%;
-  --card-foreground: 20 14.3% 4.1%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 20 14.3% 4.1%;
-  --primary: 47.9 95.8% 53.1%;
-  --primary-foreground: 26 83.3% 14.1%;
-  --secondary: 60 4.8% 95.9%;
-  --secondary-foreground: 24 9.8% 10%;
-  --muted: 60 4.8% 95.9%;
-  --muted-foreground: 25 5.3% 44.7%;
-  --accent: 60 4.8% 95.9%;
-  --accent-foreground: 24 9.8% 10%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 60 9.1% 97.8%;
-  --border: 20 5.9% 90%;
-  --input: 20 5.9% 90%;
-  --ring: 20 14.3% 4.1%;
-  --radius: 0.5rem;
+    --background: 0 0% 100%;
+    --foreground: 20 14.3% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 14.3% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14.3% 4.1%;
+    --primary: 47.9 95.8% 53.1%;
+    --primary-foreground: 26 83.3% 14.1%;
+    --secondary: 60 4.8% 95.9%;
+    --secondary-foreground: 24 9.8% 10%;
+    --muted: 60 4.8% 95.9%;
+    --muted-foreground: 25 5.3% 44.7%;
+    --accent: 60 4.8% 95.9%;
+    --accent-foreground: 24 9.8% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 20 5.9% 90%;
+    --input: 20 5.9% 90%;
+    --ring: 20 14.3% 4.1%;
+    --radius: 0.5rem;
 }
 
 .dark {
-  --background: 20 14.3% 4.1%;
-  --foreground: 60 9.1% 97.8%;
-  --card: 20 14.3% 4.1%;
-  --card-foreground: 60 9.1% 97.8%;
-  --popover: 20 14.3% 4.1%;
-  --popover-foreground: 60 9.1% 97.8%;
-  --primary: 47.9 95.8% 53.1%;
-  --primary-foreground: 26 83.3% 14.1%;
-  --secondary: 12 6.5% 15.1%;
-  --secondary-foreground: 60 9.1% 97.8%;
-  --muted: 12 6.5% 15.1%;
-  --muted-foreground: 24 5.4% 63.9%;
-  --accent: 12 6.5% 15.1%;
-  --accent-foreground: 60 9.1% 97.8%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 60 9.1% 97.8%;
-  --border: 12 6.5% 15.1%;
-  --input: 12 6.5% 15.1%;
-  --ring: 35.5 91.7% 32.9%;
+    --background: 20 14.3% 4.1%;
+    --foreground: 60 9.1% 97.8%;
+    --card: 20 14.3% 4.1%;
+    --card-foreground: 60 9.1% 97.8%;
+    --popover: 20 14.3% 4.1%;
+    --popover-foreground: 60 9.1% 97.8%;
+    --primary: 47.9 95.8% 53.1%;
+    --primary-foreground: 26 83.3% 14.1%;
+    --secondary: 12 6.5% 15.1%;
+    --secondary-foreground: 60 9.1% 97.8%;
+    --muted: 12 6.5% 15.1%;
+    --muted-foreground: 24 5.4% 63.9%;
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 60 9.1% 97.8%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 12 6.5% 15.1%;
+    --input: 12 6.5% 15.1%;
+    --ring: 35.5 91.7% 32.9%;
 }
 
 .switchingTabs {
-  position: relative;
-  display: inline-block;
-  border: 12px;
+    position: relative;
+    display: inline-block;
+    border: 12px;
 
-  border-radius: 10px;
+    border-radius: 10px;
 }
 
 .tabItems {
-  display: flex;
-  position: relative;
+    display: flex;
+    position: relative;
 }
 
 .tabItem {
-  padding: 10px 20px;
-  -webkit-user-select: none; /* Add -webkit-user-select for Safari support */
-  user-select: none;
-  border-radius: 10px;
+    padding: 10px 20px;
+    -webkit-user-select: none; /* Add -webkit-user-select for Safari support */
+    user-select: none;
+    border-radius: 10px;
 }
 
 .tabItem.active {
-  background-color: #fff;
+    background-color: #fff;
 }
 
 .movingBg {
-  position: absolute;
-  bottom: 0;
-  height: 2px;
-  transition: all 0.3s ease;
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    transition: all 0.3s ease;
 }
 
 body {
-  -webkit-user-select: none; /* Add -webkit-user-select for Safari support */
+    -webkit-user-select: none; /* Add -webkit-user-select for Safari support */
 
-  user-select: none; /* Prevent text selection */
-  cursor: default; /* Set cursor appearance */
+    user-select: none; /* Prevent text selection */
+    cursor: default; /* Set cursor appearance */
 }
 /* styles.css */
 
 .contenr-center {
-  flex: auto;
-  justify-self: center;
-  align-items: center;
-
+    flex: auto;
+    justify-self: center;
+    align-items: center;
 }
 
 .sticky-navbar {
-  position: -webkit-sticky; /* For Safari */
-  position: sticky;
-  top: 0;
-  z-index: 1000; /* Ensure navbar is above other content */
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure navbar is above other content */
 }
 
 /* Smaller navbar when scrolled */
 .sticky-navbar.smaller {
-  height: 50px; /* Example smaller height */
+    height: 50px; /* Example smaller height */
 }
 .NavigationMenuContent {
-  position: absolute;
-  top: 0;
-  left: 0;
-  animation-duration: 250ms;
-  animation-timing-function: ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation-duration: 250ms;
+    animation-timing-function: ease;
 }
-.NavigationMenuContent[data-motion="from-start"] {
-  animation-name: enterFromLeft;
+.NavigationMenuContent[data-motion='from-start'] {
+    animation-name: enterFromLeft;
 }
-.NavigationMenuContent[data-motion="from-end"] {
-  animation-name: enterFromRight;
+.NavigationMenuContent[data-motion='from-end'] {
+    animation-name: enterFromRight;
 }
-.NavigationMenuContent[data-motion="to-start"] {
-  animation-name: exitToLeft;
+.NavigationMenuContent[data-motion='to-start'] {
+    animation-name: exitToLeft;
 }
-.NavigationMenuContent[data-motion="to-end"] {
-  animation-name: exitToRight;
+.NavigationMenuContent[data-motion='to-end'] {
+    animation-name: exitToRight;
 }
 
 .NavigationMenuViewport {
-  position: relative;
-  width: var(--radix-navigation-menu-viewport-width);
-  height: var(--radix-navigation-menu-viewport-height);
-  transition: width, height, 250ms ease;
+    position: relative;
+    width: var(--radix-navigation-menu-viewport-width);
+    height: var(--radix-navigation-menu-viewport-height);
+    transition:
+        width,
+        height,
+        250ms ease;
+}
+
+/*  custom button style */
+
+.custom-btn {
+    padding: 12px 24px;
+    /* background-color: hsl(var(--primary)); */
+    position: relative;
+    overflow: hidden;
+
+    z-index: 1;
+}
+
+.custom-btn:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+    border-bottom: 2px solid hsl(var(--foreground)); /* Add a solid border to the left */
+    border-top: 2px solid hsl(var(--foreground));
+    color: hsl(var(--foreground));
+}
+
+.custom-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    height: 140px;
+    border-radius: 50%;
+    transform: translate3d(-50%, -50%, 0) scale3d(0, 0, 0);
+    transition:
+        opacity 0.4s cubic-bezier(0.19, 1, 0.22, 1),
+        transform 0.75s cubic-bezier(0.19, 1, 0.22, 1);
+    background-color: hsl(var(--background));
+    opacity: 0;
+}
+.custom-btn span {
+    z-index: 1;
+    position: relative;
+}
+.custom-btn:hover::before {
+    opacity: 1;
+    transition-duration: 0.85s;
+    transform: translate3d(-50%, -50%, 0) scale3d(1.2, 1.2, 1.2);
+}
+.custom-btn:active {
+    transform: scale(0.9);
 }
 
 @keyframes enterFromRight {
-  from {
-    opacity: 0;
-    transform: translateX(200px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateX(200px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 @keyframes enterFromLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-200px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateX(-200px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 @keyframes exitToRight {
-  from {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateX(200px);
-  }
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(200px);
+    }
 }
 
 @keyframes exitToLeft {
-  from {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateX(-200px);
-  }
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-200px);
+    }
 }
 bold-16 {
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
 } /* CSS for subcategories-list */
 /* Base style for li */
 li {
-  position: relative; /* Needed for absolute positioning of pseudo-element */
-  padding-bottom: 2px; /* Ensure some space for the underline */
-  cursor: pointer; /* Optional: Changes the cursor on hover */
+    position: relative; /* Needed for absolute positioning of pseudo-element */
+    padding-bottom: 2px; /* Ensure some space for the underline */
+    cursor: pointer; /* Optional: Changes the cursor on hover */
 }
 
 /* Pseudo-element for underline */
 li::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0; /* Start with no width */
-  height: 2px; /* Thickness of the underline */
-  background-color: currentColor; /* Use the text color for the underline */
-  transition: width 0.3s ease; /* Smooth transition for the width */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0; /* Start with no width */
+    height: 2px; /* Thickness of the underline */
+    background-color: currentColor; /* Use the text color for the underline */
+    transition: width 0.3s ease; /* Smooth transition for the width */
 }
 
 /* Hover state */
 li:hover::after {
-  width: 100%; /* Expand the underline to full width on hover */
+    width: 100%; /* Expand the underline to full width on hover */
 }
 .regular-14 {
-  font-size: 14px;
-  font-weight: 400;
+    font-size: 14px;
+    font-weight: 400;
 } /* Hide scrollbar for Chrome, Safari and Opera */
 .carousel::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 /* Hide scrollbar for IE, Edge, and Firefox */
 .carousel {
-  -ms-overflow-style: none; /* IE and Edge */
-  overflow: hidden; /* Hide the scrollbar */
+    -ms-overflow-style: none; /* IE and Edge */
+    overflow: hidden; /* Hide the scrollbar */
 }

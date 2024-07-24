@@ -25,18 +25,14 @@ export const ThirdSection = () => {
               Be a listner OR Story - Teller
             </CardDescription>
             <div className="bordershadow-lg rounded-lg pt-10">
-              <Button
-                icon={CirclePlay}
-                variant={"play"}
-                className="bg-white  text-black"
-              >
+              <Button icon={CirclePlay} type="submit" variant={"play"}>
                 <p className="px-1 ">Listen to Live Session</p>
               </Button>
             </div>
           </CardHeader>
         </Card>
 
-        <div className="   ">
+        <div className=" ">
           <Card className="">
             <CardHeader>
               <CardTitle>Right side of Brodcast Session</CardTitle>
@@ -44,6 +40,7 @@ export const ThirdSection = () => {
             <CardContent>
               <Button
                 type="submit"
+                variant={"play"}
                 className="mt-4"
                 // onClick={form.handleSubmit(onSubmit)}
               >
