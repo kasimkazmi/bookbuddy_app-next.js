@@ -18,10 +18,10 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-
+        play: "border border-transparent hover:bg-accent hover:text-accent-foreground text-white shadow-lg transform hover:scale-105 transition ease-out duration-300", 
         facebook: "bg-blue-600 border border-input bg-background hover:text-white hover:bg-blue-700",
-  google: "bg-red-500 border border-input bg-background hover:text-white  hover:bg-red-600",
-  apple: "bg-black border text-white border-input bg-background text-white hover:bg-gray-900",
+        google: "bg-red-500 border border-input bg-background hover:text-white  hover:bg-red-600",
+        apple: "bg-black border text-white border-input bg-background text-white hover:bg-gray-900",
 
 
       },
@@ -43,17 +43,22 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
   VariantProps<typeof buttonVariants> {
   asChild?: boolean
+  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>> // Added the 'icon' property
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  ({ className, variant,icon: Icon, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button"
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         {...props}
-      />
+      >
+      {Icon && <Icon />}
+        {props.children}
+
+      </Comp>
     )
   }
 )

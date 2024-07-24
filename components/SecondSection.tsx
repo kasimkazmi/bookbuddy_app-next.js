@@ -68,7 +68,7 @@ export const SecondSection = () => {
   };
   return (
     <section className="bg-S4BG py-14   ">
-      <div className="container justify-between flex">
+      <div className="grid container justify-center  grid-cols-1 md:grid-cols-2 lg:grid-cols">
         <Card className="w-[500px]">
           <CardHeader>
             <CardTitle>Initiate a Book Trade</CardTitle>
@@ -175,18 +175,19 @@ export const SecondSection = () => {
             </Form>
           </CardContent>
         </Card>
-
-        <Card className=" mx-8 ">
-          <CardHeader>
-            <CardTitle className="text-center py-2">Book Exchange</CardTitle>
-            <CardDescription className="text-center py-3">
-              Trade your books with fellow readers in your area. Fill out the
-              details below to find and connect with potential trading partners.
-              Specify the books you are offering and those you are looking for,
-              and set your preferred trading radius.
-            </CardDescription>
-          </CardHeader>
-        </Card>
+        <div className=" ">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-center py-2">Book Exchange</CardTitle>
+              <CardDescription className="text-center py-3">
+                Trade your books with fellow readers in your area. Fill out the
+                details below to find and connect with potential trading
+                partners. Specify the books you are offering and those you are
+                looking for, and set your preferred trading radius.
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        </div>
       </div>
     </section>
   );

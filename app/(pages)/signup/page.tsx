@@ -80,7 +80,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex justify-center items-center py-10">
+    <section className="flex justify-center items-center py-10">
       <Tabs defaultValue="left" className="w-[500px]">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="left">Signup</TabsTrigger>
@@ -274,7 +274,7 @@ const Signup = () => {
           </Card>
         </TabsContent>
       </Tabs>
-    </div>
+    </section>
   );
 };
 

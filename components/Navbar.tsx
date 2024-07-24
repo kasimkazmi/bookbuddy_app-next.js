@@ -201,7 +201,7 @@ const Navbar = () => {
             </NavigationMenuTrigger>
           </NavigationMenuItem>
         </NavigationMenuList>
-        <NavigationMenuViewport className="NavigationMenuViewport" />
+        {/* <NavigationMenuViewport className="NavigationMenuViewport" /> */}
       </NavigationMenu>
 
       {/* <NavigationMenuDemo></NavigationMenuDemo> */}
