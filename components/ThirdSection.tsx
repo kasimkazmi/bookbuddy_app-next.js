@@ -15,7 +15,7 @@ export const ThirdSection = () => {
         <h1 className="text-center text-5xl">Broadcast section</h1>
       </div>
 
-      <div className="grid container justify-between grid-cols-1 md:grid-cols-2  lg:grid-cols">
+      <div className="grid container justify-between md:grid-cols-2  lg:grid-cols">
         <Card variant={"variantBorder"} className=" sm:w-96   h-70 ">
           <CardHeader>
             <CardTitle className="text-4xl pb-10 font-bold">
