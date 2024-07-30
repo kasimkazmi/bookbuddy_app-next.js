@@ -67,7 +67,10 @@ export const SecondSection = () => {
     }
   };
   return (
-    <section className="bg-S4BG py-14   ">
+    <section className="bg-S4BG pt-10 pb-16   ">
+      <div className="flex justify-center items-center font-bold pb-14">
+        <h1 className="text-center text-5xl">Trade section</h1>
+      </div>
       <div className="grid container justify-center  grid-cols-1 md:grid-cols-2 lg:grid-cols">
         <Card className="w-[500px]">
           <CardHeader>

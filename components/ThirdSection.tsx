@@ -10,8 +10,8 @@ import { CirclePlay, Heading } from "lucide-react";
 
 export const ThirdSection = () => {
   return (
-    <section className="bg-S3BG flex-col py-8">
-      <div className="flex justify-center items-center font-bold pt-6 pb-14">
+    <section className="bg-S3BG flex-col pt-10 pb-20">
+      <div className="flex justify-center items-center font-bold pb-14">
         <h1 className="text-center text-5xl">Broadcast section</h1>
       </div>
 

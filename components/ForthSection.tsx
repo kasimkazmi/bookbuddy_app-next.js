@@ -9,8 +9,8 @@ import {
 
 export const ForthSection = () => {
   return (
-    <div className=" bg-S4BG flex-col py-14 border ">
-      <div className="flex justify-center items-center font-bold pt-6 pb-14">
+    <div className=" bg-S4BG flex-col pb-20 pt-10">
+      <div className="flex justify-center items-center font-bold pb-14">
         <h1 className="text-center text-5xl">About Section</h1>
       </div>
       <div className="grid container space-x-11 justify-between grid-cols-1 lg:grid-col md:grid-cols-2">
