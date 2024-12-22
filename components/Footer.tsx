@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="bg-gray-900 text-white">
       {/* Commitment Section */}
       <div className="flex justify-center items-center py-10 px-6 sm:px-20">
-      <div className="bg-blue-800 text-center text-white p-10 max-w-6xl w-full rounded-lg">
+      <div className="bg-S2BG text-center text-white p-10 max-w-6xl w-full rounded-lg">
   <h4 className="uppercase text-sm tracking-widest text-gray-200">
     Our Vision
   </h4>
