@@ -491,9 +491,25 @@ export const carouselSlides = [
         price: '$55.99'
     },
     {
-        image: 'https://example.com/image5.jpg',
-        title: 'Slide 5',
-        description: 'This is the fifth slide',
-        price: '$55.99'
-    }
+      image: 'https://example.com/image5.jpg',
+      title: 'Slide 5',
+      description: 'This is the fifth slide',
+      price: '$55.99'
+  },
+  {
+    image: 'https://example.com/image5.jpg',
+    title: 'Slide 5',
+    description: 'This is the fifth slide',
+    price: '$55.99'
+},  {
+  image: 'https://example.com/image5.jpg',
+  title: 'Slide 5',
+  description: 'This is the fifth slide',
+  price: '$55.99'
+},  {
+  image: 'https://example.com/image5.jpg',
+  title: 'Slide 5',
+  description: 'This is the fifth slide',
+  price: '$55.99'
+},
 ];
