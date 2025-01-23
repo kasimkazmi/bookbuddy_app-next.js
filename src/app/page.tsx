@@ -1,7 +1,8 @@
-import { FirstSection } from "@/src/components/FirstSection";
-import { ForthSection } from "@/src/components/ForthSection";
-import { SecondSection } from "@/src/components/SecondSection";
-import { ThirdSection } from "@/src/components/ThirdSection";
+import { FirstSection } from "../components/FirstSection";
+import { ForthSection } from "../components/ForthSection";
+import { SecondSection } from "../components/SecondSection";
+import { ThirdSection } from "../components/ThirdSection";
+
 
 export default function Home() {
   return (

@@ -1,11 +1,9 @@
 "use client";
 import { useState } from "react";
 import { Button } from "@/src/components/ui/button";
-import { Voicemail } from "lucide-react";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -14,13 +12,11 @@ import {
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/src/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/src/components/ui/tabs";
-import { Label } from "@/src/components/ui/label";
 import { Input } from "@/src/components/ui/input";
 import { useForm, Resolver } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -155,8 +151,8 @@ const Signup = () => {
 
               {/*  */}
               <Dialog>
-                <DialogTrigger asChild>
-                  <Button variant={"link"}> Forgot Password ?</Button>
+                <DialogTrigger >
+                  <Button  variant="link"> Forgot Password ?</Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-md">
                   <DialogHeader className="">
@@ -251,7 +247,7 @@ const Signup = () => {
                   name="confrimPassword"
                   render={({ field, fieldState, formState }) => (
                     <FormItem>
-                      <FormLabel>New password</FormLabel>
+                      <FormLabel>Confirm new password</FormLabel>
                       <FormControl>
                         <Input
                           id="confirmPassword"

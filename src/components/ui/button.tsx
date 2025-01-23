@@ -17,7 +17,7 @@ const buttonVariants = cva(
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80 custom-btn",
         ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+        link: "text-primary  underline-offset-4 hover:underline",
         play: "custom-btn bg-primary text-primary-foreground ",
         facebook: "bg-blue-600 border border-input bg-background hover:text-white hover:bg-blue-700 custom-btn",
         google: "bg-red-500 border border-input bg-background hover:text-white  hover:bg-red-600 custom-btn",
