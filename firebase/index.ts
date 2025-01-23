@@ -1,27 +1,34 @@
-import { getApps, initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
+import { getApps, initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
 
-const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGINGSENDER_ID,
-  appId: process.env.NEXT_PUBLIC_APP_ID,
-  measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
+interface FirebaseConfig {
+    apiKey: string;
+    authDomain: string;
+    projectId: string;
+    storageBucket: string;
+    messagingSenderId: string;
+    appId: string;
+    measurementId?: string; // Optional
+}
+
+const firebaseConfig: FirebaseConfig = {
+    apiKey: process.env.NEXT_PUBLIC_API_KEY!,
+    authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN!,
+    projectId: process.env.NEXT_PUBLIC_PROJECT_ID!,
+    storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET!,
+    messagingSenderId: process.env.NEXT_PUBLIC_MESSAGINGSENDER_ID!,
+    appId: process.env.NEXT_PUBLIC_APP_ID!,
+    measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID
 };
-
-
-
 
 // Initialize Firebase
 const apps = getApps();
 const app = apps.length ? apps[0]! : initializeApp(firebaseConfig);
 
-export const auth = getAuth(app)
-export const db = getFirestore(app)
-export const storage = getStorage(app)
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+export const storage = getStorage(app);
 
-export default app
+export default app;
