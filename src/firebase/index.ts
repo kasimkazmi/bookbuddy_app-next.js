@@ -1,4 +1,4 @@
-import { getApps, initializeApp } from 'firebase/app';
+import { getApps, initializeApp, FirebaseApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
@@ -23,12 +23,23 @@ const firebaseConfig: FirebaseConfig = {
     measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID
 };
 
-// Initialize Firebase
-const apps = getApps();
-const app = apps.length ? apps[0]! : initializeApp(firebaseConfig);
+let app: FirebaseApp | undefined;
 
-export const auth = getAuth(app);
-export const db = getFirestore(app);
-export const storage = getStorage(app);
+try {
+    const apps = getApps();
+    app = apps.length ? apps[0]! : initializeApp(firebaseConfig);
+    console.log("Firebase initialized successfully");
+} catch (error) {
+    console.error("Firebase initialization error:", error);
+}
+
+// Ensure app is defined before using it
+if (!app) {
+    throw new Error("Firebase app is not initialized");
+}
+
+export const auth = getAuth(app); // Firebase Authentication service
+export const db = getFirestore(app); // Firestore database service
+export const storage = getStorage(app); // Firebase Storage service
 
 export default app;

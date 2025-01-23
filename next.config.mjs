@@ -13,14 +13,24 @@ const nextConfig = {
 
     // Configure image optimization settings
     images: {
-        // Allow loading images from these external domains
-        domains: [
-            'img.icons8.com', // Icons8 domain for icons
-            'firebasestorage.googleapis.com', // Firebase Storage domain for images
-            'flagcdn.com' // CDN for flag images
-        ]
-    },
-
+        // Configure image optimization settings using remotePatterns
+        remotePatterns: [
+          {
+            protocol: 'https', // Specify the protocol
+            hostname: 'img.icons8.com', // Icons8 domain for icons
+            pathname: '/**', // Allow all paths
+          },
+          {
+            protocol: 'https', // Specify the protocol
+            hostname: 'firebasestorage.googleapis.com', // Firebase Storage domain for images
+            pathname: '/**', // Allow all paths
+          },
+          {
+            protocol: 'https', // Specify the protocol
+            hostname: 'flagcdn.com', // CDN for flag images
+            pathname: '/**', // Allow all paths
+          },
+        ],},
     // ESLint configuration
     eslint: {
         // Ignore ESLint errors during the build process
