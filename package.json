@@ -23,6 +23,7 @@
     "@radix-ui/react-toast": "^1.2.1",
     "@react-google-maps/api": "^2.20.5",
     "@vercel/speed-insights": "^1.0.12",
+    "axios": "^1.7.9",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
