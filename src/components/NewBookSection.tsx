@@ -1,7 +1,7 @@
 import { ProductCarousel } from "./ProductCarousel";
 import { Button } from "./ui/button";
 
-export const FirstSection = () => {
+export const NewBookSection = () => {
   return (
     <section className="bg-S1BG flex flex-col items-center gap-8 pt-12 pb-20">
       <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center">Welcome to your Happy Place</h1>

@@ -1,15 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     // Define redirects for the application
-    // async redirects() {
-    //     return [
-    //         {
-    //             source: '/', // The source path to redirect from
-    //             destination: '/home', // The destination path to redirect to
-    //             permanent: true // Indicates this is a permanent redirect (HTTP 301)
-    //         }
-    //     ];
-    // },
+    async redirects() {
+        return [
+            {
+                source: '/', // The source path to redirect from
+                destination: '/home', // The destination path to redirect to
+                permanent: true // Indicates this is a permanent redirect (HTTP 301)
+            }
+        ];
+    },
 
     // Configure image optimization settings
     // Configure image optimization settings

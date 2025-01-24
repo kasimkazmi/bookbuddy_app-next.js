@@ -76,8 +76,8 @@ const Signup = () => {
   };
 
   return (
-    <section className="flex justify-center items-center py-10">
-      <Tabs defaultValue="left" className="w-[500px]">
+<section className="flex w-full h-screen justify-center items-center py-10">
+<Tabs defaultValue="left" className="w-[500px]">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="left">Signup</TabsTrigger>
           <TabsTrigger value="right">Register</TabsTrigger>

@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from "./ui/card";
 
-export const ForthSection = () => {
+export const AboutSection = () => {
   return (
     <div className=" bg-S4BG flex-col pb-20 pt-10">
       <div className="flex justify-center items-center font-bold pb-14">

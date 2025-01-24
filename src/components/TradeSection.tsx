@@ -31,7 +31,7 @@ import {
 } from "@/src/components/ui/form";
 import { Button } from "@/src/components/ui/button";
 
-export const SecondSection = () => {
+export const TradeSection = () => {
   const bookSchema: ZodType<any, any, any> = z.object({
     // Define your schema here
     bookTitle: z.string().min(1, "Book name is required"),

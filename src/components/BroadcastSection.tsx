@@ -8,7 +8,7 @@ import {
 } from "./ui/card";
 import { CirclePlay, Heading } from "lucide-react";
 
-export const ThirdSection = () => {
+export const BroadcastSection = () => {
   return (
     <section className="bg-S3BG flex-col pt-10 pb-20">
       <div className="flex justify-center items-center font-bold pb-14">
