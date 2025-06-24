@@ -51,8 +51,8 @@ const Header = () => {
                 </Link>
 
                 <Link href="/features">Feature</Link>
-                <Link href="/features">Shop</Link>
-                <Link href="/features">How It Works</Link>
+                <Link href="/shop">Shop</Link>
+                <Link href="/HowItWorks">How It Works</Link>
                 <div className="flex justify-between px-3 items-center">
                     <Button onClick={handleSignUpClick}>
                         <Link href="./">Sign In</Link>

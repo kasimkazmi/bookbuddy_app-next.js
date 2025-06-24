@@ -21,11 +21,11 @@ const config = {
             colors: {
                 border: 'hsl(var(--border))',
                 navBG: '#EEE5DC',
-                S1BG: '#9B4D07',
+                S1BG: '#F9F5F4',
                 S2BG: '#1A392C',
                 S3BG: '#D59C43',
                 S4BG: '#403C7D',
-                textColo: '#A39A8F',
+                textColo: '#1E2A4B',
                 danger: '#d7191c',
                 success: '#1a7a1a',
                 warning: '#f1c40f',
