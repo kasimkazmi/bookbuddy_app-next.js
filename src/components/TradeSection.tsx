@@ -1,197 +1,99 @@
-"use client";
+'use client';
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/src/components/ui/card";
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle
+} from '@/src/components/ui/card';
 
-import { useForm, Resolver } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z, ZodType } from "zod";
-import { Input } from "./ui/input";
+import { useForm, Resolver } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z, ZodType } from 'zod';
+import { Input } from './ui/input';
 import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/src/components/ui/select";
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue
+} from '@/src/components/ui/select';
 import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/src/components/ui/form";
-import { Button } from "@/src/components/ui/button";
+    Form,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage
+} from '@/src/components/ui/form';
+import { Button } from '@/src/components/ui/button';
 
 export const TradeSection = () => {
-  const bookSchema: ZodType<any, any, any> = z.object({
-    // Define your schema here
-    bookTitle: z.string().min(1, "Book name is required"),
-    author: z.string().min(1, "Author name is required"),
-    condition: z.string().min(1, "Invalid condition selected"),
-    radius: z.string().min(1, "Invalid radius selected"),
-  });
+    const bookSchema: ZodType<any, any, any> = z.object({
+        // Define your schema here
+        bookTitle: z.string().min(1, 'Book name is required'),
+        author: z.string().min(1, 'Author name is required'),
+        condition: z.string().min(1, 'Invalid condition selected'),
+        radius: z.string().min(1, 'Invalid radius selected')
+    });
 
-  const form = useForm({
-    resolver: zodResolver(bookSchema),
-    defaultValues: {
-      bookTitle: "",
-      author: "",
-      condition: "",
-      radius: "",
-    },
-  });
-  const onSubmit = (data: any) => {
-    try {
-      // Validate data against the schema
-      const validatedData = bookSchema.parse(data);
-      console.log(validatedData, "Data passed");
-      // Call API or perform other actions with validated data here
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        // Handle validation errors
-        console.error(error.errors);
-        // Optionally, transform and display these errors in your UI
-      } else {
-        // Handle unexpected errors
-        console.error("An unexpected error occurred", error);
-      }
-    }
-  };
-  return (
-    <section className="bg-S4BG pt-10 pb-16   ">
-      <div className="flex justify-center items-center font-bold pb-14">
-        <h1 className="text-center text-5xl">Trade section</h1>
-      </div>
-      <div className="grid container justify-center  grid-cols-1 md:grid-cols-2 lg:grid-cols">
-        <Card className="w-[500px]">
-          <CardHeader>
-            <CardTitle>Initiate a Book Trade</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Form {...form}>
-              <FormField
-                name="bookTitle"
-                render={({ field, fieldState, formState }) => (
-                  <FormItem>
-                    <FormLabel>Book Titile *</FormLabel>
-                    <FormControl>
-                      <Input
-                        id="bookTitle"
-                        required
-                        placeholder="Enter Book Name "
-                        {...field}
-                      />
-                    </FormControl>
-                    {/* <FormMessage /> */}
-                  </FormItem>
-                )}
-              />
-              <FormField
-                name="author"
-                control={form.control}
-                render={({ field, fieldState, formState }) => (
-                  <FormItem>
-                    <FormLabel>Author *</FormLabel>
-                    <FormControl>
-                      <Input
-                        id="author"
-                        required
-                        placeholder="Enter Book Author "
-                        {...field}
-                      />
-                    </FormControl>
-                    {/* <FormMessage /> */}
-                  </FormItem>
-                )}
-              />
+    const form = useForm({
+        resolver: zodResolver(bookSchema),
+        defaultValues: {
+            bookTitle: '',
+            author: '',
+            condition: '',
+            radius: ''
+        }
+    });
 
-              <FormField
-                name="condition"
-                render={({ field, fieldState, formState }) => (
-                  <FormItem>
-                    <FormLabel>Book Condition *</FormLabel>
-                    <FormControl>
-                      <Select onValueChange={field.onChange}>
-                        <SelectTrigger className="w[180px] mt-3">
-                          <SelectValue placeholder="Book Condition" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectGroup id="condition" aria-required>
-                            <SelectItem value="new">New</SelectItem>
-                            <SelectItem value="like-new">Like New</SelectItem>
-                            <SelectItem value="good">Good</SelectItem>
-                            <SelectItem value="fair">Fair</SelectItem>
-                            <SelectItem value="acceptable">
-                              Acceptable
-                            </SelectItem>
-                          </SelectGroup>
-                        </SelectContent>
-                      </Select>
-                    </FormControl>
-                    {/* <FormMessage /> */}
-                  </FormItem>
-                )}
-              />
+    return (
+        <section className="bg-S4BG pt-10 pb-16   ">
+            <div className="flex justify-center items-center font-bold pb-14"></div>
+            <div className="grid container justify-center  grid-cols-1 md:grid-cols-2 lg:grid-cols">
+                <div className=" ">
+                    <CardHeader>
+                        <CardTitle className="text-center py-2 font-serif   font-bold text-7xl">
+                            Unlock the Power of BookBuddy's Trade
+                        </CardTitle>
+                        <CardDescription className="text-center py-3 font-sans text-lg">
+                            Trade your books with fellow readers in your area.
+                            Fill out the details below to find and connect with
+                            potential trading partners. Specify the books you
+                            are offering and those you are looking for, and set
+                            your preferred trading radius.
+                        </CardDescription>
+                    </CardHeader>
 
-              <FormField
-                name="radius"
-                render={({ field, fieldState, formState }) => (
-                  <FormItem>
-                    <FormLabel>Choose Radius *</FormLabel>
-                    <FormControl>
-                      <Select onValueChange={field.onChange}>
-                        <SelectTrigger className="w[180px] mt-3">
-                          <SelectValue placeholder="Trade Radius:" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectGroup id="radius" aria-required>
-                            <SelectItem value="mile5">5 miles</SelectItem>
-                            <SelectItem value="mile10">10 miles</SelectItem>
-                            <SelectItem value="mile20">20 miles</SelectItem>
-                            <SelectItem value="mile50">50 miles</SelectItem>
-                            <SelectItem value="mile100">100 miles</SelectItem>
-                          </SelectGroup>
-                        </SelectContent>
-                      </Select>
-                    </FormControl>
-                    {/* <FormMessage /> */}
-                  </FormItem>
-                )}
-              />
+                    <div className="px-4 py-2 justify-between flex gap-4">
+                        <Button
+                            className="bg-S3BG text-white py-2 px-4 rounded-2xl hover:bg-S4BG hover:text-white transition-colors duration-300"
+                            onClick={() =>
+                                form.handleSubmit((data) => {
+                                    console.log(data);
+                                })
+                            }
+                        >
+                            Start Trading
+                        </Button>
 
-              <Button
-                type="submit"
-                className="mt-4"
-                onClick={form.handleSubmit(onSubmit)}
-              >
-                Initial Request
-              </Button>
-            </Form>
-          </CardContent>
-        </Card>
-        <div className=" ">
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-center py-2">Book Exchange</CardTitle>
-              <CardDescription className="text-center py-3">
-                Trade your books with fellow readers in your area. Fill out the
-                details below to find and connect with potential trading
-                partners. Specify the books you are offering and those you are
-                looking for, and set your preferred trading radius.
-              </CardDescription>
-            </CardHeader>
-          </Card>
-        </div>
-      </div>
-    </section>
-  );
+                        <Button
+                            className="bg-S3BG text-white py-2 px-4 rounded-2xl hover:bg-S4BG hover:text-white transition-colors duration-300"
+                            onClick={() =>
+                                form.handleSubmit((data) => {
+                                    console.log(data);
+                                })
+                            }
+                        >
+                            Explore Trade
+                        </Button>
+                    </div>
+                </div>
+                <div className=" "></div>
+            </div>
+        </section>
+    );
 };

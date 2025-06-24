@@ -24,7 +24,7 @@ const config = {
                 S1BG: '#9B4D07',
                 S2BG: '#1A392C',
                 S3BG: '#D59C43',
-                S4BG: '#A39A8F',
+                S4BG: '#403C7D',
                 textColo: '#A39A8F',
                 danger: '#d7191c',
                 success: '#1a7a1a',

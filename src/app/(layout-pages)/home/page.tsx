@@ -7,10 +7,10 @@ import React from 'react';
 const Home: React.FC = () => {
     return (
         <>
-        <NewBookSection/>
-        <TradeSection/>
-        <BroadcastSection/>
-        <AboutSection/>
+            <NewBookSection />
+            <TradeSection />
+            <BroadcastSection />
+            <AboutSection />
         </>
     );
 };
