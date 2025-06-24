@@ -58,7 +58,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       >
       <span className=" flex justify-center items-center">
       {Icon && <Icon />}
-
         {props.children}
         </span>
       </Comp>      

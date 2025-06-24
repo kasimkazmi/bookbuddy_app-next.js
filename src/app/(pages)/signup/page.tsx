@@ -35,10 +35,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/src/components/ui/dialog";
-import Link from "next/link";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from "@/src/firebase";
 
 const Signup = () => {
   const [isForgotPassVisible, setIsForgotPassVisible] = useState(false);
+  const { register, handleSubmit } = useForm<FormData>();
+  const [error, setError] = useState<string | null>(null);
   const zodType: ZodType<any, any, any> = z.object({
     // Define your schema here
     email: z.string().email("Invalid email Address"),
@@ -73,12 +76,33 @@ const Signup = () => {
       confirmPassword: "",
     },
   });
-
-  const onSubmit = (data: any) => {
+// Define the type for the form data
+interface FormData {
+  type: 'login' | 'signup';
+  email: string;
+  username: string;
+  usernameOrEmail: string;
+  password: string;
+  confirmPassword: string;
+}
+  // Function to handle form submission for login and signup
+  const onSubmit = async (data: FormData) => {
     console.log(data);
-    // Call API or perform other actions here
+    try {
+      if (data.type === 'login') {
+        // Login user
+        await signInWithEmailAndPassword(auth, data.usernameOrEmail, data.password);
+        console.log('User  logged in successfully');
+      } else {
+        // Signup user
+        await createUserWithEmailAndPassword(auth, data.usernameOrEmail, data.password);
+        console.log('User  signed up successfully');
+      }
+    } catch (error:any) {
+      setError(error.message); // Set error message if authentication fails
+      console.error('Authentication error:', error);
+    }
   };
-
   return (
     <section className="flex justify-center items-center py-10">
       <Tabs defaultValue="left" className="w-[500px]">
@@ -89,7 +113,7 @@ const Signup = () => {
         <TabsContent value="left">
           <Card>
             <CardHeader className="contenr-center">
-              {/* <CardTitle className="p-4">Sign In</CardTitle> */}
+              <CardTitle className="p-4">Sign In</CardTitle>
               {/* <CardDescription>Subtitle</CardDescription> */}
             </CardHeader>
 
@@ -114,7 +138,7 @@ const Signup = () => {
                   </span>
                 </div>
               </div>
-
+             {/* Input Field for Sign in  */}
               <Form {...form}>
                 <FormField
                   name="usernameOrEmail"
@@ -153,10 +177,10 @@ const Signup = () => {
                 />
               </Form>
 
-              {/*  */}
+              {/* Forgot Password Dialog Box */}
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button variant={"link"}> Forgot Password ?</Button>
+                  <Button variant={"link"} type="submit" > Forgot Password ?</Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-md">
                   <DialogHeader className="">
@@ -170,7 +194,7 @@ const Signup = () => {
                   </DialogHeader>
                   <div className="flex items-center space-x-2">
                     <div className="grid flex-1 gap-2">
-                      <Input id="link" placeholder="Email Address *" />
+                      <Input id="link" placeholder="Email Address*" />
                     </div>
                   </div>
                   <DialogFooter className="">
@@ -184,8 +208,8 @@ const Signup = () => {
               </Dialog>
             </CardContent>
             <CardFooter className=" justify-center">
-              <Button type="submit" onClick={form.handleSubmit(onSubmit)}>
-                Sign in
+            <Button type="submit" onClick={form.handleSubmit((data) => onSubmit({ ...data, type: 'login' }))}>
+            Sign in
               </Button>
             </CardFooter>
           </Card>
@@ -267,8 +291,8 @@ const Signup = () => {
               </Form>
             </CardContent>
             <CardFooter>
-              <Button type="submit" onClick={form.handleSubmit(onSubmit)}>
-                Create Account
+            <Button type="submit" onClick={handleSubmit(onSubmit)}>
+            Create Account
               </Button>
             </CardFooter>
           </Card>
