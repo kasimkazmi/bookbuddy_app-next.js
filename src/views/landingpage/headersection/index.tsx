@@ -50,16 +50,9 @@ const Header = () => {
                     />
                 </Link>
 
- <Link href="/">
-                    <Image
-                        className=" "
-                        src="/logo.png"
-                        alt="logo"
-                        height={100}
-                        width={100}
-                        layout="intrinsic"
-                    />
-                </Link>
+                <Link href="/features">Feature</Link>
+                <Link href="/features">Shop</Link>
+                <Link href="/features">How It Works</Link>
                 <div className="flex justify-between px-3 items-center">
                     <Button onClick={handleSignUpClick}>
                         <Link href="./">Sign In</Link>
