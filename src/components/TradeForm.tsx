@@ -125,11 +125,14 @@ const TradeForm = () => {
     };
 
     return (
-        <div className="container mx-auto py-12 px-4">
+        <div className="container mx-auto py-7 ">
             {/* Search Form */}
             <motion.div
+                initial={{ y: -20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.2 }}
                 whileHover={{ scale: 1.01 }}
-                className="bg-white rounded-xl shadow-lg p-8 mb-12 border-4 border-purple-200"
+                className="bg-white rounded-xl shadow-lg p-8 mb-12 border-4 inline-block hover:rotate-6 transition-transform border-purple-200"
             >
                 <h2 className="text-2xl font-bold text-purple-600 mb-6">
                     Search for Books to Trade
