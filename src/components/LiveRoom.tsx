@@ -199,7 +199,7 @@ export default function LiveRoom({ roomId }: LiveRoomProps) {
                         <h3 className="text-2xl font-bold text-purple-600 mb-4">
                             Leave Room?
                         </h3>
-                        <p className="mb-6">
+                        <p className="mb-6 text-textColo">
                             Are you sure you want to leave this awesome book
                             discussion?
                         </p>
@@ -207,13 +207,13 @@ export default function LiveRoom({ roomId }: LiveRoomProps) {
                             <Button
                                 variant="outline"
                                 onClick={() => setShowLeaveModal(false)}
-                                className="px-6 py-2 bg-gray-200 rounded-full hover:bg-gray-300 transition"
+                                className="px-6 py-2 bg-gray-200 rounded-full text-textColo transition"
                             >
                                 Cancel
                             </Button>
                             <Link
                                 href="/audio-rooms"
-                                className="px-6 py-2 bg-red-500 text-white rounded-full hover:bg-danger transition"
+                                className="px-6 py-2  bg-red-400 text-white rounded-full hover:bg-danger transition"
                             >
                                 <X className="inline w-4 h-4 mr-1" /> Leave
                             </Link>
