@@ -8,11 +8,11 @@ import React from 'react';
 const Home: React.FC = () => {
     return (
         <>
-            <NewBookSection />
             <HowItWorks />
             <TradeSection />
             <BroadcastSection />
             <AboutSection />
+            <NewBookSection />
         </>
     );
 };

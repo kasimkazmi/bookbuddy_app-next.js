@@ -8,7 +8,7 @@ import { Card } from './ui/card';
 
 export const HowItWorks = () => {
     return (
-        <div className="flex justify-center bg-background items-center py-10 px-6 sm:px-20">
+        <section id='HowItWorks' className="flex justify-center bg-S5BG items-center py-10 px-6 sm:px-20">
             <div className="bg-S1BG text-center font-sans text-textColo p-10 max-w-6xl w-full rounded-lg">
                 <h4 className="uppercase text-2xl tracking-widest text-textColo">
                     How It Works
@@ -39,7 +39,7 @@ export const HowItWorks = () => {
                     />
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

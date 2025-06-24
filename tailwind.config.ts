@@ -18,6 +18,10 @@ const config = {
             }
         },
         extend: {
+            scrollMarginTop: {
+        24: '6rem',
+        32: '8rem',
+      },
             colors: {
                 border: 'hsl(var(--border))',
                 navBG: '#EEE5DC',
@@ -25,6 +29,7 @@ const config = {
                 S2BG: '#1A392C',
                 S3BG: '#D59C43',
                 S4BG: '#403C7D',
+                S5BG: '#FCC87F',
                 textColo: '#1E2A4B',
                 danger: '#d7191c',
                 success: '#1a7a1a',

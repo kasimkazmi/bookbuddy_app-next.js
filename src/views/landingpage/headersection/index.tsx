@@ -1,47 +1,25 @@
 'use client';
-import {
-    BOOK_CATEGORIES,
-    FICTION_CATEGORIES,
-    KIDS_CATEGORIES,
-    NONFICTION_CATEGORIES,
-    POPULAR_KIDS_CHARACTERS,
-    TEENS_YOUNG_ADULT_CATEGORIES
-} from '@/src/constants';
 
-import Image from 'next/legacy/image';
 import Link from 'next/link';
-import {
-    NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuIndicator,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger,
-    NavigationMenuViewport
-} from '@/src/components/ui/navigation-menu';
-import React from 'react';
-
+import Image from 'next/legacy/image';
 import { useRouter } from 'next/navigation';
+
 import { SearchBox } from '@/src/components/SearchBox';
 import ThemeSwitch from '@/src/components/ThemeSwitch';
 import { Button } from '@/src/components/ui/button';
 
 const Header = () => {
-    const router = useRouter(); // Initialize useRouter
+    const router = useRouter();
+
     const handleSignUpClick = () => {
-        router.push('/signup'); // Navigate to the sign-up page
+        router.push('/signup');
     };
 
     return (
-        <section
-            className="flex  items-center flex-col justify-between max-container padding-container
-     relative z-30 py-5 sticky-navbarsmaller bg-navBG"
-        >
-            <div className="flex container items-center justify-between padding-container">
+        <section className="sticky  top-0 z-50  bg-S1BG shadow-sm">
+            <div className="flex  container items-center justify-between ">
                 <Link href="/">
                     <Image
-                        className=" "
                         src="/logo.png"
                         alt="logo"
                         height={100}
@@ -50,14 +28,30 @@ const Header = () => {
                     />
                 </Link>
 
-                <Link href="/features">Feature</Link>
-                <Link href="/shop">Shop</Link>
-                <Link href="/HowItWorks">How It Works</Link>
-                <div className="flex justify-between px-3 items-center">
-                    <Button onClick={handleSignUpClick}>
-                        <Link href="./">Sign In</Link>
-                    </Button>
-                    <ThemeSwitch className="ml-4" />
+                <div className="flex gap-6 items-center">
+                    <Link
+                        href="#features"
+                        className="text-lg  font-semibold text-textColo hover:text-blue-500 transition duration-300 ease-in-out"
+                    >
+                        Feature
+                    </Link>
+                    <Link
+                        href="#shop"
+                        className="text-lg font-semibold  text-textColo hover:text-blue-500 transition duration-300 ease-in-out"
+                    >
+                        Shop
+                    </Link>
+                    <Link
+                        href="#HowItWorks"
+                        className="text-lg font-semibold text-textColo hover:text-blue-500 transition duration-300 ease-in-out"
+                    >
+                        How It Works
+                    </Link>
+                </div>
+
+                <div className="flex items-center gap-4">
+                    <Button onClick={handleSignUpClick}>Sign In</Button>
+                    <ThemeSwitch />
                 </div>
             </div>
         </section>

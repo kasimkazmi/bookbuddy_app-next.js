@@ -13,7 +13,7 @@ export const ProductCarousel = () => {
   return (
     <div className="bg-current container flex flex-col items-center overflow-hidden">
   <div className="flex flex-col lg:flex-row items-center w-full p-4">
-  <h2 className="text-background text-3xl mb-4 lg:mb-0">Top Picks</h2>
+  <h2 className="text-background  font-serif text-3xl mb-4 lg:mb-0">Top Picks</h2>
   <div className="lg:ml-auto sm:ml-0 flex">
     <Button className="w-full lg:w-auto">View All</Button>
   </div>
