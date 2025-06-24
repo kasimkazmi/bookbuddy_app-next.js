@@ -34,6 +34,8 @@ body {
     margin: 0;
     padding: 0;
 }
+
+
 .dark {
     --background: 20 14.3% 4.1%;
     --foreground: 60 9.1% 97.8%;
@@ -272,4 +274,39 @@ li:hover::after {
 .carousel {
     -ms-overflow-style: none; /* IE and Edge */
     overflow: hidden; /* Hide the scrollbar */
+}
+@keyframes rotateBorder {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.animate-rotating-border {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+}
+
+.animate-rotating-border::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    z-index: -1;
+    background: linear-gradient(
+        90deg,
+        #fcc87f,
+        #d59c43,
+        #403c7d,
+        #1a392c,
+        #fcc87f
+    );
+    background-size: 400% 400%;
+    border-radius: 0.6rem;
+    animation: rotateBorder 4s linear infinite;
 }

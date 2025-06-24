@@ -1,3 +1,5 @@
+import IMAGES from './images';
+
 // Navigation
 export const NAV_LINKS = [
     {
@@ -45,9 +47,9 @@ export const FOOTER_LINKS = {
 export const COMUNITY_LINK = {
     title: 'Our comunity',
     links: [
-      { label: 'BookHUb', value: '' },
-      { label: 'Story-Club', value: '' }
-  ]
+        { label: 'BookHUb', value: '' },
+        { label: 'Story-Club', value: '' }
+    ]
 };
 
 export const FOOTER_CONTACT_INFO = {
@@ -491,25 +493,242 @@ export const carouselSlides = [
         price: '$55.99'
     },
     {
-      image: 'https://example.com/image5.jpg',
-      title: 'Slide 5',
-      description: 'This is the fifth slide',
-      price: '$55.99'
-  },
-  {
-    image: 'https://example.com/image5.jpg',
-    title: 'Slide 5',
-    description: 'This is the fifth slide',
-    price: '$55.99'
-},  {
-  image: 'https://example.com/image5.jpg',
-  title: 'Slide 5',
-  description: 'This is the fifth slide',
-  price: '$55.99'
-},  {
-  image: 'https://example.com/image5.jpg',
-  title: 'Slide 5',
-  description: 'This is the fifth slide',
-  price: '$55.99'
-},
+        image: 'https://example.com/image5.jpg',
+        title: 'Slide 5',
+        description: 'This is the fifth slide',
+        price: '$55.99'
+    },
+    {
+        image: 'https://example.com/image5.jpg',
+        title: 'Slide 5',
+        description: 'This is the fifth slide',
+        price: '$55.99'
+    },
+    {
+        image: 'https://example.com/image5.jpg',
+        title: 'Slide 5',
+        description: 'This is the fifth slide',
+        price: '$55.99'
+    },
+    {
+        image: 'https://example.com/image5.jpg',
+        title: 'Slide 5',
+        description: 'This is the fifth slide',
+        price: '$55.99'
+    }
+];
+
+// Broadcast Audio Rooms export
+// export const broadcastRooms = [
+//     {
+//         id: 1,
+//         title: 'Live Debate: Physical Books vs. eBooks - Which Do You Prefer?',
+//         category: 'Community',
+//         date: 'July 5, 2025',
+//         time: '45 min listen',
+//         image: IMAGES.discover,
+//         badge: 'Hot Topic',
+//         description: 'Join our spirited debate between book format enthusiasts. Share your perspective in this interactive audio session!'
+//     },
+//     {
+//         id: 2,
+//         title: 'Author Spotlight: Exclusive Interview with Bestselling Mystery Writer',
+//         category: 'Author Events',
+//         date: 'July 3, 2025',
+//         time: '1 hr listen',
+//         image: IMAGES.share,
+//         badge: 'Bestseller Alert',
+//         description: 'Go behind the scenes with our featured author as they discuss their writing process and latest thriller.'
+//     },
+//     {
+//         id: 3,
+//         title: 'Classic Book Club: Discussion of "Pride and Prejudice"',
+//         category: 'Book Club',
+//         date: 'July 1, 2025',
+//         time: '1 hr listen',
+//         image: IMAGES.explore,
+//         badge: 'Timeless Classic',
+//         description: 'Rediscover Jane Austen\'s masterpiece with fellow literature lovers in our deep-dive discussion.'
+//     },
+//     {
+//         id: 4,
+//         title: 'Silent Reading Party with Ambient Bookstore Sounds',
+//         category: 'Community',
+//         date: 'June 28, 2025',
+//         time: '2 hrs listen',
+//         image: '/images/reading-room.jpg',
+//         badge: 'New Format',
+//         description: 'Experience the cozy atmosphere of a communal reading session with ambient cafe sounds and periodic discussion breaks.'
+//     },
+//     {
+//         id: 5,
+//         title: 'The Science of Reading: How Books Change Your Brain',
+//         category: 'Book Science',
+//         date: 'June 25, 2025',
+//         time: '35 min listen',
+//         image: '/images/brain-books.jpg',
+//         description: 'Neuroscientists explain the cognitive benefits of reading and how different genres affect your mind.'
+//     },
+//     {
+//         id: 6,
+//         title: 'Indie Author Showcase: Discover Hidden Gems',
+//         category: 'Author Events',
+//         date: 'June 22, 2025',
+//         time: '50 min listen',
+//         image: '/images/indie-books.jpg',
+//         badge: 'Support Indies',
+//         description: 'Meet talented self-published authors and hear excerpts from their latest works.'
+//     },
+//     {
+//         id: 7,
+//         title: 'Seasonal Reads: Perfect Books for Summer 2025',
+//         category: 'Recommendations',
+//         date: 'June 20, 2025',
+//         time: '40 min listen',
+//         image: '/images/summer-reads.jpg',
+//         description: 'Our hosts share their top picks for beach reads, vacation books, and perfect porch-sitting novels.'
+//     },
+//     {
+//         id: 8,
+//         title: 'Reading Challenge Check-In: Mid-Year Progress',
+//         category: 'Community',
+//         date: 'June 18, 2025',
+//         time: '55 min listen',
+//         image: '/images/reading-challenge.jpg',
+//         description: 'Share your 2025 reading goals progress and get recommendations to complete your challenge.'
+//     },
+//     {
+//         id: 9,
+//         title: 'LGBTQ+ Book Celebration: Queer Literature Spotlight',
+//         category: 'Book Club',
+//         date: 'June 15, 2025',
+//         time: '1 hr 15 min listen',
+//         image: '/images/pride-books.jpg',
+//         badge: 'Pride Month',
+//         description: 'Celebrate Pride with insightful discussions of influential LGBTQ+ literature and authors.'
+//     },
+//     {
+//         id: 10,
+//         title: 'Bedtime Stories for Adults: Evening Relaxation Session',
+//         category: 'Community',
+//         date: 'June 12, 2025',
+//         time: '30 min listen',
+//         image: '/images/bedtime-story.jpg',
+//         badge: 'New',
+//         description: 'Unwind with our soothing nightly reading of short stories and poetry selections.'
+//     }
+// ];
+export const broadcastRooms = [
+    {
+        id: 1,
+        title: 'Live Debate: Physical Books vs. eBooks',
+        category: 'discussion',
+        date: 'July 5, 2025',
+        time: '45 min',
+        image: IMAGES.discover,
+        participants: 86,
+        isLive: true,
+        isUpcoming: false,
+        host: 'BookDebateMaster',
+        description:
+            'Join our spirited debate between book format enthusiasts. Share your perspective in this interactive audio session!'
+    },
+    {
+        id: 2,
+        title: 'Author Interview: Mystery Writer Jane Doe',
+        category: 'author',
+        date: 'July 3, 2025',
+        time: '1 hr',
+        image: IMAGES.discover,
+        participants: 120,
+        isLive: false,
+        isUpcoming: true,
+        host: 'LiteraryTalks',
+        badge: 'Coming Soon',
+        description:
+            'Go behind the scenes with our featured author as they discuss their writing process.'
+    },
+    {
+        id: 3,
+        title: 'Classic Club: "Pride and Prejudice"',
+        category: 'club',
+        date: 'July 1, 2025',
+        time: '1 hr',
+        image: IMAGES.discover,
+        participants: 64,
+        isLive: true,
+        isUpcoming: false,
+        host: 'ClassicLovers',
+        description:
+            "Rediscover Jane Austen's masterpiece with fellow literature lovers."
+    },
+    {
+        id: 5,
+        title: 'Silent Reading Party',
+        category: 'community',
+        date: 'June 28, 2025',
+        time: '2 hrs',
+        image: IMAGES.discover,
+        participants: 215,
+        isLive: false,
+        isUpcoming: false,
+        host: 'BookishVibes',
+        badge: 'Live Now',
+        description:
+            'Experience the cozy atmosphere of communal reading with ambient sounds.'
+    },
+    {
+        id: 5,
+        title: 'Sci-Fi Book Club',
+        category: 'club',
+        date: 'June 27, 2025',
+        time: '1.5 hrs',
+        image: IMAGES.discover,
+        participants: 92,
+        isLive: false,
+        isUpcoming: true,
+        host: 'FutureReaders',
+        description:
+            "Discussion of this month's selected sci-fi novel with expert moderators."
+    },
+    {
+        id: 6,
+        title: 'Poetry Night: Open Mic',
+        category: 'community',
+        date: 'June 25, 2025',
+        time: '1 hr',
+        image: IMAGES.discover,
+        participants: 53,
+        isLive: false,
+        isUpcoming: true,
+        host: 'VerseLovers',
+        description:
+            'Share your favorite poems or original works in our welcoming space.'
+    },
+    {
+        id: 7,
+        title: 'Writing Workshop LIVE',
+        category: 'workshop',
+        date: 'June 23, 2025',
+        time: '2 hrs',
+        image: IMAGES.discover,
+        participants: 78,
+        isLive: true,
+        isUpcoming: false,
+        host: 'WriteNow',
+        badge: 'Live Now',
+        description:
+            'Interactive writing session with published authors giving real-time feedback.'
+    }
+];
+
+export const roomsCategories = [
+    { id: 'all', label: 'All Rooms' },
+    { id: 'live', label: 'Live Now' },
+    { id: 'upcoming', label: 'Upcoming' },
+    { id: 'discussion', label: 'Discussions' },
+    { id: 'author', label: 'Author Events' },
+    { id: 'club', label: 'Book Clubs' },
+    { id: 'community', label: 'Community' },
+    { id: 'workshop', label: 'Workshops' }
 ];

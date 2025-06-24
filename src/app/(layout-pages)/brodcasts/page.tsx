@@ -1,13 +1,15 @@
-"use client";
+'use client';
 
-import React from "react";
+import { AudioRoomsSection } from '@/src/components/AudioRooms';
+import IMAGES from '@/src/constants/images';
+import React from 'react';
 
 const page = () => {
-  return (
-    <section className="flex justify-center py-24 bg-S2BG items-center">
-      Broadcast Page
-    </section>
-  );
+    return (
+        <section className="flex justify-center py-24 bg-S4BG items-center">
+            <AudioRoomsSection />
+        </section>
+    );
 };
 
 export default page;

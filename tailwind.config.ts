@@ -19,9 +19,9 @@ const config = {
         },
         extend: {
             scrollMarginTop: {
-        24: '6rem',
-        32: '8rem',
-      },
+                24: '6rem',
+                32: '8rem'
+            },
             colors: {
                 border: 'hsl(var(--border))',
                 navBG: '#EEE5DC',
@@ -85,12 +85,27 @@ const config = {
                 spin: {
                     '0%': { transform: 'rotate(0deg)' },
                     '100%': { transform: 'rotate(360deg)' }
+                },
+                glow: {
+                    '0%': { boxShadow: '0 0 5px rgba(0, 255, 0, 0.5)' },
+                    '50%': { boxShadow: '0 0 15px rgba(0, 255, 0, 1)' },
+                    '100%': { boxShadow: '0 0 5px rgba(0, 255, 0, 0.5)' }
+                },
+                rotateBorder: {
+                    '0%': { 'background-position': '0% 50%' },
+                    '100%': { 'background-position': '100% 50%' }
                 }
             },
             animation: {
                 'accordion-down': 'accordion-down 0.2s ease-out',
                 'accordion-up': 'accordion-up 0.2s ease-out',
-                'spin-slow': 'spin 10s linear infinite'
+                'spin-slow': 'spin 10s linear infinite',
+                'rotate-border': 'rotateBorder 4s linear infinite',
+                spin: 'spin 1s linear infinite',
+                glow: 'glow 1.5s infinite' // Add the glow animation
+            },
+            fontFamily: {
+                serif: ['"Playfair Display"', 'serif'] // Or use Google Fonts
             }
         }
     },
