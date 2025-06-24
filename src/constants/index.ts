@@ -678,7 +678,7 @@ export const broadcastRooms = [
             'Experience the cozy atmosphere of communal reading with ambient sounds.'
     },
     {
-        id: 5,
+        id: 6,
         title: 'Sci-Fi Book Club',
         category: 'club',
         date: 'June 27, 2025',
@@ -692,7 +692,7 @@ export const broadcastRooms = [
             "Discussion of this month's selected sci-fi novel with expert moderators."
     },
     {
-        id: 6,
+        id: 7,
         title: 'Poetry Night: Open Mic',
         category: 'community',
         date: 'June 25, 2025',
@@ -706,7 +706,7 @@ export const broadcastRooms = [
             'Share your favorite poems or original works in our welcoming space.'
     },
     {
-        id: 7,
+        id: 8,
         title: 'Writing Workshop LIVE',
         category: 'workshop',
         date: 'June 23, 2025',

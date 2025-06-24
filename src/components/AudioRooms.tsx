@@ -1,3 +1,4 @@
+'use client';
 import { useState } from 'react';
 import { Button } from './ui/button';
 import {
@@ -9,9 +10,13 @@ import {
 } from './ui/card';
 import { Calendar, Headphones, Users } from 'lucide-react';
 import { broadcastRooms, roomsCategories } from '../constants';
-import Router from 'next/router';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export const AudioRoomsSection = () => {
+    const router = useRouter(); // Use the router here
+
     const [activeFilter, setActiveFilter] = useState('all');
 
     const filteredPosts = broadcastRooms.filter((post) => {
@@ -21,9 +26,6 @@ export const AudioRoomsSection = () => {
         return post.category === activeFilter;
     });
 
-    const handleCardClick = (roomId: string) => {
-        Router.push(`/audio-room/${roomId}`);
-    };
     return (
         <section className="bg-S1BG py-16 px-4 sm:px-6">
             <div className="max-w-7xl mx-auto">
@@ -61,79 +63,90 @@ export const AudioRoomsSection = () => {
 
                 {/* Room Cards */}
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    {/* <AnimatePresence initial={false}> */}
                     {filteredPosts.map((room) => (
                         <div
                             key={room.id}
-                            onClick={() => handleCardClick(room.id)}
-                            className="cursor-pointer transition-transform hover:scale-[1.02]"
+                            // layoutId={`card-${room.id}`}
+                            // initial={{ opacity: 0, scale: 0.9 }}
+                            // animate={{ opacity: 1, scale: 1 }}
+                            // exit={{ opacity: 0, scale: 0.9 }}
+                            // transition={{ duration: 0.3 }}
+                            className="cursor-pointer"
                         >
-                            <Card
-                                key={room.id}
-                                className={`rounded-xl border shadow-md transition-all hover:shadow-lg ${
-                                    room.isLive
-                                        ? 'ring-2 ring-green-500 animate-glow'
-                                        : ''
-                                }`}
+                            <Link
+                                href={`/audio-rooms/${room.id}`}
+                                className="block"
                             >
-                                <div className="relative">
-                                    <img
-                                        src={room.image}
-                                        alt={room.title}
-                                        className="w-full h-48 object-cover rounded-t-xl"
-                                    />
-                                    {room.isLive && (
-                                        <div className="absolute top-2 left-2 outline-1 text-white text-xs font-bold px-2 py-1 rounded flex items-center">
-                                            <span className="relative flex h-2 w-2 mr-1">
-                                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                                                <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500 "></span>
+                                <Card
+                                    key={room.id}
+                                    className={`rounded-xl border shadow-md transition-all hover:shadow-lg ${
+                                        room.isLive
+                                            ? 'ring-2 ring-green-500 animate-glow'
+                                            : ''
+                                    }`}
+                                >
+                                    <div className="relative">
+                                        <img
+                                            src={room.image}
+                                            alt={room.title}
+                                            className="w-full h-48 object-cover rounded-t-xl"
+                                        />
+                                        {room.isLive && (
+                                            <div className="absolute top-2 left-2 outline-1 text-white text-xs font-bold px-2 py-1 rounded flex items-center">
+                                                <span className="relative flex h-2 w-2 mr-1">
+                                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500 "></span>
+                                                </span>
+                                                LIVE
+                                            </div>
+                                        )}
+
+                                        {room.badge && (
+                                            <div className="absolute top-2 right-2 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded">
+                                                {room.badge}
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    <CardHeader className="px-6 pt-6 pb-4">
+                                        <div className="flex justify-between items-start">
+                                            <span className="text-sm   border-2 rounded-lg font-medium px-2 py-1rounded-md">
+                                                {room.category
+                                                    .charAt(0)
+                                                    .toUpperCase() +
+                                                    room.category.slice(1)}
                                             </span>
-                                            LIVE
+                                            <div className="flex items-center text-sm ">
+                                                <Users className="w-4 h-4 mr-1" />
+                                                {room.participants}
+                                            </div>
                                         </div>
-                                    )}
+                                        <CardTitle className="text-xl font-bold mt-2">
+                                            {room.title}
+                                        </CardTitle>
+                                        <CardDescription className="mt-2">
+                                            {room.description}
+                                        </CardDescription>
+                                    </CardHeader>
 
-                                    {room.badge && (
-                                        <div className="absolute top-2 right-2 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded">
-                                            {room.badge}
+                                    <CardContent className="flex items-center justify-between px-6 pb-6">
+                                        <div className="flex items-center gap-2 text-sm">
+                                            <Calendar className="w-4 h-4" />
+                                            <span>{room.date}</span>
+                                            <span>•</span>
+                                            <Headphones className="w-4 h-4" />
+                                            <span>{room.time}</span>
                                         </div>
-                                    )}
-                                </div>
-
-                                <CardHeader className="px-6 pt-6 pb-4">
-                                    <div className="flex justify-between items-start">
-                                        <span className="text-sm   border-2 rounded-lg font-medium px-2 py-1rounded-md">
-                                            {room.category
-                                                .charAt(0)
-                                                .toUpperCase() +
-                                                room.category.slice(1)}
-                                        </span>
-                                        <div className="flex items-center text-sm ">
-                                            <Users className="w-4 h-4 mr-1" />
-                                            {room.participants}
+                                        <div className="text-sm font-medium">
+                                            @{room.host}
                                         </div>
-                                    </div>
-                                    <CardTitle className="text-xl font-bold mt-2">
-                                        {room.title}
-                                    </CardTitle>
-                                    <CardDescription className="mt-2">
-                                        {room.description}
-                                    </CardDescription>
-                                </CardHeader>
-
-                                <CardContent className="flex items-center justify-between px-6 pb-6">
-                                    <div className="flex items-center gap-2 text-sm">
-                                        <Calendar className="w-4 h-4" />
-                                        <span>{room.date}</span>
-                                        <span>•</span>
-                                        <Headphones className="w-4 h-4" />
-                                        <span>{room.time}</span>
-                                    </div>
-                                    <div className="text-sm font-medium">
-                                        @{room.host}
-                                    </div>
-                                </CardContent>
-                            </Card>
+                                    </CardContent>
+                                </Card>
+                            </Link>
                         </div>
                     ))}
+                    {/* </AnimatePresence> */}
                 </div>
             </div>
         </section>
