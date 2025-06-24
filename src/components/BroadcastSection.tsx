@@ -1,3 +1,4 @@
+import IMAGES from '../constants/images';
 import { Button } from './ui/button';
 import {
     Card,
@@ -10,7 +11,7 @@ import { CirclePlay, Heading } from 'lucide-react';
 
 export const BroadcastSection = () => {
     return (
-        <section className="bg-S3BG flex-col pt-10 pb-20">
+        <section className="bg-S4BG flex-col pt-10 pb-20">
             <div className="flex justify-center items-center font-bold pb-14">
                 <h1 className="text-center italic font-serif text-5xl">
                     Connecting Readers
@@ -20,19 +21,19 @@ export const BroadcastSection = () => {
                 {/* Share Card */}
                 <Card className="flex flex-col items-center">
                     <img
-                        src=".../"
+                        src={IMAGES.share}
                         alt="Share"
-                        className="w-full h-48 object-cover rounded-t-lg"
+                        className="w-full h-80  object-cover rounded-t-lg"
                     />
-                    <CardHeader className="w-full text-center">
-                        <CardTitle className="text-2xl font-bold mt-4">
+                    <CardHeader className="w-full text-left">
+                        <CardTitle className="text-4xl font-serif  font-bold mt-4">
                             Share
                         </CardTitle>
-                        <CardDescription className="italic">
+                        <CardDescription className="italic font-serif text-lg text-zinc-400">
                             Discuss
                         </CardDescription>
                     </CardHeader>
-                    <CardContent className="flex flex-col gap-4 w-full items-center pb-6">
+                    <CardContent className="flex gap-4 w-full items-center pb-6">
                         <Button variant="default" className="w-32">
                             Start Sharing
                         </Button>
@@ -45,19 +46,19 @@ export const BroadcastSection = () => {
                 {/* Discover Card */}
                 <Card className="flex flex-col items-center">
                     <img
-                        src="/images/discover.jpg"
+                        src={IMAGES.discover}
                         alt="Discover"
-                        className="w-full h-48 object-cover rounded-t-lg"
+                        className="w-full h-80  object-cover rounded-t-lg"
                     />
-                    <CardHeader className="w-full text-center">
-                        <CardTitle className="text-2xl font-bold mt-4">
+                    <CardHeader className="w-full text-left">
+                        <CardTitle className="text-4xl font-serif  font-bold mt-4">
                             Discover
                         </CardTitle>
-                        <CardDescription className="italic">
+                        <CardDescription className="italic font-serif text-lg text-zinc-400">
                             Explore
                         </CardDescription>
                     </CardHeader>
-                    <CardContent className="flex flex-col gap-4 w-full items-center pb-6">
+                    <CardContent className="flex gap-4 w-full items-center pb-6">
                         <Button variant="default" className="w-32">
                             Find Stories
                         </Button>
@@ -70,19 +71,19 @@ export const BroadcastSection = () => {
                 {/* Explore Card */}
                 <Card className="flex flex-col items-center">
                     <img
-                        src="/images/explore.jpg"
+                        src={IMAGES.explore}
                         alt="Explore"
-                        className="w-full h-48 object-cover rounded-t-lg"
+                        className="w-full h-80  object-cover rounded-t-lg"
                     />
-                    <CardHeader className="w-full text-center">
-                        <CardTitle className="text-2xl font-bold mt-4">
+                    <CardHeader className="w-full text-left">
+                        <CardTitle className="text-4xl font-serif  font-bold mt-4">
                             Explore
                         </CardTitle>
-                        <CardDescription className="italic">
+                        <CardDescription className="italic font-serif text-lg text-zinc-400">
                             Engage
                         </CardDescription>
                     </CardHeader>
-                    <CardContent className="flex flex-col gap-4 w-full items-center pb-6">
+                    <CardContent className="flex gap-4 w-full items-center pb-6">
                         <Button variant="default" className="w-32">
                             Join Now
                         </Button>
