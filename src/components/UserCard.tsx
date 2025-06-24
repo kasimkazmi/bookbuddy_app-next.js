@@ -34,7 +34,7 @@ const UserCard = ({ user }: { user: User }) => {
             <div className="p-6">
                 <div className="flex items-start mb-4">
                     <div className="flex-shrink-0">
-                        <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center text-3xl">
+                        <div className="w-16 h-16  text-textColo  bg-purple-100 rounded-full flex items-center justify-center text-3xl">
                             {user.name.charAt(0)}
                         </div>
                     </div>
@@ -49,12 +49,16 @@ const UserCard = ({ user }: { user: User }) => {
                 </div>
 
                 <div className="mt-4">
-                    <h4 className="text-lg font-semibold">Available Book:</h4>
+                    <h4 className="text-lg  text-textColo font-semibold">
+                        Available Book:
+                    </h4>
                     <p className="text-gray-700">
                         {user.bookTitle} - {user.bookCondition}
                     </p>
 
-                    <h4 className="text-lg font-semibold mt-2">Looking For:</h4>
+                    <h4 className="text-lg font-semibold   text-textColo mt-2">
+                        Looking For:
+                    </h4>
                     {Array.isArray(user.lookingFor) &&
                     user.lookingFor.length > 0 ? (
                         <ul className="list-disc list-inside text-gray-600">
