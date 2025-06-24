@@ -1,4 +1,4 @@
-import * as admin from 'firebase-admin'; // Import the Firebase Admin SDK
+import * as admin from 'firebase-admin'; 
 
 // Initialize the Firebase Admin app
 export const app = admin.apps.length
