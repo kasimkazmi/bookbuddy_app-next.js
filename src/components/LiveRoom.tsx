@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 import { Mic2, Headphones, Users, Share2, X, Volume2 } from 'lucide-react';
 import { Button } from './ui/button';
 import { activeSpeakers } from '../constants';
+import { useRouter } from 'next/router'; // Import useRouter
+import Link from 'next/link';
 
 interface LiveRoomProps {
     roomId: string; // Accept roomId as a prop
@@ -30,10 +32,10 @@ export default function LiveRoom({ roomId }: LiveRoomProps) {
     const [showLeaveModal, setShowLeaveModal] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
-    // Auto-scroll to new messages
-    useEffect(() => {
-        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }, [messages]);
+    // // Auto-scroll to new messages
+    // useEffect(() => {
+    //     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    // }, [messages]);
 
     const handleSendMessage = (e: { preventDefault: () => void }) => {
         e.preventDefault();
@@ -203,19 +205,18 @@ export default function LiveRoom({ roomId }: LiveRoomProps) {
                         </p>
                         <div className="flex justify-center gap-4">
                             <Button
+                                variant="outline"
                                 onClick={() => setShowLeaveModal(false)}
                                 className="px-6 py-2 bg-gray-200 rounded-full hover:bg-gray-300 transition"
                             >
                                 Cancel
                             </Button>
-                            <Button
-                                onClick={() =>
-                                    console.log('Leave room logic here')
-                                }
+                            <Link
+                                href="/audio-rooms"
                                 className="px-6 py-2 bg-red-500 text-white rounded-full hover:bg-danger transition"
                             >
                                 <X className="inline w-4 h-4 mr-1" /> Leave
-                            </Button>
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -10,7 +10,6 @@ import {
 } from './ui/card';
 import { Calendar, Headphones, Users } from 'lucide-react';
 import { broadcastRooms, roomsCategories } from '../constants';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
 
