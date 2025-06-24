@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Mic2, Headphones, Users, Share2, X, Volume2 } from 'lucide-react';
 import { Button } from './ui/button';
+import { activeSpeakers } from '../constants';
 
 interface LiveRoomProps {
     roomId: string; // Accept roomId as a prop
@@ -56,16 +57,16 @@ export default function LiveRoom({ roomId }: LiveRoomProps) {
     };
 
     return (
-        <div className="flex h-screen bg-gradient-to-br from-purple-50 to-blue-50 font-comic">
+        <div className="flex h-screen rounded-2xl py-20 bg-gradient-to-br from-S4BG to-S5BG shadow-lg overflow-hidden">
             {/* Main Room Area */}
             <div className="flex flex-col w-full max-w-4xl mx-auto">
                 {/* Room Header */}
                 <div className="bg-white rounded-t-3xl shadow-lg p-6 flex justify-between items-center border-b-4 border-purple-300">
                     <div>
-                        <h1 className="text-3xl font-bold text-purple-600">
+                        <h1 className="text-3xl font-bold font-sans text-textColo">
                             Book Club Hangout
                         </h1>
-                        <p className="flex items-center text-gray-600 mt-1">
+                        <p className="flex items-center font-comic italic text-textColo mt-1">
                             <Users className="w-4 h-4 mr-1" />
                             {participants} readers chatting
                         </p>
@@ -73,7 +74,7 @@ export default function LiveRoom({ roomId }: LiveRoomProps) {
                     <Button
                         variant="destructive"
                         onClick={() => setShowLeaveModal(true)}
-                        className="px-4 py-2  bg-danger transition"
+                        className="px-4 py-2 bg-danger transition"
                     >
                         <X className="w-4 h-4 mr-1" /> Leave
                     </Button>
@@ -85,14 +86,18 @@ export default function LiveRoom({ roomId }: LiveRoomProps) {
                         {messages.map((message) => (
                             <div
                                 key={message.id}
-                                className={`flex gap-3 p-4 rounded-2xl ${message.user === 'You' ? 'bg-purple-100' : 'bg-gray-100'}`}
+                                className={`flex gap-3 p-4 rounded-2xl ${
+                                    message.user === 'You'
+                                        ? 'bg-purple-100'
+                                        : 'bg-gray-100'
+                                }`}
                             >
                                 <div className="text-3xl">{message.avatar}</div>
                                 <div>
                                     <p className="font-bold text-purple-700">
                                         {message.user}
                                     </p>
-                                    <p className="text-gray-800">
+                                    <p className="text-gray-800 font-sans">
                                         {message.text}
                                     </p>
                                 </div>
@@ -126,7 +131,11 @@ export default function LiveRoom({ roomId }: LiveRoomProps) {
                         <Button
                             type="reset"
                             onClick={toggleMute}
-                            className={`p-3 rounded-full ${isMuted ? 'bg-red-100 text-red-500' : 'bg-purple-100 text-purple-500'} hover:scale-110 transition`}
+                            className={`p-3 rounded-full ${
+                                isMuted
+                                    ? 'bg-red-100 text-red-500'
+                                    : 'bg-purple-100 text-purple-500'
+                            } hover:scale-110 transition`}
                         >
                             <Mic2 className="w-6 h-6" />
                         </Button>
@@ -144,39 +153,38 @@ export default function LiveRoom({ roomId }: LiveRoomProps) {
             </div>
 
             {/* Speaker Display (Right Sidebar) */}
-            <div className="hidden lg:block w-64 bg-white p-6 rounded-l-3xl shadow-lg ml-4 border-r-4 border-purple-300">
-                <h2 className="text-xl font-bold text-purple-600 mb-4">
+            <div className="hidden lg:flex w-80 bg-white p-6 rounded-l-3xl shadow-lg ml-4 border-r-4 border-purple-300 max-h-[calc(100vh-2rem)] flex-col">
+                <h2 className="text-xl font-bold text-purple-600 mb-4 sticky top-0 bg-white z-10 py-2">
                     Active Speakers
                 </h2>
-                <div className="space-y-4">
-                    {[1, 2, 3, 4].map((i) => (
+                <div className="space-y-4 overflow-y-auto flex-1 scrollbar-hide">
+                    {activeSpeakers.map((user) => (
                         <div
-                            key={i}
-                            className="flex items-center gap-3 p-3 bg-purple-50 rounded-xl"
+                            key={user.id}
+                            className={`flex items-center gap-3 p-3 rounded-xl transition-all ${
+                                user.isTalking
+                                    ? 'bg-purple-100 border-l-4 border-purple-500 animate-pulse'
+                                    : 'bg-purple-50 hover:bg-purple-100'
+                            }`}
                         >
-                            <div className="text-3xl">
-                                {i === 1
-                                    ? '🎤'
-                                    : i === 2
-                                      ? '📚'
-                                      : i === 3
-                                        ? '👓'
-                                        : '☕'}
-                            </div>
-                            <div>
-                                <p className="font-medium text-purple-700">
-                                    {i === 1
-                                        ? 'LisaBookLover'
-                                        : i === 2
-                                          ? 'PageTurner'
-                                          : i === 3
-                                            ? 'TheBookWorm'
-                                            : 'CoffeeAndBooks'}
+                            <div className="text-3xl">{user.avatar}</div>
+                            <div className="min-w-0">
+                                <p className="font-medium text-purple-700 truncate">
+                                    {user.name}
                                 </p>
-                                <p className="text-xs text-gray-500">
-                                    Now speaking
+                                <p
+                                    className={`text-xs ${
+                                        user.isTalking
+                                            ? 'text-purple-600 font-medium'
+                                            : 'text-gray-500'
+                                    }`}
+                                >
+                                    {user.status}
                                 </p>
                             </div>
+                            {user.isTalking && (
+                                <div className="ml-auto w-2 h-2 bg-purple-500 rounded-full animate-ping" />
+                            )}
                         </div>
                     ))}
                 </div>

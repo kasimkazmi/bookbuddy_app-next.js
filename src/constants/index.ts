@@ -519,105 +519,7 @@ export const carouselSlides = [
 ];
 
 // Broadcast Audio Rooms export
-// export const broadcastRooms = [
-//     {
-//         id: 1,
-//         title: 'Live Debate: Physical Books vs. eBooks - Which Do You Prefer?',
-//         category: 'Community',
-//         date: 'July 5, 2025',
-//         time: '45 min listen',
-//         image: IMAGES.discover,
-//         badge: 'Hot Topic',
-//         description: 'Join our spirited debate between book format enthusiasts. Share your perspective in this interactive audio session!'
-//     },
-//     {
-//         id: 2,
-//         title: 'Author Spotlight: Exclusive Interview with Bestselling Mystery Writer',
-//         category: 'Author Events',
-//         date: 'July 3, 2025',
-//         time: '1 hr listen',
-//         image: IMAGES.share,
-//         badge: 'Bestseller Alert',
-//         description: 'Go behind the scenes with our featured author as they discuss their writing process and latest thriller.'
-//     },
-//     {
-//         id: 3,
-//         title: 'Classic Book Club: Discussion of "Pride and Prejudice"',
-//         category: 'Book Club',
-//         date: 'July 1, 2025',
-//         time: '1 hr listen',
-//         image: IMAGES.explore,
-//         badge: 'Timeless Classic',
-//         description: 'Rediscover Jane Austen\'s masterpiece with fellow literature lovers in our deep-dive discussion.'
-//     },
-//     {
-//         id: 4,
-//         title: 'Silent Reading Party with Ambient Bookstore Sounds',
-//         category: 'Community',
-//         date: 'June 28, 2025',
-//         time: '2 hrs listen',
-//         image: '/images/reading-room.jpg',
-//         badge: 'New Format',
-//         description: 'Experience the cozy atmosphere of a communal reading session with ambient cafe sounds and periodic discussion breaks.'
-//     },
-//     {
-//         id: 5,
-//         title: 'The Science of Reading: How Books Change Your Brain',
-//         category: 'Book Science',
-//         date: 'June 25, 2025',
-//         time: '35 min listen',
-//         image: '/images/brain-books.jpg',
-//         description: 'Neuroscientists explain the cognitive benefits of reading and how different genres affect your mind.'
-//     },
-//     {
-//         id: 6,
-//         title: 'Indie Author Showcase: Discover Hidden Gems',
-//         category: 'Author Events',
-//         date: 'June 22, 2025',
-//         time: '50 min listen',
-//         image: '/images/indie-books.jpg',
-//         badge: 'Support Indies',
-//         description: 'Meet talented self-published authors and hear excerpts from their latest works.'
-//     },
-//     {
-//         id: 7,
-//         title: 'Seasonal Reads: Perfect Books for Summer 2025',
-//         category: 'Recommendations',
-//         date: 'June 20, 2025',
-//         time: '40 min listen',
-//         image: '/images/summer-reads.jpg',
-//         description: 'Our hosts share their top picks for beach reads, vacation books, and perfect porch-sitting novels.'
-//     },
-//     {
-//         id: 8,
-//         title: 'Reading Challenge Check-In: Mid-Year Progress',
-//         category: 'Community',
-//         date: 'June 18, 2025',
-//         time: '55 min listen',
-//         image: '/images/reading-challenge.jpg',
-//         description: 'Share your 2025 reading goals progress and get recommendations to complete your challenge.'
-//     },
-//     {
-//         id: 9,
-//         title: 'LGBTQ+ Book Celebration: Queer Literature Spotlight',
-//         category: 'Book Club',
-//         date: 'June 15, 2025',
-//         time: '1 hr 15 min listen',
-//         image: '/images/pride-books.jpg',
-//         badge: 'Pride Month',
-//         description: 'Celebrate Pride with insightful discussions of influential LGBTQ+ literature and authors.'
-//     },
-//     {
-//         id: 10,
-//         title: 'Bedtime Stories for Adults: Evening Relaxation Session',
-//         category: 'Community',
-//         date: 'June 12, 2025',
-//         time: '30 min listen',
-//         image: '/images/bedtime-story.jpg',
-//         badge: 'New',
-//         description: 'Unwind with our soothing nightly reading of short stories and poetry selections.'
-//     }
-// ];
+
 export const broadcastRooms = [
     {
         id: 1,
@@ -731,4 +633,77 @@ export const roomsCategories = [
     { id: 'club', label: 'Book Clubs' },
     { id: 'community', label: 'Community' },
     { id: 'workshop', label: 'Workshops' }
+];
+
+export const activeSpeakers = [
+    {
+        id: 1,
+        avatar: '🎤',
+        name: 'LisaBookLover',
+        status: 'Reading aloud',
+        isTalking: true
+    },
+    {
+        id: 2,
+        avatar: '📚',
+        name: 'PageTurner',
+        status: 'Discussing chapter 5',
+        isTalking: true
+    },
+    {
+        id: 3,
+        avatar: '👓',
+        name: 'TheBookWorm',
+        status: 'Listening intently',
+        isTalking: false
+    },
+    {
+        id: 4,
+        avatar: '☕',
+        name: 'CoffeeAndBooks',
+        status: 'Taking notes',
+        isTalking: false
+    },
+    {
+        id: 5,
+        avatar: '🖋️',
+        name: 'LiteraryLyn',
+        status: 'Asking questions',
+        isTalking: true
+    },
+    {
+        id: 6,
+        avatar: '🔖',
+        name: 'BookmarkBen',
+        status: 'Quoting passages',
+        isTalking: true
+    },
+    {
+        id: 7,
+        avatar: '🌙',
+        name: 'MidnightReader',
+        status: 'Sharing insights',
+        isTalking: true
+    },
+    {
+        id: 8,
+        avatar: '📚',
+        name: 'PageTurner2',
+        status: 'Discussing chapter 5',
+        isTalking: true
+    },
+    {
+        id: 9,
+        avatar: '📚',
+        name: 'PageTurner3',
+        status: 'Discussing chapter 5',
+        isTalking: true
+    },
+    {
+        id: 10,
+        avatar: '📚',
+        name: 'PageTurner4',
+        status: 'Discussing chapter 5',
+        isTalking: true
+    }
 ];

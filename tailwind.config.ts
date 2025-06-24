@@ -105,11 +105,15 @@ const config = {
                 glow: 'glow 1.5s infinite' // Add the glow animation
             },
             fontFamily: {
-                serif: ['"Playfair Display"', 'serif'] // Or use Google Fonts
+                playfair: ['"Playfair Display"', 'serif'],
+                comic: ['Comic Sans MS', 'cursive']
             }
         }
     },
-    plugins: [require('tailwindcss-animate')]
+    plugins: [
+        require('tailwindcss-animate'),
+        require('tailwind-scrollbar-hide')
+    ]
 } satisfies Config;
 
 export default config;
