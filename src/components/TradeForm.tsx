@@ -1,31 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import {
     Select,
     SelectContent,
     SelectGroup,
     SelectItem,
-    SelectLabel,
     SelectTrigger,
     SelectValue
 } from '@/src/components/ui/select';
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
-    FormLabel,
-    FormMessage
+    FormLabel
 } from '@/src/components/ui/form';
-import { useForm, Resolver } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z, ZodType } from 'zod';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
+import { motion, AnimatePresence } from 'framer-motion';
+import { BookOpen, Bookmark, Bell, BookX, Search } from 'lucide-react';
+import { userTradeProfile } from '../constants';
+import Loading from './../app/(layout-pages)/trade/loading';
+import SearchResultsGrid from './SearchResultsGrid';
+
+const emptyStateMessages = [
+    {
+        title: 'Oopsie Doodles!',
+        subtitle: "No books found... but we'll bookmark it!",
+        icon: <BookX className="w-16 h-16 text-purple-500" />,
+        color: 'bg-purple-100'
+    },
+    {
+        title: 'Book-nanza Fail!',
+        subtitle: "This story hasn't been written yet...",
+        icon: <BookOpen className="w-16 h-16 text-yellow-500" />,
+        color: 'bg-yellow-100'
+    },
+    {
+        title: 'Spine-tingling Disappointment!',
+        subtitle: 'No page-turners found in your area',
+        icon: <Bookmark className="w-16 h-16 text-blue-500" />,
+        color: 'bg-blue-100'
+    }
+];
+
 const TradeForm = () => {
+    const [loading, setLoading] = useState(false);
+    const [results, setResults] = useState<any[]>([]);
+    const [showEmptyState, setShowEmptyState] = useState(false);
+    const [randomEmptyState, setRandomEmptyState] = useState(
+        emptyStateMessages[0]
+    );
+    const [showModal, setShowModal] = useState(false);
+
     const bookSchema: ZodType<any, any, any> = z.object({
-        // Define your schema here
         bookTitle: z.string().min(1, 'Book name is required'),
         author: z.string().min(1, 'Author name is required'),
         condition: z.string().min(1, 'Invalid condition selected'),
@@ -41,83 +72,124 @@ const TradeForm = () => {
             radius: ''
         }
     });
-    const onSubmit = (data: any) => {
+
+    const onSubmit = async (data: any) => {
         try {
-            // Validate data against the schema
             const validatedData = bookSchema.parse(data);
-            console.log(validatedData, 'Data passed');
-            // Call API or perform other actions with validated data here
+            setLoading(true);
+            setResults([]);
+            setShowEmptyState(false);
+
+            // Simulate API call
+            setTimeout(() => {
+                const filteredResults = userTradeProfile.filter(
+                    (user) =>
+                        user.hasBook &&
+                        user.bookTitle
+                            .toLowerCase()
+                            .includes(validatedData.bookTitle.toLowerCase())
+                );
+
+                if (filteredResults.length === 0) {
+                    setRandomEmptyState(
+                        emptyStateMessages[
+                            Math.floor(
+                                Math.random() * emptyStateMessages.length
+                            )
+                        ]
+                    );
+                    setShowEmptyState(true);
+                    setShowModal(true); // ✅ THIS IS MISSING
+                } else {
+                    setResults(filteredResults);
+                }
+
+                setLoading(false);
+            }, 1500);
         } catch (error) {
-            if (error instanceof z.ZodError) {
-                // Handle validation errors
-                console.error(error.errors);
-                // Optionally, transform and display these errors in your UI
-            } else {
-                // Handle unexpected errors
-                console.error('An unexpected error occurred', error);
-            }
+            console.error(error);
+            setLoading(false);
         }
     };
-    return (
-        <div>
-            TradeForm
-            <Card className="w-[500px]">
-                <CardHeader>
-                    <CardTitle>Initiate a Book Trade</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <Form {...form}>
-                        <FormField
-                            name="bookTitle"
-                            render={({ field, fieldState, formState }) => (
-                                <FormItem>
-                                    <FormLabel>Book Titile *</FormLabel>
-                                    <FormControl>
-                                        <Input
-                                            id="bookTitle"
-                                            required
-                                            placeholder="Enter Book Name "
-                                            {...field}
-                                        />
-                                    </FormControl>
-                                    {/* <FormMessage /> */}
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            name="author"
-                            control={form.control}
-                            render={({ field, fieldState, formState }) => (
-                                <FormItem>
-                                    <FormLabel>Author *</FormLabel>
-                                    <FormControl>
-                                        <Input
-                                            id="author"
-                                            required
-                                            placeholder="Enter Book Author "
-                                            {...field}
-                                        />
-                                    </FormControl>
-                                    {/* <FormMessage /> */}
-                                </FormItem>
-                            )}
-                        />
+    if (loading) {
+        return (
+            <div>
+                <Loading />
+            </div>
+        );
+    }
+    const notifyMe = () => {
+        alert(
+            "We'll notify you when someone adds this book to our collection!"
+        );
+    };
 
-                        <FormField
-                            name="condition"
-                            render={({ field, fieldState, formState }) => (
-                                <FormItem>
-                                    <FormLabel>Book Condition *</FormLabel>
-                                    <FormControl>
+    return (
+        <div className="container mx-auto py-12 px-4">
+            {/* Search Form */}
+            <motion.div
+                whileHover={{ scale: 1.01 }}
+                className="bg-white rounded-xl shadow-lg p-8 mb-12 border-4 border-purple-200"
+            >
+                <h2 className="text-2xl font-bold text-purple-600 mb-6">
+                    Search for Books to Trade
+                </h2>
+                <Form {...form}>
+                    <form
+                        onSubmit={form.handleSubmit(onSubmit)}
+                        className="space-y-6"
+                    >
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <FormField
+                                name="bookTitle"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-sm font-medium text-purple-700">
+                                            Book Title
+                                        </FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                className="w-full px-4 py-3 rounded-lg border-2 border-purple-200 focus:border-purple-400 focus:ring-purple-300 transition"
+                                                placeholder="Enter book title"
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                name="author"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-sm font-medium text-purple-700">
+                                            Author
+                                        </FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                className="w-full px-4 py-3 rounded-lg border-2 border-purple-200 focus:border-purple-400 focus:ring-purple-300 transition"
+                                                placeholder="Enter author name"
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                    </FormItem>
+                                )}
+                            />
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <FormField
+                                name="condition"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-sm font-medium text-purple-700">
+                                            Condition
+                                        </FormLabel>
                                         <Select onValueChange={field.onChange}>
-                                            <SelectTrigger className="w[180px] mt-3">
+                                            <SelectTrigger className="w-full px-4 py-3 rounded-lg border-2 border-purple-200 focus:border-purple-400 focus:ring-purple-300 transition">
                                                 <SelectValue placeholder="Book Condition" />
                                             </SelectTrigger>
                                             <SelectContent>
-                                                <SelectGroup
-                                                    id="condition"
-                                                    aria-required
-                                                >
+                                                <SelectGroup>
                                                     <SelectItem value="new">
                                                         New
                                                     </SelectItem>
@@ -136,27 +208,22 @@ const TradeForm = () => {
                                                 </SelectGroup>
                                             </SelectContent>
                                         </Select>
-                                    </FormControl>
-                                    {/* <FormMessage /> */}
-                                </FormItem>
-                            )}
-                        />
-
-                        <FormField
-                            name="radius"
-                            render={({ field, fieldState, formState }) => (
-                                <FormItem>
-                                    <FormLabel>Choose Radius *</FormLabel>
-                                    <FormControl>
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                name="radius"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-sm font-medium text-purple-700">
+                                            Search Radius
+                                        </FormLabel>
                                         <Select onValueChange={field.onChange}>
-                                            <SelectTrigger className="w[180px] mt-3">
-                                                <SelectValue placeholder="Trade Radius:" />
+                                            <SelectTrigger className="w-full px-4 py-3 rounded-lg border-2 border-purple-200 focus:border-purple-400 focus:ring-purple-300 transition">
+                                                <SelectValue placeholder="Trade Radius" />
                                             </SelectTrigger>
                                             <SelectContent>
-                                                <SelectGroup
-                                                    id="radius"
-                                                    aria-required
-                                                >
+                                                <SelectGroup>
                                                     <SelectItem value="mile5">
                                                         5 miles
                                                     </SelectItem>
@@ -175,22 +242,95 @@ const TradeForm = () => {
                                                 </SelectGroup>
                                             </SelectContent>
                                         </Select>
-                                    </FormControl>
-                                    {/* <FormMessage /> */}
-                                </FormItem>
-                            )}
-                        />
+                                    </FormItem>
+                                )}
+                            />
+                        </div>
 
-                        <Button
-                            type="submit"
-                            className="mt-4"
-                            // onClick={form.handleSubmit(onSubmit)}
+                        <div className="flex justify-center pt-4">
+                            <Button
+                                type="submit"
+                                className="px-8 py-3 bg-purple-600 text-white font-bold rounded-2xl hover:bg-purple-700 transition-all transform hover:scale-105 shadow-lg flex items-center"
+                            >
+                                <Search className="h-5 w-5 mr-2" />
+                                Search for Matches
+                            </Button>
+                        </div>
+                    </form>
+                </Form>
+            </motion.div>
+
+            {results.length > 0 && <SearchResultsGrid results={results} />}
+
+            {/* Empty State */}
+            {showModal && (
+                <AnimatePresence>
+                    {showModal && showEmptyState && !loading && (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm"
                         >
-                            Initial Request
-                        </Button>
-                    </Form>
-                </CardContent>
-            </Card>
+                            <motion.div
+                                initial={{ scale: 0.9, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                exit={{ scale: 0.9, opacity: 0 }}
+                                className={`w-full max-w-md mx-auto ${randomEmptyState.color} rounded-2xl p-8 text-center shadow-lg`}
+                            >
+                                <motion.div
+                                    animate={{
+                                        y: [-5, 5, -5],
+                                        transition: {
+                                            duration: 2,
+                                            repeat: Infinity
+                                        }
+                                    }}
+                                    className="flex justify-center mb-4"
+                                >
+                                    {randomEmptyState.icon}
+                                </motion.div>
+                                <h3 className="text-2xl font-bold text-gray-800 mb-2">
+                                    {randomEmptyState.title}
+                                </h3>
+                                <p className="text-gray-600 mb-6">
+                                    {randomEmptyState.subtitle}
+                                </p>
+                                <div className="flex justify-center gap-4">
+                                    <Button
+                                        onClick={() => {
+                                            form.reset();
+                                            setShowModal(false);
+                                            setShowEmptyState(false);
+                                        }}
+                                        variant="outline"
+                                        className="border-purple-300 hover:bg-purple-50"
+                                    >
+                                        Try Another Book
+                                    </Button>
+                                    <Button
+                                        onClick={() => {
+                                            notifyMe();
+                                            setShowModal(false);
+                                            setShowEmptyState(false);
+                                        }}
+                                        className="bg-purple-600 hover:bg-purple-700 flex items-center gap-2"
+                                    >
+                                        <Bell className="w-4 h-4" />
+                                        Notify Me
+                                    </Button>
+                                </div>
+                                <Button
+                                    onClick={() => setShowModal(false)}
+                                    className="mt-4 text-red-500"
+                                >
+                                    Close
+                                </Button>
+                            </motion.div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            )}
         </div>
     );
 };

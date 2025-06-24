@@ -3,7 +3,8 @@
 const IMAGES = {
     discover: '/images/Discover.png', // Changed path format
     explore: '/images/explore.png',
-    share: '/images/share.png'
+    share: '/images/share.png',
+    img2: '/images/img2.png'
 
 };
 

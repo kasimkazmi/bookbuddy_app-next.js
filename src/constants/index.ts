@@ -707,3 +707,203 @@ export const activeSpeakers = [
         isTalking: true
     }
 ];
+
+// userTradeProfile data
+export const userTradeProfile = [
+    {
+        id: 1,
+        name: 'Alex Johnson',
+        location: 'Toronto, ON',
+        distance: '3.2 km away',
+        hasBook: true,
+        bookTitle: 'The Midnight Library',
+        bookCondition: 'Like New',
+        lookingFor: ['Atomic Habits', 'The Alchemist']
+    },
+    {
+        id: 2,
+        name: 'Jamie Smith',
+        location: 'Vancouver, BC',
+        distance: '5.1 km away',
+        hasBook: true,
+        bookTitle: 'Where the Crawdads Sing',
+        bookCondition: 'Good',
+        lookingFor: ['Educated', 'The Silent Patient']
+    },
+    {
+        id: 3,
+        name: 'Emily Davis',
+        location: 'Calgary, AB',
+        distance: '7.5 km away',
+        hasBook: true,
+        bookTitle: 'The Silent Patient',
+        bookCondition: 'Very Good',
+        lookingFor: ['The Night Circus']
+    },
+    {
+        id: 4,
+        name: 'Michael Brown',
+        location: 'Montreal, QC',
+        distance: '10.0 km away',
+        hasBook: false,
+        bookTitle: '',
+        bookCondition: ''
+    },
+    {
+        id: 5,
+        name: 'Sarah Wilson',
+        location: 'Ottawa, ON',
+        distance: '2.8 km away',
+        hasBook: true,
+        bookTitle: 'Project Hail Mary',
+        bookCondition: 'New',
+        lookingFor: ['Becoming', 'Dune']
+    },
+    {
+        id: 6,
+        name: 'Jessica Taylor',
+        location: 'Halifax, NS',
+        distance: '4.5 km away',
+        hasBook: true,
+        bookTitle: 'Educated',
+        bookCondition: 'Like New',
+        lookingFor: ['Where the Crawdads Sing']
+    },
+    {
+        id: 7,
+        name: 'David Lee',
+        location: 'Victoria, BC',
+        distance: '6.3 km away',
+        hasBook: true,
+        bookTitle: 'The Great Gatsby',
+        bookCondition: 'Good',
+        lookingFor: ['1984', 'The Catcher in the Rye']
+    },
+    {
+        id: 8,
+        name: 'Sophia Martinez',
+        location: 'Edmonton, AB',
+        distance: '8.1 km away',
+        hasBook: true,
+        bookTitle: 'Becoming',
+        bookCondition: 'Very Good',
+        lookingFor: ['The Midnight Library']
+    },
+    {
+        id: 9,
+        name: 'Daniel Kim',
+        location: 'Winnipeg, MB',
+        distance: '9.0 km away',
+        hasBook: false,
+        bookTitle: '',
+        bookCondition: ''
+    },
+    {
+        id: 10,
+        name: 'Olivia Brown',
+        location: 'Saskatoon, SK',
+        distance: '3.5 km away',
+        hasBook: true,
+        bookTitle: 'The Alchemist',
+        bookCondition: 'Good',
+        lookingFor: ['The Book Thief']
+    },
+    {
+        id: 11,
+        name: 'Ethan White',
+        location: 'Regina, SK',
+        distance: '5.2 km away',
+        hasBook: true,
+        bookTitle: 'The Catcher in the Rye',
+        bookCondition: 'Acceptable',
+        lookingFor: ['The Road']
+    },
+    {
+        id: 12,
+        name: 'Ava Johnson',
+        location: "St. John's, NL",
+        distance: '7.8 km away',
+        hasBook: true,
+        bookTitle: 'The Book Thief',
+        bookCondition: 'Like New',
+        lookingFor: ['The Night Circus', 'Pride and Prejudice']
+    },
+    {
+        id: 13,
+        name: 'Liam Harris',
+        location: 'Charlottetown, PE',
+        distance: '2.0 km away',
+        hasBook: true,
+        bookTitle: 'The Hobbit',
+        bookCondition: 'New',
+        lookingFor: ['The Great Gatsby']
+    },
+    {
+        id: 14,
+        name: 'Mia Thompson',
+        location: 'Fredericton, NB',
+        distance: '4.0 km away',
+        hasBook: false,
+        bookTitle: '',
+        bookCondition: ''
+    },
+    {
+        id: 15,
+        name: 'Noah Wilson',
+        location: 'Yellowknife, NT',
+        distance: '6.5 km away',
+        hasBook: true,
+        bookTitle: '1984',
+        bookCondition: 'Good',
+        lookingFor: ['Project Hail Mary']
+    },
+    {
+        id: 16,
+        name: 'Isabella Scott',
+        location: 'Iqaluit, NU',
+        distance: '8.3 km away',
+        hasBook: true,
+        bookTitle: 'Pride and Prejudice',
+        bookCondition: 'Very Good',
+        lookingFor: ['Becoming']
+    },
+    {
+        id: 17,
+        name: 'Lucas Young',
+        location: 'Whitehorse, YT',
+        distance: '10.1 km away',
+        hasBook: true,
+        bookTitle: 'The Road',
+        bookCondition: 'Like New',
+        lookingFor: ['Educated']
+    },
+    {
+        id: 18,
+        name: 'Charlotte King',
+        location: 'Nanaimo, BC',
+        distance: '3.9 km away',
+        hasBook: true,
+        bookTitle: 'The Fault in Our Stars',
+        bookCondition: 'Good',
+        lookingFor: ['The Book Thief']
+    },
+    {
+        id: 19,
+        name: 'James Hall',
+        location: 'Kamloops, BC',
+        distance: '5.6 km away',
+        hasBook: false,
+        bookTitle: '',
+        bookCondition: ''
+    },
+    {
+        id: 20,
+        name: 'Amelia Green',
+        location: 'Lethbridge, AB',
+        distance: '7.2 km away',
+        hasBook: true,
+        bookTitle: 'The Night Circus',
+        bookCondition: 'New',
+        lookingFor: ['The Hobbit', 'The Great Gatsby']
+    }
+];

@@ -30,6 +30,7 @@ import {
     FormMessage
 } from '@/src/components/ui/form';
 import { Button } from '@/src/components/ui/button';
+import IMAGES from '../constants/images';
 
 export const TradeSection = () => {
     const bookSchema: ZodType<any, any, any> = z.object({
@@ -51,12 +52,14 @@ export const TradeSection = () => {
     });
 
     return (
-        <section className="bg-S4BG pt-10 pb-16   ">
+        <section className="bg-S4BG pt-10 pb-16">
             <div className="flex justify-center items-center font-bold pb-14"></div>
-            <div className="grid container justify-center  grid-cols-1 md:grid-cols-2 lg:grid-cols">
-                <div className=" ">
+            <div className="grid container justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                {' '}
+                {/* Added gap-8 for spacing */}
+                <div>
                     <CardHeader>
-                        <CardTitle className="text-center py-2 font-serif   font-bold text-7xl">
+                        <CardTitle className="text-center py-2 font-serif font-bold text-7xl">
                             Unlock the Power of BookBuddy's Trade
                         </CardTitle>
                         <CardDescription className="text-center py-3 font-sans text-lg">
@@ -74,7 +77,7 @@ export const TradeSection = () => {
                             onClick={() =>
                                 form.handleSubmit((data) => {
                                     console.log(data);
-                                })
+                                })()
                             }
                         >
                             Start Trading
@@ -85,14 +88,20 @@ export const TradeSection = () => {
                             onClick={() =>
                                 form.handleSubmit((data) => {
                                     console.log(data);
-                                })
+                                })()
                             }
                         >
                             Explore Trade
                         </Button>
                     </div>
                 </div>
-                <div className=" "></div>
+                <div className="flex justify-center items-center rounded-2xl ">
+                    <img
+                        src={IMAGES.img2}
+                        alt="Trade Books"
+                        className="w-full h-auto rounded-lg"
+                    />
+                </div>
             </div>
         </section>
     );

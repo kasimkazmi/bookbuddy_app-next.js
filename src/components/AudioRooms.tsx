@@ -24,7 +24,7 @@ export const AudioRoomsSection = () => {
     });
 
     return (
-        <section className="bg-S1BG py-16 px-4 sm:px-6">
+        <section className="bg-S1BG rounded-3xl py-16 px-4 sm:px-6">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-10">
                     <h1 className="text-4xl text-textColo sm:text-5xl  font-bold mb-2">
