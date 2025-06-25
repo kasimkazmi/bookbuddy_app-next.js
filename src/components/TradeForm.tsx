@@ -125,7 +125,7 @@ const TradeForm = () => {
     };
 
     return (
-        <div className="container mx-auto py-7 ">
+        <div>
             {/* Search Form */}
             <motion.div
                 initial={{ y: -20, opacity: 0 }}
