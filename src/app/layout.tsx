@@ -1,40 +1,25 @@
-// src/app/layout.tsx
 import './globals.css';
 import { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
+import { AuthProvider } from '../context/AuthContext';
 
 export const metadata: Metadata = {
-  title: 'BazmBooks', // ✅ Updated per TODO
-  description: 'Discover, share, and trade your favorite books.',
-  keywords: ['books', 'trading', 'community', 'reading']
+    title: 'BazmBooks',
+    description: 'Discover, share, and trade your favorite books.'
 };
 
 export default function RootLayout({
-  children
+    children
 }: {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <head>
-        <title>{metadata.title as string}</title>
-        <meta name="description" content={metadata.description as string} />
-        <meta
-          name="keywords"
-          content={
-            Array.isArray(metadata.keywords)
-              ? metadata.keywords.join(', ')
-              : typeof metadata.keywords === 'string'
-              ? metadata.keywords
-              : ''
-          }
-        />
-      </head>
-      <body className="">
-        <ThemeProvider attribute="class" defaultTheme="system">
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
-  );
+    return (
+        <html lang="en">
+            <body>
+                <ThemeProvider attribute="class" defaultTheme="system">
+                    <AuthProvider>{children}</AuthProvider>
+                </ThemeProvider>
+            </body>
+        </html>
+    );
 }

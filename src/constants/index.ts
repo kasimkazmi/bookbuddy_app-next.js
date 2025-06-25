@@ -951,4 +951,50 @@ export const mockBooks = [
     }
 ];
 
+
+export const bookRecommendations = [
+    {
+        id: 1,
+        title: 'The Great Gatsby',
+        author: 'F. Scott Fitzgerald',
+        price: '$10.99',
+        image: IMAGES.logo
+    },
+    {
+        id: 2,
+        title: '1984',
+        author: 'George Orwell',
+        price: '$8.99',
+        image: IMAGES.logo
+    },
+    {
+        id: 3,
+        title: 'To Kill a Mockingbird',
+        author: 'Harper Lee',
+        price: '$12.99',
+        image: IMAGES.logo
+    },
+    {
+        id: 4,
+        title: 'Pride and Prejudice',
+        author: 'Jane Austen',
+        price: '$9.99',
+        image: IMAGES.logo
+    },
+    {
+        id: 4,
+        title: 'Pride and Prejudice',
+        author: 'Jane Austen',
+        price: '$9.99',
+        image: IMAGES.logo
+    },
+    {
+        id: 4,
+        title: 'Pride and Prejudice',
+        author: 'Jane Austen',
+        price: '$9.99',
+        image: IMAGES.logo
+    }
+];
+
 //

@@ -1,16 +1,17 @@
 export const metadata = {
-    title: 'BookBuddy',
-    description: 'This is a description'
+  title: 'BookBuddy Auth Pages',
+  description: 'Login, Signup, and Dashboard'
 };
-// Blank layout for pages that do not require a header or footer
-export default function RootLayout({
-    children
+
+export default function BlankPagesLayout({
+  children
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-    return (
-        <html>
-            <body>{children}</body>
-        </html>
-    );
+  return (
+    <>
+      {/* No header/footer here */}
+      <main>{children}</main>
+    </>
+  );
 }

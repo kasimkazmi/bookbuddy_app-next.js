@@ -23,7 +23,7 @@ import { Button } from './ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BookOpen, Bookmark, Bell, BookX, Search } from 'lucide-react';
 import { userTradeProfile } from '../constants';
-import Loading from '../app/(layout-pages)/trade-books/loading';
+import Loading from '../app/(blank-pages)/trade-books/loading';
 import SearchResultsGrid from './SearchResultsGrid';
 
 const emptyStateMessages = [
@@ -125,7 +125,7 @@ const TradeForm = () => {
     };
 
     return (
-        <div className="container mx-auto py-7 ">
+        <div>
             {/* Search Form */}
             <motion.div
                 initial={{ y: -20, opacity: 0 }}
