@@ -42,58 +42,60 @@ export default function RoomPage({ params }: { params: { roomId: string } }) {
     }
 
     return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-            className="container mx-auto py-12 px-4 sm:px-6"
-        >
-            <BackButton className="mb-6" text="Back to all rooms" />
+        <section className="bg-S1BG  flex rounded-3xl min-h-screen py-16 px-4 sm:px-6">
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+                className="container mx-auto py-12 px-4 sm:px-6"
+            >
+                <BackButton className="mb-6" text="Back to all rooms" />
 
-            <div className="flex flex-col md:flex-row gap-8">
-                <div className="flex-1">
+                <div className="flex flex-col md:flex-row gap-8">
+                    <div className="flex-1">
+                        <motion.div
+                            layoutId={`room-image-${room.id}`}
+                            className="aspect-video bg-gray-100 rounded-xl overflow-hidden"
+                        >
+                            <img
+                                src={room.image}
+                                alt={room.title}
+                                className="w-full h-full object-cover"
+                            />
+                        </motion.div>
+                    </div>
+
                     <motion.div
-                        layoutId={`room-image-${room.id}`}
-                        className="aspect-video bg-gray-100 rounded-xl overflow-hidden"
+                        layoutId={`room-content-${room.id}`}
+                        className="flex-1"
                     >
-                        <img
-                            src={room.image}
-                            alt={room.title}
-                            className="w-full h-full object-cover"
-                        />
+                        <h1 className="text-3xl font-bold">{room.title}</h1>
+                        <p className="mt-4 text-gray-700">{room.description}</p>
+
+                        <div className="mt-6">
+                            <h2 className="text-xl font-semibold">Details</h2>
+                            <ul className="list-disc pl-5 mt-2">
+                                <li>Host: {room.host}</li>
+                                <li>Category: {room.category}</li>
+                                <li>Participants: {room.participants}</li>
+                            </ul>
+                        </div>
+
+                        <div className="mt-6">
+                            <h2 className="text-xl font-semibold">Join Room</h2>
+                            <p className="mt-2 text-gray-600">
+                                Click the button below to join the room.
+                            </p>
+                            <Button
+                                className="mt-4 px-4 py-2"
+                                onClick={handleJoinRoom}
+                            >
+                                Join Now
+                            </Button>
+                        </div>
                     </motion.div>
                 </div>
-
-                <motion.div
-                    layoutId={`room-content-${room.id}`}
-                    className="flex-1"
-                >
-                    <h1 className="text-3xl font-bold">{room.title}</h1>
-                    <p className="mt-4 text-gray-700">{room.description}</p>
-
-                    <div className="mt-6">
-                        <h2 className="text-xl font-semibold">Details</h2>
-                        <ul className="list-disc pl-5 mt-2">
-                            <li>Host: {room.host}</li>
-                            <li>Category: {room.category}</li>
-                            <li>Participants: {room.participants}</li>
-                        </ul>
-                    </div>
-
-                    <div className="mt-6">
-                        <h2 className="text-xl font-semibold">Join Room</h2>
-                        <p className="mt-2 text-gray-600">
-                            Click the button below to join the room.
-                        </p>
-                        <Button
-                            className="mt-4 px-4 py-2"
-                            onClick={handleJoinRoom}
-                        >
-                            Join Now
-                        </Button>
-                    </div>
-                </motion.div>
-            </div>
-        </motion.div>
+            </motion.div>
+        </section>
     );
 }
