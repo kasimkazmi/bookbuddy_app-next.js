@@ -1,12 +1,12 @@
 export const metadata = {
-  title: "BookBuddy",
-  description: "This is a description",
+    title: 'BookBuddy',
+    description: 'This is a description'
 };
 
 export default function RootLayout({
-  children,
+    children
 }: {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }) {
-  return <>{children}</>;
+    return <>{children}</>;
 }
