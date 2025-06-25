@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
     --background: 0 0% 100%;
     --foreground: 20 14.3% 4.1%;
@@ -35,7 +34,6 @@ body {
     margin: 0;
     padding: 0;
 }
-
 
 .dark {
     --background: 20 14.3% 4.1%;
@@ -234,6 +232,20 @@ body {
         opacity: 0;
         transform: translateX(-200px);
     }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.animate-fade-in {
+    animation: fadeIn 0.2s ease-out forwards;
 }
 bold-16 {
     font-weight: 700;
