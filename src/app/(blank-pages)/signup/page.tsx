@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/src/components/ui/button';
 import {
     Form,
@@ -37,9 +37,14 @@ import {
     DialogTrigger
 } from '@/src/components/ui/dialog';
 import BackButton from '@/src/components/ui/backButton';
+import { auth, googleProvider, facebookProvider } from '@/src/firebase'; // Import Firebase auth and providers
+import { signInWithPopup,  sendPasswordResetEmail, createUserWithEmailAndPassword } from 'firebase/auth';
 
 const Signup = () => {
     const [isForgotPassVisible, setIsForgotPassVisible] = useState(false);
+    const [feedbackMessage, setFeedbackMessage] = useState('');
+    const [feedbackType, setFeedbackType] = useState(''); // 'success' or 'error'
+
     const zodType: ZodType<any, any, any> = z
         .object({
             email: z.string().email('Invalid email Address'),
@@ -60,7 +65,7 @@ const Signup = () => {
                 .min(6, 'Password must be at least 6 characters long'),
             confirmPassword: z
                 .string()
-                .min(6, 'Password must be at least 6 characters')
+                .min(6, 'Password must be at least 6 characters long')
         })
         .refine((data) => data.password === data.confirmPassword, {
             message: 'Passwords do not match',
@@ -78,19 +83,60 @@ const Signup = () => {
         }
     });
 
-    const onSubmit = (data: any) => {
-        console.log(data);
-        // Call API or perform other actions here
+    const onSubmit = async (data: any) => {
+        try {
+            // Check if the input is an email or username for sign up
+            if (data.usernameOrEmail.includes('@')) {
+                // Sign in
+                await signInWithPopup(auth, googleProvider);
+                setFeedbackMessage('Successfully signed in with Google!');
+                setFeedbackType('success');
+            } else {
+                // Sign up
+                await createUserWithEmailAndPassword(auth, data.usernameOrEmail, data.password);
+                setFeedbackMessage('Account created successfully!');
+                setFeedbackType('success');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            setFeedbackMessage(
+                typeof error === 'object' && error !== null && 'message' in error
+                    ? String((error as { message: unknown }).message)
+                    : 'An unknown error occurred'
+            );
+            setFeedbackType('error');
+        }
+    };
+
+    const handleForgotPassword = async (email: string) => {
+        try {
+            await sendPasswordResetEmail(auth, email);
+            setFeedbackMessage('Password reset email sent!');
+            setFeedbackType('success');
+        } catch (error) {
+            console.error('Error sending password reset email:', error);
+            setFeedbackMessage(
+                typeof error === 'object' && error !== null && 'message' in error
+                    ? String((error as { message: unknown }).message)
+                    : 'An unknown error occurred'
+            );
+            setFeedbackType('error');
+        }
     };
 
     return (
         <section className="flex w-full h-screen bg-S1BG justify-center items-center py-10">
             <div className="w-full max-w-md">
                 <BackButton
-                variant='filled'
+                    variant='filled'
                     text="Back to Home"
                     className="flex justify-between items-center mb-4"
                 />
+                {feedbackMessage && (
+                    <div className={`alert ${feedbackType === 'success' ? 'alert-success' : 'alert-error'}`}>
+                        {feedbackMessage}
+                    </div>
+                )}
                 <Tabs defaultValue="left" className="w-full">
                     <TabsList className="grid w-full grid-cols-2">
                         <TabsTrigger value="left">Signup</TabsTrigger>
@@ -104,8 +150,12 @@ const Signup = () => {
 
                             <CardContent className="space-y-2 grid gap-4">
                                 <div className="grid grid-cols-2 gap-6">
-                                    <Button variant="facebook">Facebook</Button>
-                                    <Button variant="google">Google</Button>
+                                    <Button variant="facebook" onClick={() => signInWithPopup(auth, facebookProvider)}>
+                                        Facebook
+                                    </Button>
+                                    <Button variant="google" onClick={() => signInWithPopup(auth, googleProvider)}>
+                                        Google
+                                    </Button>
                                 </div>
                                 <div className="relative">
                                     <div className="absolute inset-0 flex items-center">
@@ -121,11 +171,7 @@ const Signup = () => {
                                 <Form {...form}>
                                     <FormField
                                         name="usernameOrEmail"
-                                        render={({
-                                            field,
-                                            fieldState,
-                                            formState
-                                        }) => (
+                                        render={({ field }) => (
                                             <FormItem>
                                                 <FormLabel>
                                                     Username or email address *
@@ -145,11 +191,7 @@ const Signup = () => {
 
                                     <FormField
                                         name="password"
-                                        render={({
-                                            field,
-                                            fieldState,
-                                            formState
-                                        }) => (
+                                        render={({ field }) => (
                                             <FormItem>
                                                 <FormLabel>
                                                     Password *
@@ -159,9 +201,8 @@ const Signup = () => {
                                                         id="password"
                                                         required
                                                         placeholder="Enter Password"
-                                                        {...form.register(
-                                                            'password'
-                                                        )}
+                                                        type="password"
+                                                        {...field}
                                                     />
                                                 </FormControl>
                                                 <FormMessage />
@@ -190,17 +231,19 @@ const Signup = () => {
                                         <div className="flex items-center space-x-2">
                                             <div className="grid flex-1 gap-2">
                                                 <Input
-                                                    id="link"
+                                                    id="resetEmail"
                                                     placeholder="Email Address*"
+                                                    onChange={(e) => handleForgotPassword(e.target.value)}
                                                 />
                                             </div>
                                         </div>
                                         <DialogFooter>
                                             <DialogClose asChild>
                                                 <Button
-                                                    type="submit"
+                                                    type="button"
                                                     size="sm"
                                                     className="px-2"
+                                                    onClick={() => handleForgotPassword(form.getValues('usernameOrEmail'))}
                                                 >
                                                     Reset Password
                                                 </Button>
@@ -232,18 +275,13 @@ const Signup = () => {
                             <CardContent className="space-y-2">
                                 <Form {...form}>
                                     <FormField
-                                        name="current"
-                                        render={({
-                                            field,
-                                            fieldState,
-                                            formState
-                                        }) => (
+                                        name="username"
+                                        render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel>Name</FormLabel>
+                                                <FormLabel>Username</FormLabel>
                                                 <FormControl>
                                                     <Input
-                                                        id="name"
-                                                        type="name"
+                                                        id="username"
                                                         required
                                                         {...field}
                                                     />
@@ -253,35 +291,8 @@ const Signup = () => {
                                         )}
                                     />
                                     <FormField
-                                        name="username"
-                                        render={({
-                                            field,
-                                            fieldState,
-                                            formState
-                                        }) => (
-                                            <FormItem>
-                                                <FormLabel>Username</FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        id="username"
-                                                        type="username"
-                                                        required
-                                                        {...form.register(
-                                                            'username'
-                                                        )}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-                                    <FormField
                                         name="password"
-                                        render={({
-                                            field,
-                                            fieldState,
-                                            formState
-                                        }) => (
+                                        render={({ field }) => (
                                             <FormItem>
                                                 <FormLabel>
                                                     New password
@@ -291,9 +302,7 @@ const Signup = () => {
                                                         id="password"
                                                         type="password"
                                                         required
-                                                        {...form.register(
-                                                            'password'
-                                                        )}
+                                                        {...field}
                                                     />
                                                 </FormControl>
                                                 <FormMessage />
@@ -302,11 +311,7 @@ const Signup = () => {
                                     />
                                     <FormField
                                         name="confirmPassword"
-                                        render={({
-                                            field,
-                                            fieldState,
-                                            formState
-                                        }) => (
+                                        render={({ field }) => (
                                             <FormItem>
                                                 <FormLabel>
                                                     Confirm new password
@@ -316,9 +321,7 @@ const Signup = () => {
                                                         id="confirmPassword"
                                                         type="password"
                                                         required
-                                                        {...form.register(
-                                                            'confirmPassword'
-                                                        )}
+                                                        {...field}
                                                     />
                                                 </FormControl>
                                                 <FormMessage />
