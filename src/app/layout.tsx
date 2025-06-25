@@ -8,6 +8,8 @@ export const metadata: Metadata = {
     keywords: ['']
 };
 
+  // TODO: Chnage the Book Buddy name to BazmBooks
+
 export default function RootLayout({
     children
 }: Readonly<{
@@ -27,7 +29,7 @@ export default function RootLayout({
             <body className="">
                 <ThemeProvider attribute="class" defaultTheme="system">
                     {children}
-                    <FirebaseTest />
+                    {/* <FirebaseTest /> */}
                 </ThemeProvider>
             </body>
         </html>
