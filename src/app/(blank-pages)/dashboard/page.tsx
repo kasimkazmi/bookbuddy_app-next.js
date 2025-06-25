@@ -30,42 +30,6 @@ export default function DashboardPage() {
         { title: 'Hours', value: 156, icon: Clock, color: 'bg-yellow-200' }
     ];
 
-    // Quick action features
-    const features = [
-        {
-            title: 'Book Trading',
-            description: 'Trade your books effortlessly with nearby readers',
-            icon: Book,
-            buttonText: 'Start Trading',
-            action: () => router.push('/trading'),
-            color: 'bg-purple-100 text-purple-600'
-        },
-        {
-            title: 'Audio Rooms',
-            description: 'Join live discussions about your favorite books',
-            icon: MessageSquare,
-            buttonText: 'Join Rooms',
-            action: () => router.push('/rooms'),
-            color: 'bg-blue-100 text-blue-600'
-        },
-        {
-            title: 'Book Discovery',
-            description: 'Get personalized recommendations based on your taste',
-            icon: Search,
-            buttonText: 'Discover Books',
-            action: () => router.push('/discover'),
-            color: 'bg-green-100 text-green-600'
-        },
-        {
-            title: 'Book Clubs',
-            description: 'Connect with fellow readers who share your interests',
-            icon: Users,
-            buttonText: 'Find Clubs',
-            action: () => router.push('/clubs'),
-            color: 'bg-yellow-100 text-yellow-600'
-        }
-    ];
-
     return (
         <div className="min-h-screen bg-gray-50">
             {/* Header */}
