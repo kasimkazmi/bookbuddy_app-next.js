@@ -14,7 +14,6 @@ import {
     ChevronDown,
     LogOut
 } from 'lucide-react';
-import { Button } from '@/src/components/ui/button';
 import QuickActions from '@/src/components/QuickActions';
 import StatsCard from '@/src/components/StatsCard';
 import { BookRecommendations } from '@/src/components/BookRecommendations';
@@ -46,7 +45,7 @@ export default function DashboardPage() {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) setUser(user);
-            else router.push('/login');
+            else router.push('/signup');
         });
 
         return () => unsubscribe();
@@ -61,7 +60,7 @@ export default function DashboardPage() {
 
     const handleLogout = async () => {
         await signOut(auth);
-        router.push('/login');
+        router.push('/signup');
     };
 
     return (

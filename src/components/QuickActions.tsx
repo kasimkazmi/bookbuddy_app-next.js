@@ -17,8 +17,11 @@ import {
     CardHeader,
     CardTitle
 } from '@/src/components/ui/card';
+import { useRouter } from 'next/navigation';
 
 export default function QuickActions() {
+    const router = useRouter();
+
     return (
         <section className="container mx-auto p-4 max-w-6xl">
             {/* Header */}
@@ -44,7 +47,10 @@ export default function QuickActions() {
                         <p className="text-gray-600 mb-4">
                             Trade your books effortlessly with nearby readers
                         </p>
-                        <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white">
+                        <Button
+                            onClick={() => router.push('/trade-books')}
+                            className="w-full bg-purple-600 hover:bg-purple-700 text-white"
+                        >
                             Start Trading
                         </Button>
                     </CardContent>
@@ -65,7 +71,10 @@ export default function QuickActions() {
                             Join live audio discussions about your favorite
                             books
                         </p>
-                        <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                        <Button
+                            onClick={() => router.push('/audio-rooms')}
+                            className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                        >
                             Join a Club
                         </Button>
                     </CardContent>
@@ -85,7 +94,10 @@ export default function QuickActions() {
                         <p className="text-gray-600 mb-4">
                             Get personalized recommendations based on your taste
                         </p>
-                        <Button className="w-full bg-green-600 hover:bg-green-700 text-white">
+                        <Button
+                            onClick={() => router.push('/shop-books')}
+                            className="w-full bg-green-600 hover:bg-green-700 text-white"
+                        >
                             Discover Books
                         </Button>
                     </CardContent>
