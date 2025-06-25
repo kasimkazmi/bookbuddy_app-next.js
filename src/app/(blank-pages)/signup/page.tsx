@@ -89,7 +89,7 @@ export default function Signup() {
                 message: 'Account created successfully!',
                 type: 'success'
             });
-            router.push('/home');
+            router.push('/dashboard');
         } catch (error: any) {
             setFeedback({
                 message: error.message || 'Signup failed',
@@ -102,7 +102,7 @@ export default function Signup() {
         try {
             await signInWithPopup(auth, googleProvider);
             setFeedback({ message: 'Signed in with Google!', type: 'success' });
-            router.push('/home');
+            router.push('/dashboard');
         } catch (error: any) {
             setFeedback({
                 message: error.message || 'Google sign-in failed',
@@ -118,7 +118,7 @@ export default function Signup() {
                 message: 'Signed in with Facebook!',
                 type: 'success'
             });
-            router.push('/home');
+            router.push('/dashboard');
         } catch (error: any) {
             setFeedback({
                 message: error.message || 'Facebook sign-in failed',

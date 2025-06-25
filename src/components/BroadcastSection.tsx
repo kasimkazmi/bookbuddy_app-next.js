@@ -1,6 +1,5 @@
 'use client';
 
-import Router from 'next/router';
 import IMAGES from '../constants/images';
 import { Button } from './ui/button';
 import {
