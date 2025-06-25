@@ -38,7 +38,11 @@ import {
 } from '@/src/components/ui/dialog';
 import BackButton from '@/src/components/ui/backButton';
 import { auth, googleProvider, facebookProvider } from '@/src/firebase'; // Import Firebase auth and providers
-import { signInWithPopup,  sendPasswordResetEmail, createUserWithEmailAndPassword } from 'firebase/auth';
+import {
+    signInWithPopup,
+    sendPasswordResetEmail,
+    createUserWithEmailAndPassword
+} from 'firebase/auth';
 
 const Signup = () => {
     const [isForgotPassVisible, setIsForgotPassVisible] = useState(false);
@@ -93,14 +97,20 @@ const Signup = () => {
                 setFeedbackType('success');
             } else {
                 // Sign up
-                await createUserWithEmailAndPassword(auth, data.usernameOrEmail, data.password);
+                await createUserWithEmailAndPassword(
+                    auth,
+                    data.usernameOrEmail,
+                    data.password
+                );
                 setFeedbackMessage('Account created successfully!');
                 setFeedbackType('success');
             }
         } catch (error) {
             console.error('Error:', error);
             setFeedbackMessage(
-                typeof error === 'object' && error !== null && 'message' in error
+                typeof error === 'object' &&
+                    error !== null &&
+                    'message' in error
                     ? String((error as { message: unknown }).message)
                     : 'An unknown error occurred'
             );
@@ -116,7 +126,9 @@ const Signup = () => {
         } catch (error) {
             console.error('Error sending password reset email:', error);
             setFeedbackMessage(
-                typeof error === 'object' && error !== null && 'message' in error
+                typeof error === 'object' &&
+                    error !== null &&
+                    'message' in error
                     ? String((error as { message: unknown }).message)
                     : 'An unknown error occurred'
             );
@@ -128,12 +140,14 @@ const Signup = () => {
         <section className="flex w-full h-screen bg-S1BG justify-center items-center py-10">
             <div className="w-full max-w-md">
                 <BackButton
-                    variant='filled'
+                    variant="filled"
                     text="Back to Home"
                     className="flex justify-between items-center mb-4"
                 />
                 {feedbackMessage && (
-                    <div className={`alert ${feedbackType === 'success' ? 'alert-success' : 'alert-error'}`}>
+                    <div
+                        className={`alert ${feedbackType === 'success' ? 'alert-success' : 'alert-error'}`}
+                    >
                         {feedbackMessage}
                     </div>
                 )}
@@ -150,10 +164,26 @@ const Signup = () => {
 
                             <CardContent className="space-y-2 grid gap-4">
                                 <div className="grid grid-cols-2 gap-6">
-                                    <Button variant="facebook" onClick={() => signInWithPopup(auth, facebookProvider)}>
+                                    <Button
+                                        variant="facebook"
+                                        onClick={() =>
+                                            signInWithPopup(
+                                                auth,
+                                                facebookProvider
+                                            )
+                                        }
+                                    >
                                         Facebook
                                     </Button>
-                                    <Button variant="google" onClick={() => signInWithPopup(auth, googleProvider)}>
+                                    <Button
+                                        variant="google"
+                                        onClick={() =>
+                                            signInWithPopup(
+                                                auth,
+                                                googleProvider
+                                            )
+                                        }
+                                    >
                                         Google
                                     </Button>
                                 </div>
@@ -233,7 +263,11 @@ const Signup = () => {
                                                 <Input
                                                     id="resetEmail"
                                                     placeholder="Email Address*"
-                                                    onChange={(e) => handleForgotPassword(e.target.value)}
+                                                    onChange={(e) =>
+                                                        handleForgotPassword(
+                                                            e.target.value
+                                                        )
+                                                    }
                                                 />
                                             </div>
                                         </div>
@@ -243,7 +277,13 @@ const Signup = () => {
                                                     type="button"
                                                     size="sm"
                                                     className="px-2"
-                                                    onClick={() => handleForgotPassword(form.getValues('usernameOrEmail'))}
+                                                    onClick={() =>
+                                                        handleForgotPassword(
+                                                            form.getValues(
+                                                                'usernameOrEmail'
+                                                            )
+                                                        )
+                                                    }
                                                 >
                                                     Reset Password
                                                 </Button>
