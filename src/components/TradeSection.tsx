@@ -31,6 +31,7 @@ import {
 } from '@/src/components/ui/form';
 import { Button } from '@/src/components/ui/button';
 import IMAGES from '../constants/images';
+import Link from 'next/link';
 
 export const TradeSection = () => {
     const bookSchema: ZodType<any, any, any> = z.object({
@@ -83,16 +84,18 @@ export const TradeSection = () => {
                             Start Trading
                         </Button>
 
-                        <Button
-                            className="bg-S3BG text-white py-2 px-4 rounded-2xl hover:bg-S4BG hover:text-white transition-colors duration-300"
-                            onClick={() =>
-                                form.handleSubmit((data) => {
-                                    console.log(data);
-                                })()
-                            }
-                        >
-                            Explore Trade
-                        </Button>
+                        <Link href={`/trade-books`}>
+                            <Button
+                                className="bg-S3BG text-white py-2 px-4 rounded-2xl hover:bg-S4BG hover:text-white transition-colors duration-300"
+                                onClick={() =>
+                                    form.handleSubmit((data) => {
+                                        console.log(data);
+                                    })()
+                                }
+                            >
+                                Explore Trade
+                            </Button>
+                        </Link>
                     </div>
                 </div>
                 <div className="flex justify-center items-center rounded-2xl ">

@@ -907,3 +907,22 @@ export const userTradeProfile = [
         lookingFor: ['The Hobbit', 'The Great Gatsby']
     }
 ];
+
+
+export interface UserViewType {
+    id: number;
+    name: string;
+    location: string;
+    distance: string;
+    genres: string[];
+    stats: {
+        booksOwned: number;
+        successfulTrades: number;
+        rating: number;
+    };
+    availableBooks: {
+        title: string;
+        author: string;
+        condition: string;
+    }[];
+}

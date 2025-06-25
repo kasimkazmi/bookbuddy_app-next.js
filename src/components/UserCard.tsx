@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { BellRing, UserRound } from 'lucide-react';
 import { Button } from './ui/button'; // Adjust import path as per your setup
+import Link from 'next/link';
 
 interface User {
     id: number;
@@ -15,11 +16,6 @@ interface User {
 const UserCard = ({ user }: { user: User }) => {
     const handlePing = () => {
         alert(`Trade request sent to ${user.name}!`);
-    };
-
-    const handleViewProfile = () => {
-        alert(`Viewing profile of ${user.name}`);
-        // You can navigate or open a modal here
     };
 
     return (
@@ -81,14 +77,15 @@ const UserCard = ({ user }: { user: User }) => {
                         <BellRing className="w-4 h-4" />
                         Ping
                     </Button>
-                    <Button
-                        onClick={handleViewProfile}
-                        variant="outline"
-                        className="w-full flex items-center justify-center gap-2 border-purple-300"
-                    >
-                        <UserRound className="w-4 h-4" />
-                        View Profile
-                    </Button>
+                    <Link href={`/view-profile/${user.id}`} className="w-full">
+                        <Button
+                            variant="outline"
+                            className="w-full flex items-center justify-center gap-2 border-purple-300 text-purple-600 hover:text-purple-800"
+                        >
+                            <UserRound className="w-4 h-4" />
+                            View Profile
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </motion.div>

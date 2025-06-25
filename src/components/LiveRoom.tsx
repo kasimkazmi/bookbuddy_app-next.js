@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 import { Mic2, Headphones, Users, Share2, X, Volume2 } from 'lucide-react';
 import { Button } from './ui/button';
 import { activeSpeakers } from '../constants';
-import { useRouter } from 'next/router'; // Import useRouter
 import Link from 'next/link';
 
 interface LiveRoomProps {
