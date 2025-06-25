@@ -1,431 +1,225 @@
 'use client';
-import { useState, useEffect } from 'react';
-import { Button } from '@/src/components/ui/button';
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage
-} from '@/src/components/ui/form';
+  signInWithPopup,
+  sendPasswordResetEmail,
+  createUserWithEmailAndPassword,
+  FacebookAuthProvider,
+  GoogleAuthProvider
+} from 'firebase/auth';
 import {
-    Card,
-    CardContent,
-    CardFooter,
-    CardHeader,
-    CardTitle
+  auth,
+  facebookProvider,
+  googleProvider
+} from '@/src/firebase';
+
+import {
+  Card, CardContent, CardFooter, CardHeader, CardTitle
 } from '@/src/components/ui/card';
 import {
-    Tabs,
-    TabsContent,
-    TabsList,
-    TabsTrigger
+  Tabs, TabsContent, TabsList, TabsTrigger
 } from '@/src/components/ui/tabs';
+import {
+  Form, FormControl, FormField, FormItem, FormLabel, FormMessage
+} from '@/src/components/ui/form';
 import { Input } from '@/src/components/ui/input';
+import { Button } from '@/src/components/ui/button';
+import BackButton from '@/src/components/ui/backButton';
+
+import {
+  Dialog, DialogClose, DialogContent, DialogDescription,
+  DialogFooter, DialogHeader, DialogTitle, DialogTrigger
+} from '@/src/components/ui/dialog';
+
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z, ZodType } from 'zod';
-import {
-    Dialog,
-    DialogClose,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger
-} from '@/src/components/ui/dialog';
-import BackButton from '@/src/components/ui/backButton';
-import { auth, googleProvider, facebookProvider } from '@/src/firebase'; // Import Firebase auth and providers
-import {
-    signInWithPopup,
-    sendPasswordResetEmail,
-    createUserWithEmailAndPassword,
-    FacebookAuthProvider,
-    GoogleAuthProvider
-} from 'firebase/auth';
-import { useRouter } from 'next/router';
+import { z } from 'zod';
 
-const Signup = () => {
-    const [isForgotPassVisible, setIsForgotPassVisible] = useState(false);
-    const [feedbackMessage, setFeedbackMessage] = useState('');
-    const [feedbackType, setFeedbackType] = useState(''); // 'success' or 'error'
-    const router = useRouter();
+const schema = z.object({
+  usernameOrEmail: z.string().min(1, 'Username or email required'),
+  password: z.string().min(6, 'Password must be at least 6 characters'),
+  confirmPassword: z.string().min(6, 'Confirm your password')
+}).refine(data => data.password === data.confirmPassword, {
+  path: ['confirmPassword'],
+  message: 'Passwords do not match'
+});
 
-    const zodType: ZodType<any, any, any> = z
-        .object({
-            email: z.string().email('Invalid email Address'),
-            username: z
-                .string()
-                .min(1, 'Username is required')
-                .max(20, 'Username must not exceed 20 characters'),
-            usernameOrEmail: z.union([
-                z
-                    .string()
-                    .min(1, 'Username is required')
-                    .max(20, 'Username must not exceed 20 characters')
-                    .regex(/^[a-zA-Z0-9_]+$/, 'Invalid username format'),
-                z.string().email()
-            ]),
-            password: z
-                .string()
-                .min(6, 'Password must be at least 6 characters long'),
-            confirmPassword: z
-                .string()
-                .min(6, 'Password must be at least 6 characters long')
-        })
-        .refine((data) => data.password === data.confirmPassword, {
-            message: 'Passwords do not match',
-            path: ['confirmPassword']
-        });
+export default function Signup() {
+  const router = useRouter();
+  const [feedback, setFeedback] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
 
-    const form = useForm({
-        resolver: zodResolver(zodType),
-        defaultValues: {
-            email: '',
-            username: '',
-            usernameOrEmail: '',
-            password: '',
-            confirmPassword: ''
-        }
-    });
+  const form = useForm({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      usernameOrEmail: '',
+      password: '',
+      confirmPassword: ''
+    }
+  });
 
-    const onSubmit = async (data: any) => {
-        try {
-            // Check if the input is an email or username for sign up
-            if (data.usernameOrEmail.includes('@')) {
-                // Sign in
-                await signInWithPopup(auth, googleProvider);
-                setFeedbackMessage('Successfully signed in with Google!');
-                setFeedbackType('success');
-                router.push('/home'); // Navigate to home page
-            } else {
-                // Sign up
-                await createUserWithEmailAndPassword(
-                    auth,
-                    data.usernameOrEmail,
-                    data.password
-                );
-                setFeedbackMessage('Account created successfully!');
-                setFeedbackType('success');
-                router.push('/home'); // Navigate to home page
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            setFeedbackMessage(
-                typeof error === 'object' &&
-                    error !== null &&
-                    'message' in error
-                    ? String((error as { message: unknown }).message)
-                    : 'An unknown error occurred'
-            );
-            setFeedbackType('error');
-        }
-    };
+  const handleSubmit = async (data: any) => {
+    try {
+      await createUserWithEmailAndPassword(auth, data.usernameOrEmail, data.password);
+      setFeedback({ message: 'Account created successfully!', type: 'success' });
+      router.push('/home');
+    } catch (error: any) {
+      setFeedback({ message: error.message || 'Signup failed', type: 'error' });
+    }
+  };
 
-    // Separate handler for Facebook login
-    const handleFacebookLogin = async () => {
-        try {
-            const provider = new FacebookAuthProvider();
-            await signInWithPopup(auth, provider);
-            setFeedbackMessage('Successfully signed in with Facebook!');
-            setFeedbackType('success');
-            router.push('/home'); // Navigate to home
-        } catch (error) {
-            console.error('Facebook login error:', error);
-            setFeedbackMessage(
-                typeof error === 'object' &&
-                    error !== null &&
-                    'message' in error
-                    ? String((error as { message: unknown }).message)
-                    : 'Facebook login failed'
-            );
-            setFeedbackType('error');
-        }
-    };
-    // Separate handler for Google login
-    const handleGoogleLogin = async () => {
-        try {
-            const provider = new GoogleAuthProvider();
-            await signInWithPopup(auth, provider);
-            setFeedbackMessage('Successfully signed in with Google!');
-            setFeedbackType('success');
-            router.push('/home'); // Navigate to home
-        } catch (error) {
-            console.error('Google login error:', error);
-            setFeedbackMessage(
-                typeof error === 'object' &&
-                    error !== null &&
-                    'message' in error
-                    ? String((error as { message: unknown }).message)
-                    : 'Google login failed'
-            );
-            setFeedbackType('error');
-        }
+  const handleGoogleLogin = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+      setFeedback({ message: 'Signed in with Google!', type: 'success' });
+      router.push('/home');
+    } catch (error: any) {
+      setFeedback({ message: error.message || 'Google sign-in failed', type: 'error' });
+    }
+  };
 
-        const handleForgotPassword = async (email: string) => {
-            try {
-                await sendPasswordResetEmail(auth, email);
-                setFeedbackMessage('Password reset email sent!');
-                setFeedbackType('success');
-            } catch (error) {
-                console.error('Error sending password reset email:', error);
-                setFeedbackMessage(
-                    typeof error === 'object' &&
-                        error !== null &&
-                        'message' in error
-                        ? String((error as { message: unknown }).message)
-                        : 'An unknown error occurred'
-                );
-                setFeedbackType('error');
-            }
-        };
+  const handleFacebookLogin = async () => {
+    try {
+      await signInWithPopup(auth, facebookProvider);
+      setFeedback({ message: 'Signed in with Facebook!', type: 'success' });
+      router.push('/home');
+    } catch (error: any) {
+      setFeedback({ message: error.message || 'Facebook sign-in failed', type: 'error' });
+    }
+  };
 
-        return (
-            <section className="flex w-full h-screen bg-S1BG justify-center items-center py-10">
-                <div className="w-full max-w-md">
-                    <BackButton
-                        variant="filled"
-                        text="Back to Home"
-                        className="flex justify-between items-center mb-4"
-                    />
-                    {feedbackMessage && (
-                        <div
-                            className={`alert ${feedbackType === 'success' ? 'alert-success' : 'alert-error'}`}
-                        >
-                            {feedbackMessage}
-                        </div>
+  const handleForgotPassword = async () => {
+    try {
+      const email = form.getValues('usernameOrEmail');
+      await sendPasswordResetEmail(auth, email);
+      setFeedback({ message: 'Password reset email sent!', type: 'success' });
+    } catch (error: any) {
+      setFeedback({ message: error.message || 'Reset failed', type: 'error' });
+    }
+  };
+
+  return (
+    <section className="flex min-h-screen justify-center items-center bg-S1BG p-6">
+      <div className="w-full max-w-md">
+        <BackButton text="Back to Home" className="mb-4" />
+        {feedback && (
+          <div className={`p-3 mb-4 text-sm rounded-md ${feedback.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+            {feedback.message}
+          </div>
+        )}
+
+        <Tabs defaultValue="signup">
+          <TabsList className="grid grid-cols-2">
+            <TabsTrigger value="signup">Sign Up</TabsTrigger>
+            <TabsTrigger value="login">Login</TabsTrigger>
+          </TabsList>
+
+          {/* Sign Up */}
+          <TabsContent value="signup">
+            <Card>
+              <CardHeader>
+                <CardTitle>Create Account</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <Form {...form}>
+                  <FormField
+                    name="usernameOrEmail"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Email</FormLabel>
+                        <FormControl><Input {...field} required /></FormControl>
+                        <FormMessage />
+                      </FormItem>
                     )}
-                    <Tabs defaultValue="left" className="w-full">
-                        <TabsList className="grid w-full grid-cols-2">
-                            <TabsTrigger value="left">Signup</TabsTrigger>
-                            <TabsTrigger value="right">Register</TabsTrigger>
-                        </TabsList>
-                        <TabsContent value="left">
-                            <Card>
-                                <CardHeader className="content-center">
-                                    <CardTitle className="p-4">
-                                        Sign In
-                                    </CardTitle>
-                                </CardHeader>
+                  />
+                  <FormField
+                    name="password"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Password</FormLabel>
+                        <FormControl><Input type="password" {...field} required /></FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    name="confirmPassword"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Confirm Password</FormLabel>
+                        <FormControl><Input type="password" {...field} required /></FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </Form>
+              </CardContent>
+              <CardFooter>
+                <Button className="w-full" onClick={form.handleSubmit(handleSubmit)}>Sign Up</Button>
+              </CardFooter>
+            </Card>
+          </TabsContent>
 
-                                <CardContent className="space-y-2 grid gap-4">
-                                    <div className="grid grid-cols-2 gap-6">
-                                        <Button
-                                            variant="facebook"
-                                            onClick={handleFacebookLogin}
-                                        >
-                                            Facebook{' '}
-                                        </Button>
-                                        <Button
-                                            variant="google"
-                                            onClick={handleGoogleLogin}
-                                        >
-                                            Google
-                                        </Button>
-                                    </div>
-                                    <div className="relative">
-                                        <div className="absolute inset-0 flex items-center">
-                                            <span className="w-full border-t" />
-                                        </div>
-                                        <div className="relative flex justify-center text-xs uppercase">
-                                            <span className="bg-background px-2 text-muted-foreground">
-                                                Or continue with
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <Form {...form}>
-                                        <FormField
-                                            name="usernameOrEmail"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel>
-                                                        Username or email
-                                                        address *
-                                                    </FormLabel>
-                                                    <FormControl>
-                                                        <Input
-                                                            id="usernameOrEmail"
-                                                            required
-                                                            placeholder="Enter Username or Email"
-                                                            {...field}
-                                                        />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-
-                                        <FormField
-                                            name="password"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel>
-                                                        Password *
-                                                    </FormLabel>
-                                                    <FormControl>
-                                                        <Input
-                                                            id="password"
-                                                            required
-                                                            placeholder="Enter Password"
-                                                            type="password"
-                                                            {...field}
-                                                        />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                    </Form>
-
-                                    <Dialog>
-                                        <DialogTrigger>
-                                            <Button variant="link">
-                                                Forgot Password?
-                                            </Button>
-                                        </DialogTrigger>
-                                        <DialogContent className="sm:max-w-md">
-                                            <DialogHeader>
-                                                <DialogTitle className="text-center py-2">
-                                                    Forgot your password?
-                                                </DialogTitle>
-                                                <DialogDescription className="p-2">
-                                                    Please fill in your email
-                                                    below and we'll send you a
-                                                    link to reset your password.
-                                                </DialogDescription>
-                                            </DialogHeader>
-                                            <div className="flex items-center space-x-2">
-                                                <div className="grid flex-1 gap-2">
-                                                    <Input
-                                                        id="resetEmail"
-                                                        placeholder="Email Address*"
-                                                        onChange={(e) =>
-                                                            handleForgotPassword(
-                                                                e.target.value
-                                                            )
-                                                        }
-                                                    />
-                                                </div>
-                                            </div>
-                                            <DialogFooter>
-                                                <DialogClose asChild>
-                                                    <Button
-                                                        type="button"
-                                                        size="sm"
-                                                        className="px-2"
-                                                        onClick={() =>
-                                                            handleForgotPassword(
-                                                                form.getValues(
-                                                                    'usernameOrEmail'
-                                                                )
-                                                            )
-                                                        }
-                                                    >
-                                                        Reset Password
-                                                    </Button>
-                                                </DialogClose>
-                                            </DialogFooter>
-                                        </DialogContent>
-                                    </Dialog>
-                                </CardContent>
-                                <CardFooter className="justify-center">
-                                    <Button
-                                        type="submit"
-                                        onClick={form.handleSubmit(onSubmit)}
-                                    >
-                                        Sign in
-                                    </Button>
-                                </CardFooter>
-                            </Card>
-                        </TabsContent>
-
-                        {/* Create Account Section */}
-                        <TabsContent value="right">
-                            <Card>
-                                <CardHeader className="content-center">
-                                    <CardTitle className="py-2">
-                                        Create An Account
-                                    </CardTitle>
-                                </CardHeader>
-
-                                <CardContent className="space-y-2">
-                                    <Form {...form}>
-                                        <FormField
-                                            name="username"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel>
-                                                        Username
-                                                    </FormLabel>
-                                                    <FormControl>
-                                                        <Input
-                                                            id="username"
-                                                            required
-                                                            {...field}
-                                                        />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                        <FormField
-                                            name="password"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel>
-                                                        New password
-                                                    </FormLabel>
-                                                    <FormControl>
-                                                        <Input
-                                                            id="password"
-                                                            type="password"
-                                                            required
-                                                            {...field}
-                                                        />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                        <FormField
-                                            name="confirmPassword"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel>
-                                                        Confirm new password
-                                                    </FormLabel>
-                                                    <FormControl>
-                                                        <Input
-                                                            id="confirmPassword"
-                                                            type="password"
-                                                            required
-                                                            {...field}
-                                                        />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                    </Form>
-                                </CardContent>
-                                <CardFooter>
-                                    <Button
-                                        type="submit"
-                                        onClick={form.handleSubmit(onSubmit)}
-                                    >
-                                        Create Account
-                                    </Button>
-                                </CardFooter>
-                            </Card>
-                        </TabsContent>
-                    </Tabs>
+          {/* Login */}
+          <TabsContent value="login">
+            <Card>
+              <CardHeader>
+                <CardTitle>Sign In</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <Button variant="facebook" onClick={handleFacebookLogin}>Facebook</Button>
+                  <Button variant="google" onClick={handleGoogleLogin}>Google</Button>
                 </div>
-            </section>
-        );
-    };
-};
 
-export default Signup;
+                <Form {...form}>
+                  <FormField
+                    name="usernameOrEmail"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Email</FormLabel>
+                        <FormControl><Input {...field} required /></FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    name="password"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Password</FormLabel>
+                        <FormControl><Input type="password" {...field} required /></FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </Form>
+
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="link" className="text-sm text-purple-600">Forgot Password?</Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>Reset Password</DialogTitle>
+                      <DialogDescription>Enter your email and we'll send you reset instructions.</DialogDescription>
+                    </DialogHeader>
+                    <DialogFooter>
+                      <DialogClose asChild>
+                        <Button onClick={handleForgotPassword}>Send Reset Email</Button>
+                      </DialogClose>
+                    </DialogFooter>
+                  </DialogContent>
+                </Dialog>
+              </CardContent>
+              <CardFooter>
+                <Button className="w-full" onClick={form.handleSubmit(handleSubmit)}>Sign In</Button>
+              </CardFooter>
+            </Card>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </section>
+  );
+}
