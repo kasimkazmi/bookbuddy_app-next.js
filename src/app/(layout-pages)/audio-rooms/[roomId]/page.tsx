@@ -48,7 +48,7 @@ export default function RoomPage({ params }: { params: { roomId: string } }) {
             transition={{ duration: 0.3 }}
             className="container mx-auto py-12 px-4 sm:px-6"
         >
-            <BackButton className="mb-6" />
+            <BackButton className="mb-6" text="Back to all rooms" />
 
             <div className="flex flex-col md:flex-row gap-8">
                 <div className="flex-1">
