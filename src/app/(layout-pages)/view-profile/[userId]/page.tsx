@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import UserProfilePage from '@/src/components/ViewProfile';
-import { UserViewType } from '@/src/constants';
+import { UserViewType } from '@/src/lib/types';
 
 async function getUserData(userId: string): Promise<UserViewType | null> {
     const mockUsers: Record<string, UserViewType> = {

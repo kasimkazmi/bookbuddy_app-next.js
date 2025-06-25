@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserViewType } from '../constants';
+import { UserViewType } from '../lib/types';
 
 interface UserProfilePageProps {
     user: UserViewType;

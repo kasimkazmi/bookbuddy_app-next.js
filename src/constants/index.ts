@@ -908,21 +908,47 @@ export const userTradeProfile = [
     }
 ];
 
+export const mockBooks = [
+    {
+        title: 'Project Hail Mary',
+        author: 'Andy Weir',
+        price: 14.99,
+        status: 'New Release',
+        emoji: '📘',
+        genre: 'Fiction'
+    },
+    {
+        title: 'Atomic Habits',
+        author: 'James Clear',
+        price: 19.95,
+        status: 'Best Seller',
+        emoji: '📗',
+        genre: 'Non-Fiction'
+    },
+    {
+        title: 'Dune',
+        author: 'Frank Herbert',
+        price: 9.99,
+        status: 'Classic',
+        emoji: '📙',
+        genre: 'Fiction'
+    },
+    {
+        title: 'Sapiens',
+        author: 'Yuval Noah Harari',
+        price: 21.0,
+        status: 'Highly Rated',
+        emoji: '📕',
+        genre: 'Non-Fiction'
+    },
+    {
+        title: 'The Hobbit',
+        author: 'J.R.R. Tolkien',
+        price: 12.49,
+        status: 'Fantasy',
+        emoji: '📒',
+        genre: 'Fiction'
+    }
+];
 
-export interface UserViewType {
-    id: number;
-    name: string;
-    location: string;
-    distance: string;
-    genres: string[];
-    stats: {
-        booksOwned: number;
-        successfulTrades: number;
-        rating: number;
-    };
-    availableBooks: {
-        title: string;
-        author: string;
-        condition: string;
-    }[];
-}
+//
