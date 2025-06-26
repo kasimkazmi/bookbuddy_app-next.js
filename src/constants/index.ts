@@ -55,7 +55,7 @@ export const COMUNITY_LINK = {
 export const FOOTER_CONTACT_INFO = {
     title: 'Contact us',
     links: [
-        { label: 'Email', value: 'kasimdev27@gmail.com' },
+        { label: 'Email', value: 'kasimdev07@gmail.com' },
         { label: 'Number', value: '+14378183810' }
     ]
 };
