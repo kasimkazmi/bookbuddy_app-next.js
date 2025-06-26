@@ -117,7 +117,10 @@ export default function QuickActions() {
                         <p className="text-gray-600 mb-4">
                             Connect with fellow readers and share reviews
                         </p>
-                        <Button className="w-full bg-yellow-600 hover:bg-yellow-700 text-white">
+                        <Button
+                            onClick={() => router.push('/community')}
+                            className="w-full bg-yellow-600 hover:bg-yellow-700 text-white"
+                        >
                             Explore Community
                         </Button>
                     </CardContent>
