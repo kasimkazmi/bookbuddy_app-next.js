@@ -56,7 +56,7 @@ export default function Sidebar({
             <nav className="flex flex-col gap-4">
                 <Button
                     onClick={onToggle}
-                    className="text-foreground hover:text-foreground hover:bg-gray-700 transition-colors rounded p-2 mb-4"
+                    className="text-foreground hover:text-foreground transition-colors rounded p-2 mb-4"
                 >
                     <ArrowLeftRight className="w-5 h-5" />
                 </Button>
@@ -78,6 +78,12 @@ export default function Sidebar({
                     href="/community"
                     isOpen={isOpen}
                 />
+                  <SidebarIcon
+                    icon={Users}
+                    label="Trade"
+                    href="/trade-books"
+                    isOpen={isOpen}
+                />
                 {/* <SidebarIcon
                     icon={Settings}
                     label="Settings"
@@ -89,7 +95,7 @@ export default function Sidebar({
             <div className="mt-auto pt-6 border-t border-gray-700">
                 <Button
                     onClick={toggleTheme}
-                    className="w-full flex items-center px-3 py-2 rounded text-sm hover:bg-gray-700 transition-colors"
+                    className="w-full flex items-center px-3 py-2 rounded text-sm transition-colors"
                 >
                     {darkMode ? (
                         <Sun className="w-4 h-4" />
