@@ -40,21 +40,28 @@ const ThemeSwitch = forwardRef<HTMLDivElement, ThemeSwitchProp>(
             >
                 <div className="tabItems">
                     <span
-                        className={`tabItem text-background ${
-                            activeTab === 'dark' ? 'active' : ''
-                        }`}
+                        role="button"
+                        tabIndex={0}
+                        className={`tabItem text-background ${activeTab === 'dark' ? 'active' : ''}`}
                         onClick={() => handleTabClick('dark')}
+                        onKeyPress={(e) =>
+                            e.key === 'Enter' && handleTabClick('dark')
+                        }
                     >
                         <Moon className="h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
                     </span>
                     <span
-                        className={`tabItem text-foreground ${
-                            activeTab === 'light' ? 'active' : ''
-                        }`}
+                        role="button"
+                        tabIndex={0}
+                        className={`tabItem text-foreground ${activeTab === 'light' ? 'active' : ''}`}
                         onClick={() => handleTabClick('light')}
+                        onKeyPress={(e) =>
+                            e.key === 'Enter' && handleTabClick('light')
+                        }
                     >
                         <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
                     </span>
+
                     <span className={`movingBg ${activeTab}`}></span>
                 </div>
             </div>
