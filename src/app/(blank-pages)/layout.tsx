@@ -1,11 +1,9 @@
-// src/app/BlankPagesLayout.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
 import { onAuthStateChanged, User } from 'firebase/auth';
-import { auth } from '@/src/firebase'; // Adjust the import path as necessary
-import Sidebar from '@/src/components/Sidebar'; // Adjust the import path as necessary
-import Navbar from '@/src/components/Navbar'; // Adjust the import path as necessary
+import { auth } from '@/src/firebase';
+import Sidebar from '@/src/components/Sidebar';
 import AuthNavbar from '@/src/components/ui/authNavbar';
 import { ThemeProvider } from 'next-themes';
 
@@ -16,7 +14,7 @@ export default function BlankPagesLayout({
 }) {
     const [user, setUser] = useState<User | null>(null);
     const [isOpen, setIsOpen] = useState(true); // State for sidebar visibility
-
+    // Sync store with ThemeProvider
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             setUser(user); // Set user state based on authentication status
@@ -26,28 +24,29 @@ export default function BlankPagesLayout({
     }, []);
 
     const toggleSidebar = () => {
-        setIsOpen(!isOpen);
+        setIsOpen((prev) => !prev);
     };
 
     return (
         <div>
             {user && ( // Only show Sidebar and Navbar if user is logged in
-                <>
+                <ThemeProvider attribute="class" defaultTheme="system">
                     <Sidebar
+                        key={user.uid} // Ensure unique key for sidebar
                         isOpen={isOpen}
                         onToggle={toggleSidebar}
                         isMobileMenuOpen={false}
                     />
                     <div className="flex-grow">
-                        {/* <AuthNavbar
+                        <AuthNavbar
                             user={user}
                             onLogout={() => setUser(null)}
-                        /> */}
-                        <main className="max-w-7xl mx-auto  pt-24">
+                        />
+                        <main className="max-w-7xl mx-auto pt-24">
                             {children}
                         </main>
                     </div>
-                </>
+                </ThemeProvider>
             )}
             {!user && ( // Optionally, you can render a different layout for non-logged-in users
                 <main className="">{children}</main>

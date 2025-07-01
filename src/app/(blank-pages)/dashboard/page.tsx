@@ -55,9 +55,9 @@ export default function DashboardPage() {
                             <UserIcon className="w-4 h-4 text-gray-500" />
                         </div>
                         <div className="flex-1">
-                            <p className="text-sm">-
-                                <span className="font-medium">Sarah</span> liked
-                                your review of
+                            <p className="text-sm">
+                                -<span className="font-medium">Sarah</span>{' '}
+                                liked your review of
                                 <span className="font-medium">Dune</span>
                             </p>
                             <p className="text-xs text-gray-500">2 hours ago</p>

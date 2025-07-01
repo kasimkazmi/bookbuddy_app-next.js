@@ -11,8 +11,10 @@ import {
     ArrowLeftRight
 } from 'lucide-react';
 import SidebarIcon from './SidebarIcon';
-import { useThemeStore } from '../store/thmeStore';
+// import { useThemeStore } from '../store/themeStore';
 import { Button } from './ui/button';
+import { useRouter, usePathname } from 'next/navigation';
+import ThemeSwitch from './ThemeSwitch';
 
 interface SidebarProps {
     isOpen: boolean;
@@ -25,7 +27,11 @@ export default function Sidebar({
     onToggle,
     isMobileMenuOpen
 }: SidebarProps) {
-    const { darkMode, toggleTheme } = useThemeStore();
+    // const { darkMode, toggleTheme } = useThemeStore();
+    const router = useRouter();
+    const pathname = usePathname();
+
+    const isActive = pathname === '/dashboard'; // Example for Dashboard
 
     return (
         <aside
@@ -65,6 +71,7 @@ export default function Sidebar({
                     label="Dashboard"
                     href="/dashboard"
                     isOpen={isOpen}
+                    className={isActive ? 'bg-gray-700' : ''} // Add active class
                 />
                 <SidebarIcon
                     icon={BookOpen}
@@ -78,7 +85,7 @@ export default function Sidebar({
                     href="/community"
                     isOpen={isOpen}
                 />
-                  <SidebarIcon
+                <SidebarIcon
                     icon={Users}
                     label="Trade"
                     href="/trade-books"
@@ -92,7 +99,8 @@ export default function Sidebar({
                 /> */}
             </nav>
 
-            <div className="mt-auto pt-6 border-t border-gray-700">
+          <ThemeSwitch />
+            {/* <div className="mt-auto pt-6 border-t border-gray-700">
                 <Button
                     onClick={toggleTheme}
                     className="w-full flex items-center px-3 py-2 rounded text-sm transition-colors"
@@ -113,7 +121,7 @@ export default function Sidebar({
                         {darkMode ? 'Light' : 'Dark'} Mode
                     </span>
                 </Button>
-            </div>
+            </div> */}
         </aside>
     );
 }
