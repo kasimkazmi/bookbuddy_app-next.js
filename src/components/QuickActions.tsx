@@ -6,9 +6,9 @@ import {
     Search,
     MessageSquare,
     Star,
-    Bookmark,
     BarChart3,
-    RefreshCw
+    RefreshCw,
+    ShoppingCart
 } from 'lucide-react';
 import { Button } from '@/src/components/ui/button';
 import {
@@ -135,22 +135,23 @@ export default function QuickActions() {
                     <span>My Reviews</span>
                 </Button>
 
-                {/* Messages */}
+                {/* Reading Stats */}
+
                 <Button className="bg-white p-3 rounded-lg shadow-sm flex items-center justify-center space-x-2 hover:bg-gray-50 w-full">
-                    <MessageSquare className="h-5 w-5 text-blue-600" />
-                    <span>Messages</span>
+                    <BarChart3 className="h-5 w-5 text-blue-600" />
+                    <span>Reading Stats</span>
                 </Button>
 
                 {/* Reading List */}
                 <Button className="bg-white p-3 rounded-lg shadow-sm flex items-center justify-center space-x-2 hover:bg-gray-50 w-full">
-                    <Bookmark className="h-5 w-5 text-green-600" />
-                    <span>Reading List</span>
+                    <ShoppingCart className="h-5 w-5 text-green-600" />
+                    <span>Shopping Cart </span>
                 </Button>
+                {/* Messages */}
 
-                {/* Reading Stats */}
                 <Button className="bg-white p-3 rounded-lg shadow-sm flex items-center justify-center space-x-2 hover:bg-gray-50 w-full">
-                    <BarChart3 className="h-5 w-5 text-yellow-600" />
-                    <span>Reading Stats</span>
+                    <MessageSquare className="h-5 w-5 text-yellow-600" />
+                    <span>Messages</span>
                 </Button>
             </div>
         </section>

@@ -38,7 +38,6 @@ export const FOOTER_LINKS = {
     title: 'Learn More',
     links: [
         { label: 'About', value: '/about' },
-        { label: 'Jobs', value: '/jobs' },
         { label: 'Privacy Policy', value: '/' },
         { label: 'Contact US', value: '/contact' }
     ]
