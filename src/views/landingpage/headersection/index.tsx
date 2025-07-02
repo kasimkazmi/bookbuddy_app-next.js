@@ -16,7 +16,7 @@ const Header = () => {
     };
 
     return (
-        <section className="sticky container top-0 mb- z-50 mt-3 rounded-2xl bg-S1BG shadow-sm">
+        <section className="sticky container top-0 mb- z-50 mt-10 rounded-2xl bg-S1BG shadow-sm">
             <div className="flex container items-center justify-between ">
                 <Link href="/">
                     <Image
