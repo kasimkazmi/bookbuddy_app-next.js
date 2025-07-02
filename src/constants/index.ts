@@ -981,14 +981,14 @@ export const bookRecommendations = [
         image: IMAGES.logo
     },
     {
-        id: 4,
+        id: 5,
         title: 'Pride and Prejudice',
         author: 'Jane Austen',
         price: '$9.99',
         image: IMAGES.logo
     },
     {
-        id: 4,
+        id: 6,
         title: 'Pride and Prejudice',
         author: 'Jane Austen',
         price: '$9.99',
