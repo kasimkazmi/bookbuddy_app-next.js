@@ -5,8 +5,11 @@ const IMAGES = {
     explore: '/images/explore.png',
     share: '/images/share.png',
     img2: '/images/img2.png',
-    logo: '/logo.png'
-
+    logo: '/logo.png',
+    BookTrading: '/images/BookTrading.png',
+    BookClubs: '/images/BookClubs.png',
+    Community: '/images/Community.png',
+    NewBook: '/images/newBook.png',
 };
 
 // You could also export sizes if needed for responsive design
