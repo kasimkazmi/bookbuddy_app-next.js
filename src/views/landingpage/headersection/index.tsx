@@ -16,15 +16,15 @@ const Header = () => {
     };
 
     return (
-        <section className="sticky  top-0 z-50  bg-S1BG shadow-sm">
-            <div className="flex  container items-center justify-between ">
+        <section className="sticky container top-0 mb- z-50 mt-3 rounded-2xl bg-S1BG shadow-sm">
+            <div className="flex container items-center justify-between ">
                 <Link href="/">
                     <Image
                         src="/logo.png"
                         alt="logo"
-                        height={100}
-                        width={100}
-                        layout="intrinsic"
+                        height={60}
+                        width={60}
+                        layout="fixed"
                     />
                 </Link>
 
