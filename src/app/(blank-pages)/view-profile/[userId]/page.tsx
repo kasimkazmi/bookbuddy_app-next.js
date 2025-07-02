@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import UserProfilePage from '@/src/components/ViewProfile';
 import { UserViewType } from '@/src/lib/types';
+import BackButton from '@/src/components/ui/backButton';
 
 async function getUserData(userId: string): Promise<UserViewType | null> {
     const mockUsers: Record<string, UserViewType> = {
@@ -66,6 +67,10 @@ export default async function ProfilePage({
     return (
         <section className="flex justify-center py-24 bg-S4BG items-center">
             <div className="bg-S1BG rounded-3xl py-16 px-4 sm:px-6 w-full max-w-6xl">
+                <div className="text-center mb-10">
+                    <BackButton text="Back " />
+                </div>
+
                 <UserProfilePage user={user} />
             </div>
         </section>

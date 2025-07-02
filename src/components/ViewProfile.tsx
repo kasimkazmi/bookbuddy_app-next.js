@@ -9,6 +9,7 @@ const UserProfilePage: React.FC<UserProfilePageProps> = ({ user }) => {
     return (
         <div className="bg-gradient-to-br from-purple-50 rounded-3xl to-blue-50 min-h-screen font-sans px-4 py-12">
             {/* Profile Header */}
+
             <div className="bg-white rounded-2xl shadow-xl p-8 mb-8 border-4 border-purple-200 animate-[scaleIn_0.5s_ease-in-out]">
                 <div className="flex flex-col md:flex-row items-center gap-6">
                     <div className="relative group">
