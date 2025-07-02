@@ -89,7 +89,7 @@ export default function Sidebar({
                 />
                 <SidebarIcon
                     icon={Library}
-                    label="Books"
+                    label="Shop-Books"
                     href="/shop-books"
                     isOpen={isOpen}
                 />
@@ -101,7 +101,7 @@ export default function Sidebar({
                 />
                 <SidebarIcon
                     icon={Handshake}
-                    label="Trade"
+                    label="Trade Books"
                     href="/trade-books"
                     isOpen={isOpen}
                 />

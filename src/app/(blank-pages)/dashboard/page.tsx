@@ -68,7 +68,10 @@ export default function DashboardPage() {
                         </div>
                     </motion.div>
                 ) : (
-                    <StatsCard stats={stats} />
+                    <StatsCard
+                        stats={stats}
+                        userName={auth.currentUser?.displayName || 'Guest'} // Fallback to 'Guest' if no user is logged in
+                    />
                 )}
 
                 {/* Skeleton Loading for Quick Actions */}
@@ -103,7 +106,7 @@ export default function DashboardPage() {
                         exit={{ opacity: 0, scale: 0.9 }}
                         transition={{ duration: 0.3 }}
                     >
-                        <div className="mt-6 grid gap-6">
+                        <div className="mt-6 grid gap-6 ">
                             {Array.from({ length: 3 }).map((_, index) => (
                                 <div
                                     key={index}
@@ -116,7 +119,9 @@ export default function DashboardPage() {
                         </div>
                     </motion.div>
                 ) : (
-                    <BookRecommendations />
+                    <div className="mt-8">
+                        <BookRecommendations />
+                    </div>
                 )}
 
                 {/* Skeleton Loading for Recent Activity */}

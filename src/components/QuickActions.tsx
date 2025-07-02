@@ -8,7 +8,11 @@ import {
     Star,
     BarChart3,
     RefreshCw,
-    ShoppingCart
+    ShoppingCart,
+    ListVideo,
+    ClubIcon,
+    AudioWaveform,
+    AudioLines
 } from 'lucide-react';
 import { Button } from '@/src/components/ui/button';
 import {
@@ -18,6 +22,32 @@ import {
     CardTitle
 } from '@/src/components/ui/card';
 import { useRouter } from 'next/navigation';
+
+const Badge = ({
+    count,
+    color = 'red'
+}: {
+    count: number;
+    color?: 'red' | 'blue' | 'green' | 'yellow' | 'purple';
+}) => {
+    const badgeColorMap = {
+        red: 'bg-red-600',
+        blue: 'bg-blue-600',
+        green: 'bg-green-600',
+        yellow: 'bg-yellow-600',
+        purple: 'bg-purple-600'
+    };
+
+    const displayCount = count > 99 ? '99+' : count;
+    if (displayCount === 0) return null; // Don't show badge if count is 0
+    return (
+        <span
+            className={`absolute -top-2   -right-2 text-white text-xs font-bold px-2 py-0.5 rounded-full ${badgeColorMap[color]}`}
+        >
+            {displayCount}
+        </span>
+    );
+};
 
 export default function QuickActions() {
     const router = useRouter();
@@ -130,29 +160,54 @@ export default function QuickActions() {
             {/* Secondary Actions */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {/* My Reviews */}
-                <Button className="bg-white p-3 rounded-lg shadow-sm flex items-center justify-center space-x-2 hover:bg-gray-50 w-full">
-                    <Star className="h-5 w-5 text-purple-600" />
-                    <span>My Reviews</span>
-                </Button>
+                <div className="relative">
+                    <Button className="bg-white p-3 rounded-lg shadow-sm flex items-center justify-center space-x-2 hover:bg-gray-50 w-full">
+                        <span className="relative w-full flex items-center justify-center">
+                            {/* Badge inside the button */}
+                            <Badge count={10} color="purple" />
+                            <Star className="h-5 w-5 text-purple-600 mr-2" />
+                            My Reviews
+                        </span>
+                    </Button>
+                </div>
 
-                {/* Reading Stats */}
+                {/* Shopping Cart */}
 
-                <Button className="bg-white p-3 rounded-lg shadow-sm flex items-center justify-center space-x-2 hover:bg-gray-50 w-full">
-                    <BarChart3 className="h-5 w-5 text-blue-600" />
-                    <span>Reading Stats</span>
-                </Button>
+                <div className="relative">
+                    <Button className="bg-white p-3 rounded-lg shadow-sm flex items-center justify-center space-x-2 hover:bg-gray-50 w-full">
+                        <span className="relative w-full flex items-center justify-center">
+                            {/* Badge inside the button */}
+                            <Badge count={8} color="green" />
+                            <ShoppingCart className="h-5 w-5 text-green-600" />
+                            <span className="pl-2">Shopping Cart</span>
+                        </span>
+                    </Button>
+                </div>
 
-                {/* Reading List */}
-                <Button className="bg-white p-3 rounded-lg shadow-sm flex items-center justify-center space-x-2 hover:bg-gray-50 w-full">
-                    <ShoppingCart className="h-5 w-5 text-green-600" />
-                    <span>Shopping Cart </span>
-                </Button>
+                {/* Active Rooms */}
+                <div className="relative">
+                    <Button className="bg-white p-3 rounded-lg shadow-sm flex items-center justify-center space-x-2 hover:bg-gray-50 w-full">
+                        <span className="relative w-full flex items-center justify-center">
+                            {/* Badge inside the button */}
+                            <Badge count={5} color="blue" />
+                            <AudioLines className="h-5 w-5 text-blue-600" />
+                            <span className="pl-2">Active Rooms</span>
+                        </span>
+                    </Button>
+                </div>
+
                 {/* Messages */}
 
-                <Button className="bg-white p-3 rounded-lg shadow-sm flex items-center justify-center space-x-2 hover:bg-gray-50 w-full">
-                    <MessageSquare className="h-5 w-5 text-yellow-600" />
-                    <span>Messages</span>
-                </Button>
+                <div className="relative">
+                    <Button className="bg-white p-3 rounded-lg shadow-sm flex items-center justify-center space-x-2 hover:bg-gray-50 w-full">
+                        <span className="relative w-full flex items-center justify-center">
+                            {/* Badge inside the button */}
+                            <Badge count={3} color="yellow" />
+                            <MessageSquare className="h-5 w-5 text-yellow-600" />
+                            <span className="pl-2">Messages</span>
+                        </span>
+                    </Button>
+                </div>
             </div>
         </section>
     );
