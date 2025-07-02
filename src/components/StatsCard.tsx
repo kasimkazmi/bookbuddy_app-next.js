@@ -17,9 +17,17 @@ const StatsCard: React.FC<StatsCardProps> = ({ stats }) => {
         <div className="bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl p-6 text-white mb-8">
             <h2 className="text-2xl font-bold mb-2">Welcome back!</h2>
             <p className="mb-6">
-                Your reading journey continues with BookBuddy.
+              Explore new books, trade with friends, and discover personalized recommendations.
             </p>
 
+
+   {/* <p className="text-gray-600 mb-4">  Your personal book dashboard</p>
+            <p className="text-gray-500 mb-8">  Track your reading journey, manage your library, and connect with fellow book lovers.</p>
+            <p className="text-gray-500 mb-8">  Explore new books, trade with friends, and discover personalized recommendations.</p>
+            <p className="text-gray-500 mb-8">  Join our community of avid readers and share your passion for literature.</p>
+            <p className="text-gray-500 mb-8">  P.S. Don't forget to check out our latest book recommendations and community events!</p>
+            <p className="text-gray-500 mb-8">  Thank you for being a part of our book-loving community!</p>
+            <p className="text-gray-500 mb-8">  Let's embark on this literary journey together!</p>
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {stats.map((stat, index) => (

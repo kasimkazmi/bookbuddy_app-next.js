@@ -28,7 +28,7 @@ export default function DashboardPage() {
                 setUser(user);
             } else {
                 // Redirect to signup or login page if not logged in
-                router.push('/signup');
+                router.push('/home');
             }
         });
 
@@ -45,23 +45,6 @@ export default function DashboardPage() {
     return (
         <BlankPagesLayout>
             <section className="container mx-auto p-4 max-w-6xl">
-                <h1 className="text-2xl font-bold mb-6">
-                    Welcome, {user?.displayName || 'Reader'}!
-                </h1>
-                {/* <p className="text-gray-600 mb-4">  Your personal book dashboard</p>
-            <p className="text-gray-500 mb-8">  Track your reading journey, manage your library, and connect with fellow book lovers.</p>
-            <p className="text-gray-500 mb-8">  Explore new books, trade with friends, and discover personalized recommendations.</p>
-            <p className="text-gray-500 mb-8">  Join our community of avid readers and share your passion for literature.</p>
-            <p className="text-gray-500 mb-8">  Start your reading adventure today!</p>
-            <p className="text-gray-500 mb-8">  Happy reading!</p>
-            <p className="text-gray-500 mb-8">  - The BookBuddy Team</p>
-            <p className="text-gray-500 mb-8">  P.S. Don't forget to check out our latest book recommendations and community events!</p>
-            <p className="text-gray-500 mb-8">  We hope you find inspiration and joy in every page you turn.</p>
-            <p className="text-gray-500 mb-8">  Thank you for being a part of our book-loving community!</p>
-            <p className="text-gray-500 mb-8">  Let's embark on this literary journey together!</p>
-            <p className="text-gray-500 mb-8">  Cheers to many more adventures in the world of books!</p>
-            <p className="text-gray-500 mb-8">  Your next great read is just a page away!</p>
-            <p className="text-gray-500 mb-8">  Keep exploring, keep    reading, and keep sharing your love for books!</p> */}
                 <StatsCard stats={stats} />
                 <QuickActions />
                 <BookRecommendations />

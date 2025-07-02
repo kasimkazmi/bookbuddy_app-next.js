@@ -58,7 +58,7 @@ export default function LiveRoom({ roomId }: LiveRoomProps) {
     };
 
     return (
-        <div className="flex h-screen rounded-2xl py-20 bg-gradient-to-br from-S4BG to-S5BG shadow-lg overflow-hidden">
+        <div className="flex h-screen py-16 bg-gradient-to-br from-S4BG to-S5BG shadow-lg overflow-hidden">
             {/* Main Room Area */}
             <div className="flex flex-col w-full max-w-4xl mx-auto">
                 {/* Room Header */}

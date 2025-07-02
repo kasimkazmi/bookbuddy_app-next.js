@@ -8,7 +8,7 @@ export default function LiveRoomPage() {
     const roomId = params?.roomId as string;
 
     return (
-        <section className=" mx-auto py-12 px-4  justify-center  items-center bg-S4BG  sm:px-6">
+        <section className=" mx-auto  justify-center  items-center ">
             <LiveRoom roomId={roomId} />
         </section>
     );
