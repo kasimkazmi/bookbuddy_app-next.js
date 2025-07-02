@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Button } from './ui/button';
 import {
     Card,
@@ -15,7 +16,6 @@ export const AboutSection = () => {
                 <div>
                     <CardHeader>
                         <CardTitle className=" text-8xl font-serif">
-                            {' '}
                             Discover the Joy of Reading
                         </CardTitle>
                         <CardDescription className="text-lg pt-4">
@@ -35,9 +35,11 @@ export const AboutSection = () => {
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <Button className="mr-5" size={'lg'}>
-                            Join Now
-                        </Button>
+                        <Link href="/signup">
+                            <Button className="mr-5" size={'lg'}>
+                                Join Now
+                            </Button>
+                        </Link>
 
                         <CardDescription className="text-lg">
                             Immerse yourself in a world of literary wonders and

@@ -20,12 +20,12 @@ export const NewBookSection = () => {
             </p>
 
             <section className="flex flex-col sm:flex-row gap-4 sm:gap-6 py-6 justify-center sm:w-fit max-w-4xl">
-                <Link href="/shop-books">
+                <Link href="/signup">
                     <Button variant={'secondary'} className=" sm:w-auto">
                         Learn more
                     </Button>
                 </Link>
-                <Link href="/shop-books">
+                <Link href="/signup">
                     <Button className=" sm:w-auto">Shop now</Button>
                 </Link>
             </section>

@@ -73,26 +73,13 @@ export const TradeSection = () => {
                     </CardHeader>
 
                     <div className="px-4 py-2 justify-between flex gap-4">
-                        <Button
-                            className="bg-S3BG text-white py-2 px-4 rounded-2xl hover:bg-S4BG hover:text-white transition-colors duration-300"
-                            onClick={() =>
-                                form.handleSubmit((data) => {
-                                    console.log(data);
-                                })()
-                            }
-                        >
-                            Start Trading
-                        </Button>
-
-                        <Link href={`/trade-books`}>
-                            <Button
-                                className="bg-S3BG text-white py-2 px-4 rounded-2xl hover:bg-S4BG hover:text-white transition-colors duration-300"
-                                onClick={() =>
-                                    form.handleSubmit((data) => {
-                                        console.log(data);
-                                    })()
-                                }
-                            >
+                        <Link href={`/signup`}>
+                            <Button className="bg-S3BG text-white py-2 px-4 rounded-2xl hover:bg-S4BG hover:text-white transition-colors duration-300">
+                                Start Trading
+                            </Button>
+                        </Link>
+                        <Link href={`/signup`}>
+                            <Button className="bg-S3BG text-white py-2 px-4 rounded-2xl hover:bg-S4BG hover:text-white transition-colors duration-300">
                                 Explore Trade
                             </Button>
                         </Link>

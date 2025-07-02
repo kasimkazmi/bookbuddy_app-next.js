@@ -18,7 +18,7 @@ export const ProductCarousel = () => {
                     Top Picks
                 </h2>
                 <div className="lg:ml-auto sm:ml-0 flex">
-                    <Link href="/shop-books">
+                    <Link href="/signup">
                         <Button className="w-full lg:w-auto">View All</Button>
                     </Link>
                 </div>

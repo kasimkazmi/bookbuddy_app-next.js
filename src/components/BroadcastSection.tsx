@@ -15,7 +15,7 @@ import { useRouter } from 'next/navigation'; // Use next/navigation for client-s
 export const BroadcastSection = () => {
     const router = useRouter(); // Get the router instance
     const handleNavigate = () => {
-        router.push('/audio-rooms'); // Navigate to the audio rooms page
+        router.push('/signup'); // Navigate to the audio rooms page
     };
     return (
         <section className="bg-S4BG flex-col pt-10 pb-20">
@@ -51,12 +51,7 @@ export const BroadcastSection = () => {
                         <Button
                             variant="outline"
                             className="w-32"
-                            onClick={() =>
-                                window.open(
-                                    'https://discord.gg/your-discord-link',
-                                    '_blank'
-                                )
-                            }
+                            onClick={handleNavigate}
                         >
                             Join Discussion
                         </Button>
@@ -86,7 +81,11 @@ export const BroadcastSection = () => {
                         >
                             Find Stories
                         </Button>
-                        <Button variant="outline" className="w-32">
+                        <Button
+                            variant="outline"
+                            className="w-32"
+                            onClick={handleNavigate}
+                        >
                             Browse Rooms
                         </Button>
                     </CardContent>
@@ -115,7 +114,11 @@ export const BroadcastSection = () => {
                         >
                             Join Now
                         </Button>
-                        <Button variant="outline" className="w-32">
+                        <Button
+                            variant="outline"
+                            className="w-32"
+                            onClick={handleNavigate}
+                        >
                             See Events
                         </Button>
                     </CardContent>
@@ -141,26 +144,6 @@ export const BroadcastSection = () => {
                         </div>
                     </CardHeader>
                 </Card>
-
-                <div className=" ">
-                    <Card className="">
-                        <CardHeader>
-                            <CardTitle>
-                                Right side of Brodcast Session
-                            </CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                            <Button
-                                type="submit"
-                                variant={'play'}
-                                className="mt-4"
-                                // onClick={form.handleSubmit(onSubmit)}
-                            >
-                                Initial Request
-                            </Button>
-                        </CardContent>
-                    </Card>
-                </div>
             </div> */}
         </section>
     );
