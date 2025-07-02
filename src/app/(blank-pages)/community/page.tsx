@@ -60,9 +60,9 @@ export default function CommunityPage() {
         <div className="min-h-screen bg-gray-50">
             <header className="bg-white shadow-md p-6 text-center">
                 <h1 className="text-4xl font-bold text-purple-600 mb-2">
-                 📚 Bazam Book Community Page
+                    📚 Bazam Book Community Page
                 </h1>
-          
+
                 <p className="text-gray-600">
                     Connect with fellow book lovers and share your thoughts!
                 </p>

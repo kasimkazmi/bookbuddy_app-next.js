@@ -14,6 +14,8 @@ export default function BlankPagesLayout({
 }) {
     const [user, setUser] = useState<User | null>(null);
     const [isOpen, setIsOpen] = useState(true); // State for sidebar visibility
+console.log(isOpen, 'isOpen state in BlankPagesLayout');
+
     // Sync store with ThemeProvider
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -37,15 +39,10 @@ export default function BlankPagesLayout({
                         onToggle={toggleSidebar}
                         isMobileMenuOpen={false}
                     />
-                    <div className="flex-grow">
-                        <AuthNavbar
-                            user={user}
-                            onLogout={() => setUser(null)}
-                        />
-                        <main className="w-full bg-S1BG mx-auto pt-16 ">
-                            {children}
-                        </main>
-                    </div>
+                    <AuthNavbar user={user} onLogout={() => setUser(null)} />
+                    <main className="w-full bg-S1BG mx-auto pt-16 ">
+                        {children}
+                    </main>
                 </ThemeProvider>
             )}
             {!user && ( // Optionally, you can render a different layout for non-logged-in users

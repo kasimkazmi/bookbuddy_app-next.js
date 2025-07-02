@@ -8,13 +8,23 @@ import {
     Settings,
     Moon,
     Sun,
-    ArrowLeftRight
+    ArrowLeftRight, // Trade
+    Bookmark, // Alternative for Book Clubs
+    BookUp2, // Another book-related icon
+    GanttChart, // Alternative for Dashboard
+    ShoppingCart, // Alternative for Books/shop
+    Users2, // Alternative community icon
+    Gem, // Alternative for premium features
+    Library, // Book collection
+    Handshake, // For trading
+    BookHeadphones // Perfect for audio rooms/book clubs
 } from 'lucide-react';
 import SidebarIcon from './SidebarIcon';
 // import { useThemeStore } from '../store/themeStore';
 import { Button } from './ui/button';
 import { useRouter, usePathname } from 'next/navigation';
 import ThemeSwitch from './ThemeSwitch';
+import { useTheme } from 'next-themes';
 
 interface SidebarProps {
     isOpen: boolean;
@@ -27,16 +37,20 @@ export default function Sidebar({
     onToggle,
     isMobileMenuOpen
 }: SidebarProps) {
-    // const { darkMode, toggleTheme } = useThemeStore();
     const router = useRouter();
     const pathname = usePathname();
+    const { theme, setTheme } = useTheme();
+    const darkMode = theme === 'dark';
 
+    const toggleTheme = () => {
+        setTheme(darkMode ? 'light' : 'dark');
+    };
     const isActive = pathname === '/dashboard'; // Example for Dashboard
 
     return (
         <aside
             className={clsx(
-                'fixed top-0 left-0 h-full bg-gradient-to-r from-purple-600 to-blue-600 shadow-lg text-white p-4 flex flex-col z-40 transition-[width,transform] duration-300 ease-in-out',
+                'fixed top-0 left-0 h-full  bg-gradient-to-r z-50 from-purple-600 to-blue-600 shadow-lg text-white p-4 flex flex-col  transition-[width,transform] duration-300 ease-in-out',
                 {
                     'w-56': isOpen,
                     'w-20': !isOpen,
@@ -45,7 +59,7 @@ export default function Sidebar({
                 }
             )}
         >
-            <div className="flex items-center justify-between mb-6">
+            {/* <div className="flex items-center justify-between mb-6">
                 <h1
                     className={clsx(
                         'text-lg font-bold transition-all origin-left',
@@ -57,7 +71,7 @@ export default function Sidebar({
                 >
                     BookBuddy
                 </h1>
-            </div>
+            </div> */}
 
             <nav className="flex flex-col gap-4">
                 <Button
@@ -74,7 +88,7 @@ export default function Sidebar({
                     className={isActive ? 'bg-gray-700' : ''} // Add active class
                 />
                 <SidebarIcon
-                    icon={BookOpen}
+                    icon={Library}
                     label="Books"
                     href="/shop-books"
                     isOpen={isOpen}
@@ -86,13 +100,13 @@ export default function Sidebar({
                     isOpen={isOpen}
                 />
                 <SidebarIcon
-                    icon={Users}
+                    icon={Handshake}
                     label="Trade"
                     href="/trade-books"
                     isOpen={isOpen}
                 />
                 <SidebarIcon
-                    icon={Users}
+                    icon={BookHeadphones}
                     label="Book Clubs"
                     href="/audio-rooms"
                     isOpen={isOpen}
@@ -105,8 +119,7 @@ export default function Sidebar({
                 /> */}
             </nav>
 
-            <ThemeSwitch />
-            {/* <div className="mt-auto pt-6 border-t border-gray-700">
+            <div className="mt-auto pt-6 border-t border-gray-700">
                 <Button
                     onClick={toggleTheme}
                     className="w-full flex items-center px-3 py-2 rounded text-sm transition-colors"
@@ -127,7 +140,7 @@ export default function Sidebar({
                         {darkMode ? 'Light' : 'Dark'} Mode
                     </span>
                 </Button>
-            </div> */}
+            </div>
         </aside>
     );
 }
