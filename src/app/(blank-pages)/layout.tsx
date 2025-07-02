@@ -42,7 +42,7 @@ export default function BlankPagesLayout({
                             user={user}
                             onLogout={() => setUser(null)}
                         />
-                        <main className="max-w-7xl mx-auto pt-24">
+                        <main className="w-full bg-S1BG mx-auto pt-16 ">
                             {children}
                         </main>
                     </div>

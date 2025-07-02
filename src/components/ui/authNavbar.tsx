@@ -41,16 +41,14 @@ const AuthNavbar: React.FC<NavbarProps> = ({ user, onLogout }) => {
 
     return (
         <header className="bg-gradient-to-r from-purple-600 to-blue-600 shadow-lg py-4 px-6  fixed w-screen top-0 ">
-            <div className="flex justify-between items-center max-w-7xl mx-auto">
-                <div className="flex items-center space-x-3">
+            <div className="flex justify-between items-center max-w-7xl mx-auto px-4">
+                <div className="flex items-start space-x-3">
                     <h1 className="text-2xl font-bold text-white">BookBuddy</h1>
                     <span className="hidden md:block text-white/80 text-sm">
                         Hello, {user?.displayName || 'Reader'}
                     </span>
                 </div>
-            </div>
-            <div className="flex justify-end items-center max-w-7xl mx-auto w-screen">
-                <div className="flex items-center space-x-6" ref={dropdownRef}>
+                <div className="flex items-center  space-x-6" ref={dropdownRef}>
                     <button
                         className="p-2 relative text-white hover:text-purple-200 transition-colors"
                         aria-label="Notifications"

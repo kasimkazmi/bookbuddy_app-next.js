@@ -91,6 +91,12 @@ export default function Sidebar({
                     href="/trade-books"
                     isOpen={isOpen}
                 />
+                <SidebarIcon
+                    icon={Users}
+                    label="Book Clubs"
+                    href="/audio-rooms"
+                    isOpen={isOpen}
+                />
                 {/* <SidebarIcon
                     icon={Settings}
                     label="Settings"
@@ -99,7 +105,7 @@ export default function Sidebar({
                 /> */}
             </nav>
 
-          <ThemeSwitch />
+            <ThemeSwitch />
             {/* <div className="mt-auto pt-6 border-t border-gray-700">
                 <Button
                     onClick={toggleTheme}

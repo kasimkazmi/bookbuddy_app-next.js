@@ -44,27 +44,50 @@ export default function DashboardPage() {
 
     return (
         <BlankPagesLayout>
-            <StatsCard stats={stats} />
-            <QuickActions />
-            <BookRecommendations />
-            <section className="mt-8">
-                <h2 className="text-xl font-semibold mb-4">Recent Activity</h2>
-                <div className="bg-white rounded-lg shadow-sm p-4">
-                    <div className="flex items-center p-3 hover:bg-gray-50 cursor-pointer">
-                        <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center mr-3">
-                            <UserIcon className="w-4 h-4 text-gray-500" />
+            <section className="container mx-auto p-4 max-w-6xl">
+                <h1 className="text-2xl font-bold mb-6">
+                    Welcome, {user?.displayName || 'Reader'}!
+                </h1>
+                {/* <p className="text-gray-600 mb-4">  Your personal book dashboard</p>
+            <p className="text-gray-500 mb-8">  Track your reading journey, manage your library, and connect with fellow book lovers.</p>
+            <p className="text-gray-500 mb-8">  Explore new books, trade with friends, and discover personalized recommendations.</p>
+            <p className="text-gray-500 mb-8">  Join our community of avid readers and share your passion for literature.</p>
+            <p className="text-gray-500 mb-8">  Start your reading adventure today!</p>
+            <p className="text-gray-500 mb-8">  Happy reading!</p>
+            <p className="text-gray-500 mb-8">  - The BookBuddy Team</p>
+            <p className="text-gray-500 mb-8">  P.S. Don't forget to check out our latest book recommendations and community events!</p>
+            <p className="text-gray-500 mb-8">  We hope you find inspiration and joy in every page you turn.</p>
+            <p className="text-gray-500 mb-8">  Thank you for being a part of our book-loving community!</p>
+            <p className="text-gray-500 mb-8">  Let's embark on this literary journey together!</p>
+            <p className="text-gray-500 mb-8">  Cheers to many more adventures in the world of books!</p>
+            <p className="text-gray-500 mb-8">  Your next great read is just a page away!</p>
+            <p className="text-gray-500 mb-8">  Keep exploring, keep    reading, and keep sharing your love for books!</p> */}
+                <StatsCard stats={stats} />
+                <QuickActions />
+                <BookRecommendations />
+                <section className="mt-8">
+                    <h2 className="text-xl font-semibold mb-4">
+                        Recent Activity
+                    </h2>
+                    <div className="bg-white rounded-lg shadow-sm p-4">
+                        <div className="flex items-center p-3 hover:bg-gray-50 cursor-pointer">
+                            <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center mr-3">
+                                <UserIcon className="w-4 h-4 text-gray-500" />
+                            </div>
+                            <div className="flex-1">
+                                <p className="text-sm">
+                                    -<span className="font-medium">Sarah</span>{' '}
+                                    liked your review of
+                                    <span className="font-medium">Dune</span>
+                                </p>
+                                <p className="text-xs text-gray-500">
+                                    2 hours ago
+                                </p>
+                            </div>
+                            <ArrowRight className="w-4 h-4 text-gray-400" />
                         </div>
-                        <div className="flex-1">
-                            <p className="text-sm">
-                                -<span className="font-medium">Sarah</span>{' '}
-                                liked your review of
-                                <span className="font-medium">Dune</span>
-                            </p>
-                            <p className="text-xs text-gray-500">2 hours ago</p>
-                        </div>
-                        <ArrowRight className="w-4 h-4 text-gray-400" />
                     </div>
-                </div>
+                </section>
             </section>
         </BlankPagesLayout>
     );

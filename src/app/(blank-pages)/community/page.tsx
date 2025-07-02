@@ -52,62 +52,7 @@ export default function CommunityPage() {
 
     return (
         <div className="min-h-screen bg-gray-50">
-            <header className="bg-gradient-to-r from-purple-600 to-blue-600 shadow-lg py-4 px-6 fixed w-full top-0 z-50">
-                <div className="flex justify-between items-center max-w-7xl mx-auto">
-                    <div className="flex items-center space-x-3">
-                        <h1 className="text-2xl font-bold text-white">
-                            BookBuddy
-                        </h1>
-                        <span className="hidden md:block text-white/80 text-sm">
-                            Hello, {user?.displayName || 'Reader'}
-                        </span>
-                    </div>
-                    <div
-                        className="flex items-center space-x-6"
-                        ref={dropdownRef}
-                    >
-                        <button className="p-2 relative text-white hover:text-purple-200">
-                            <Bell className="w-5 h-5" />
-                            <span className="absolute top-0 right-0 h-2 w-2 rounded-full bg-yellow-400"></span>
-                        </button>
-                        <div className="relative">
-                            <button
-                                onClick={() => setDropdownOpen(!dropdownOpen)}
-                                className="flex items-center space-x-2 group"
-                            >
-                                <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center text-white border-2 border-white/30 group-hover:border-white/50">
-                                    <UserIcon className="w-5 h-5" />
-                                </div>
-                                <ChevronDown
-                                    className={`w-4 h-4 text-white transition-transform ${dropdownOpen ? 'rotate-180' : ''}`}
-                                />
-                            </button>
-                            {dropdownOpen && (
-                                <div className="absolute right-0 mt-3 w-56 bg-white rounded-lg shadow-xl">
-                                    <div className="p-2">
-                                        <div className="px-4 py-3 border-b border-gray-100">
-                                            <p className="text-sm font-medium">
-                                                Signed in as
-                                            </p>
-                                            <p className="text-sm truncate">
-                                                {user?.email}
-                                            </p>
-                                        </div>
-                                        <button
-                                            onClick={handleLogout}
-                                            className="w-full flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-600"
-                                        >
-                                            <LogOut className="w-4 h-4 mr-3" />{' '}
-                                            Sign out
-                                        </button>
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                </div>
-            </header>
-
+           
             <main className="max-w-7xl mx-auto p-6 pt-24 lg:flex lg:space-x-6">
                 <div className="lg:w-3/4">
                     <div className="bg-white rounded-lg shadow-md overflow-hidden mb-6">

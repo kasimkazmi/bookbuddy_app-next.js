@@ -4,7 +4,7 @@ import React from 'react';
 interface Stat {
     title: string;
     value: number;
-    icon: React.ElementType; 
+    icon: React.ElementType;
     color: string;
 }
 
